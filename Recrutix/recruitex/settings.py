@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    ##### Added Apps #####
     'accounts',
+    'Jobs',
+
+    ###### 3rd Party apps   #######
+    # 'location_field.apps.DefaultConfig',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -107,6 +113,10 @@ LOGOUT_REDIRECT_URL='home'   #Login Logout redirect
 
 ################        Email Backend       #############
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+##############          TIME ZONE       ############
+
+TIME_ZONE = 'Asia/Calcutta' # new
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
