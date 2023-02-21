@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+*{
+    margin: 0;
+    border: 0;
+    font-family: nunito;
+}
+
+.helptext{
+    visibility: hidden;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+input{
+    border-radius: 12px;
+}
+body{
+    width: 82.5rem;
+    margin: 7rem auto;
+}
+nav{
+    position: fixed;
+    top: 0px;
+    height: 3rem;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f7fa;
+}
+nav img{
+    width: 15rem;
+    margin-right: 3.5rem;
+}
+.search-bar{
+    padding: 0.4rem 0.4rem;
+    width: 25rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+.search-bar input{
+    width: 15rem;
+    padding: 0.5rem ;
+}
+.search-bar button{
+    cursor: pointer;
+    margin-left: 5px;
+    color: white;
+    font-size: 15px;
+    background-color: black;
+    padding: 0.5rem  1rem;
+}
+
+.links{
+    width: 40rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items:center;
+}
+.links a{
+    margin-left: 2.25rem;
+}
+.links img{
+    width: 50px;
+    margin: 0 1rem 0 0 ;
+    padding: 0;
+}
+.content{
+    margin: 5rem 0;
+    text-align: center;
+}
+.content h2{
+    font-size: 3rem;
+}
+.content p{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 200;
+    color: #6b6969;
+}
+footer{
+    width: 82.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+footer .footer-first{
+    height: 10rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5rem;
+    align-items: center;
+    background-color: #f5f7fa;
+}
+.footer-first p{
+    font-size: 2.225rem;
+}
+.subscribe-form{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    height: 3.5rem;
+}
+.subscribe-form input{
+    width: 20rem;
+    height: 2.225rem;
+    border: none;
+    font-size: 16px;
+    margin-left: 1rem;
+}
+.subscribe-form button{
+    color: white;
+    font-size: 18px;
+    background-color: black;
+    padding: 0.4rem 1rem;
+    margin-right: 6px;
+    cursor: pointer;
+}
+.footer-middle{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+    color: #d0cdcd;
+}
+.middle-left{
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.25rem;
+}
+.middle-right
+{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.25rem;
+}
+hr{
+    border: #c6d1e1 0.5px solid;
+}
+.footer-end{
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    gap: 1.5rem;
+}

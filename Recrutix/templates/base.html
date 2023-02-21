@@ -1,9 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/106669e900.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
     {% block links %}{% endblock links %}
     <title>Document</title>
 </head>
@@ -13,11 +16,59 @@
             <div class="logo">
                 <a href=""><img src="{% static 'images/logo.png' %}" alt="Company logo"></a>
             </div>
-            <div class="search-bar"></div>
-            <div class="links"></div>
+            <div class="search-bar">
+                <input type="text">
+                <button type = "button" >Search</button>
+            </div>
+            <div class="links">
+                <a href=""><p>Jobs</p></a>
+                <a href=""><p>Notifications</p></a>
+                <a href=""><p>Messages</p></a>
+                {% if not user.is_authenticated %}
+                <a href="{% url 'signup' %}">SignUp</a>
+                <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+                <a href="">
+                    <div>
+                        <img src="{% static 'images/profile-logo.png' %}" alt="profile logo">
+                    </div>
+                </a>
+    
+            </div>
         </nav>
     </header>
-    {% block content %}
-    {% endblock content %}
+    <div class="content">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <footer>
+        <div class="footer-first">
+            <p>Subsribe Newsletters</p>
+            <div class="subscribe-form">
+                <input placeholder = "Enter your email" type="text">
+                <button type = "button" >Sunscribe Now</button>
+            </div>
+        </div>
+        <div class="footer-middle">
+            <div class="middle-left">
+                <a href=""><p>About us</p></a>
+                <a href=""><p>Features</p></a>
+                <a href=""><p>User Example</p></a>
+                <a href=""><p>Job Recruter's acc</p></a>
+                <a href=""><p>Resources</p></a>
+            </div>
+            <div class="middle-right">
+                <a class="social-icons" href=""><i class="fa-brands fa-2x fa-square-facebook"></i></a>
+                <a class="social-icons" href=""><i class="fa-brands fa-2x fa-twitter"></i></a>
+                <a class="social-icons" href=""><i class="fa-brands fa-2x fa-instagram"></i></a>
+                <a class="social-icons" href=""><i class="fa-brands fa-2x fa-youtube"></i></a>
+            </div>
+        </div>
+        <hr>
+        <div class="footer-end">
+            <a href=""><p>Terms Of Use</p></a>
+            <a href=""><p>Privacy Policy</p></a>
+        </div>
+    </footer>
 </body>
 </html>

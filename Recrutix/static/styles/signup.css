@@ -1,0 +1,12 @@
+.form-control{
+    height: auto;
+    padding: 1rem;
+    text-align: start;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 12px;
+}
+.form-control input{
+    border: 1px solid black;
+    position:absolute;
+    left: 20rem;
+}
