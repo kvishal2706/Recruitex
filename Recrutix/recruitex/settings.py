@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-    'testing',
 ]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,8 +102,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL='homepage'   #Login Logout redirect
-LOGOUT_REDIRECT_URL='homepage'   #Login Logout redirect
+LOGIN_REDIRECT_URL='home'   #Login Logout redirect
+LOGOUT_REDIRECT_URL='home'   #Login Logout redirect
+
+################        Email Backend       #############
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -118,7 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'  #static files 
+STATIC_URL = '/static/'  #static files 
 STATICFILES_DIRS= [str(BASE_DIR.joinpath('static'))]
 
 # Default primary key field type
