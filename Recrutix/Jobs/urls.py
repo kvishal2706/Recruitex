@@ -1,13 +1,12 @@
-# config/urls.py
 from django.contrib import admin
 from django.urls import path, include 
 from django.views.generic.base import TemplateView 
-from .views import JobsListView,JobsUpdateView,JobsDeleteView,JobsDetailView,JobsCreateView
+from .views import JobsListView,JobsDetailView,JobsCreateView,UpdateJob, DeleteJob
 
 urlpatterns = [
     path('', JobsListView.as_view(),name='jobs_list'), # new
-    path('<int:pk>/', JobsDetailView.as_view(),name='jobs_detail'), # new
-    path('<int:pk>/edit', JobsUpdateView.as_view(),name='jobs_edit'), # new
-    path('<int:pk>/delete', JobsDeleteView.as_view(),name='jobs_delete'), # new
+    path('<slug:slug>', JobsDetailView.as_view(),name='job_details'), # new
+    path('edit_job/<slug:slug>', UpdateJob,name='job_edit'), # new
+    path('delete_job/<slug:slug>', DeleteJob,name='job_delete'), # new
     path('new/', JobsCreateView.as_view(),name='jobs_new'), # new
 ]

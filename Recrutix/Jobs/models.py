@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
+
 class Jobs(models.Model):
     title=models.CharField(max_length=50,null=False,blank=False)
     designation=models.CharField(max_length=50,null=False,blank=False)
@@ -17,12 +18,19 @@ class Jobs(models.Model):
         get_user_model(),
         on_delete=models.CASCADE,
     )
-    # slug=models.SlugField(default="",blank=True,null=False,db_index=True)
+    slug=models.SlugField(default="",blank=True,null=False,db_index=True)
 
     def __str__(self):
         return self.title
     
-    def get_absolute_url(self):
-        return reverse('jobs_detail', args=[self.slug])
-
     
+    def get_absolute_url(self):
+        return reverse("job_details", args=[self.slug])
+    
+    
+    def update_url(self):
+        return reverse("job_edit", args=[self.slug])
+    
+    
+    def delete_url(self):
+        return reverse("job_delete", args=[self.slug])
