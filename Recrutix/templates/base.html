@@ -8,9 +8,16 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="navbar">
-        {% block content %}
-        {% endblock content %}
-    </div>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href=""><img src="{% static 'images/logo.png' %}" alt="Company logo"></a>
+            </div>
+            <div class="search-bar"></div>
+            <div class="links"></div>
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock content %}
 </body>
 </html>
