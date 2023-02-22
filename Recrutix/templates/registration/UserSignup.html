@@ -1,13 +1,43 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block links %}
-<link rel="stylesheet" href="{% static 'styles/signup.css' %}" />
+   <link rel="stylesheet" href="{% static 'styles/signup.css' %}" />
 {% endblock links %} 
 {% block content %}
-<h2>SignUp</h2>
-<form class = "form-control" action="" method="post">
-   {% csrf_token %} {{form.as_p}}
-   <button type="submit">Sign Up</button>
-   <span><a href="{% url 'login' %}">Already Have An Account</a></span>
-</form>
+   <h2>SignUp</h2>
+   <form class = "form-box" action="" method="post">
+      {% csrf_token %} 
+      <div class="form-inputs">
+         <div class="username">
+            {{form.username.label}}
+            {{form.username}}
+         </div>
+         <div class="email">
+            {{form.email.label}}
+            {{form.email}}
+         </div>
+         <div class="phone">
+            {{form.phone.label}}
+            {{form.phone}}
+         </div>
+         <div class="first_name">
+            {{form.first_name.label}}
+            {{form.first_name}}
+         </div>
+         <div class="last_name">
+            {{form.last_name.label}}
+            {{form.last_name}}
+         </div>
+         <div class="password">
+            {{form.password1.label}}
+            {{form.password1}}
+         </div>
+         <div class="password-confirmation">
+            {{form.password2.label}}
+            {{form.password2}}
+         </div>
+      </div>
+      <button type="submit">Sign Up</button>
+      <span><a href="{% url 'login' %}">Already Have An Account</a></span>
+   </form>
 {% endblock content %}
