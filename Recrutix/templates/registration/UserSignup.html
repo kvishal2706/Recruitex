@@ -1,43 +1,64 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block links %}
-   <link rel="stylesheet" href="{% static 'styles/signup.css' %}" />
+   {% comment %} <link rel="stylesheet" href="{% static 'styles/signup.css' %}" /> {% endcomment %}
+   <link rel="stylesheet" href="{% static 'styles/sign-up.css' %}">
 {% endblock links %} 
 {% block content %}
-   <h2>SignUp</h2>
-   <form class = "form-box" action="" method="post">
-      {% csrf_token %} 
-      <div class="form-inputs">
-         <div class="username">
-            {{form.username.label}}
-            {{form.username}}
+   <h2 class="heading-tag">Create A New Account</h2>
+   <div class="main">
+      <div class="left">
+         <div class="login-options">
+            <div class="google logos">
+               <img src="{% static 'images/google-logo.png' %}" alt="google logo">
+               <p>SignUp with Google Account</p>
+            </div>
+            <div class="facebook logos">
+               <img src="{% static 'images/facebook-logo.png' %}" alt="facebook logo">
+               <p>SignUp with Facebook Account</p>
+            </div>
          </div>
-         <div class="email">
-            {{form.email.label}}
-            {{form.email}}
-         </div>
-         <div class="phone">
-            {{form.phone.label}}
-            {{form.phone}}
-         </div>
-         <div class="first_name">
-            {{form.first_name.label}}
-            {{form.first_name}}
-         </div>
-         <div class="last_name">
-            {{form.last_name.label}}
-            {{form.last_name}}
-         </div>
-         <div class="password">
-            {{form.password1.label}}
-            {{form.password1}}
-         </div>
-         <div class="password-confirmation">
-            {{form.password2.label}}
-            {{form.password2}}
-         </div>
+         <hr>
+         <form class = "form-box" action="" method="post">
+            {% csrf_token %} 
+            <div class="form-inputs">
+               <div class="names">
+                  <div class="first_name">
+                     {{form.first_name.label}}
+                     {{form.first_name}}
+                  </div>
+                  <div class="last_name">
+                     {{form.last_name.label}}
+                     {{form.last_name}}
+                  </div>
+               </div>
+               <div class="username">
+                  {{form.username.label}}
+                  {{form.username}}
+               </div>
+               <div class="email">
+                  {{form.email.label}}
+                  {{form.email}}
+               </div>
+               <div class="phone">
+                  {{form.phone.label}}
+                  {{form.phone}}
+               </div>
+               <div class="password">
+                  {{form.password1.label}}
+                  {{form.password1}}
+               </div>
+               <div class="password-confirmation">
+                  {{form.password2.label}}
+                  {{form.password2}}
+               </div>
+            </div>
+            <button type="submit">Sign Up</button>
+            <span><a href="{% url 'login' %}">Already Have An Account</a></span>
+         </form>
       </div>
-      <button type="submit">Sign Up</button>
-      <span><a href="{% url 'login' %}">Already Have An Account</a></span>
-   </form>
+      <div class="right">
+   
+      </div>
+   </div>
 {% endblock content %}

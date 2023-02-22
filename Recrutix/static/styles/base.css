@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
 *{
     margin: 0;
     border: 0;
     font-family: nunito;
 }
-
+input{
+    border-radius: 12px;
+    outline: palevioletred;
+}
 .helptext{
     visibility: hidden;
 }
 a{
     text-decoration: none;
-    color: black;
-}
-input{
-    border-radius: 12px;
+    color: rgb(0, 0, 0);
 }
 body{
     width: 82.5rem;
@@ -43,6 +44,7 @@ nav img{
 .search-bar input{
     width: 15rem;
     padding: 0.5rem ;
+    font-size: 16px;
 }
 .search-bar button{
     cursor: pointer;
