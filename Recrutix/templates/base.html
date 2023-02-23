@@ -14,19 +14,21 @@
     <header>
         <nav>
             <div class="logo">
-                <a href=""><img src="{% static 'images/logo.png' %}" alt="Company logo"></a>
+                <a href="{% url 'home-page' %}"><img src="{% static 'images/logo.png' %}" alt="Company logo"></a>
             </div>
             <div class="search-bar">
                 <input placeholder="Search" type="text">
                 <button type = "button" >Search</button>
             </div>
             <div class="links">
-                <a href=""><p>Jobs</p></a>
+                <a href="{% url 'jobs_list' %}">Jobs</a>
                 <a href=""><p>Notifications</p></a>
                 <a href=""><p>Messages</p></a>
                 {% if not user.is_authenticated %}
                 <a href="{% url 'signup' %}">SignUp</a>
                 <a href="{% url 'login' %}">Login</a>
+                {% else %}
+                <a href="{% url 'logout' %}">Logout</a>
                 {% endif %}
                 <a href="">
                     <div>
@@ -58,10 +60,10 @@
                 <a href=""><p>Resources</p></a>
             </div>
             <div class="middle-right">
-                <a class="social-icons" href=""><i class="fa-brands fa-2x fa-square-facebook"></i></a>
-                <a class="social-icons" href=""><i class="fa-brands fa-2x fa-twitter"></i></a>
-                <a class="social-icons" href=""><i class="fa-brands fa-2x fa-instagram"></i></a>
-                <a class="social-icons" href=""><i class="fa-brands fa-2x fa-youtube"></i></a>
+                <a class="social-icons" href="https://facebook.com"><i class="fa-brands fa-2x fa-square-facebook"></i></a>
+                <a class="social-icons" href="https://twitter.com"><i class="fa-brands fa-2x fa-twitter"></i></a>
+                <a class="social-icons" href="https://instagram.com"><i class="fa-brands fa-2x fa-instagram"></i></a>
+                <a class="social-icons" href="https://youtube.com"><i class="fa-brands fa-2x fa-youtube"></i></a>
             </div>
         </div>
         <hr>

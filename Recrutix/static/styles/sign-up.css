@@ -3,16 +3,14 @@
     margin-left: 1rem;
     display: flex;
 }
-nav {
-    z-index: 9;
-}
+
 .heading-tag{
     margin: 1.5rem 0;
 }
 .left{
     width: 40rem;
     height: auto;
-    /* border: 1px solid blue; */
+    border: 2px solid #3483f0;
     margin-right: 1rem;
 }
 .login-options{
@@ -23,7 +21,6 @@ nav {
 }
 .logos{
     width: 16.5rem;
-    border: 1px solid rgb(213, 208, 208);
     border-radius: 25px;
     display: flex;
     margin: 0.5rem 0;
@@ -35,7 +32,7 @@ nav {
 .logos p{
     font-size: 14px;
     font-weight: 400;
-    color: black;
+    color: #000000;
     margin-bottom: 1rem;
 }
 .google p{
@@ -81,7 +78,7 @@ hr{
         bottom: 2.165rem;
         left: 1.8rem;
         font-size: 15px;
-        background-color: white;
+        background-color: #ffffff;
         color: #3483f0;
         font-weight: 400;
 
@@ -103,7 +100,7 @@ hr{
         bottom: 2.165rem;
         right: 11rem;
         font-size: 15px;
-        background-color: white;
+        background-color: #ffffff;
         color: #3483f0;
         font-weight: 400;
 

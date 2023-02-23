@@ -22,9 +22,11 @@ body{
 }
 nav{
     position: fixed;
+    width: 90rem;
+    margin-left: -4rem;
     z-index: 9;
     top: 0px;
-    height: 3rem;
+    height: 2rem;
     padding: 1.5rem 0;
     display: flex;
     justify-content: space-between;

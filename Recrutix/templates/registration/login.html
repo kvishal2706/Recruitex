@@ -6,8 +6,17 @@
 {% block content %}
 <h2>Login</h2>
 <form action="" method="post">{% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Login</button>
-    <span><a href="{% url 'password_reset' %}">Forgot Password</a></span>
+    <div class="login-form">
+        <div class="username">
+            <p>{{form.username.label}}</p>
+            {{form.username}}
+        </div>
+        <div class="password">
+            <p>{{form.password.label}}</p>
+            {{form.password}}
+        </div>
+    </div>
+    <button type="submit">Login</button><br>
+    <span><a href="{% url 'password_reset' %}">Forgot Password?</a></span>
 </form>
 {% endblock content %}
