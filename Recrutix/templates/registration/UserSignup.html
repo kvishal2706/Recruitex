@@ -24,37 +24,37 @@
             <div class="form-inputs">
                <div class="names">
                   <div class="first_name">
-                     {{form.first_name.label}}
+                     <p>{{form.first_name.label}}</p>
                      {{form.first_name}}
                   </div>
                   <div class="last_name">
-                     {{form.last_name.label}}
+                     <p>{{form.last_name.label}}</p>
                      {{form.last_name}}
                   </div>
                </div>
                <div class="username">
-                  {{form.username.label}}
+                  <p>{{form.username.label}}</p>
                   {{form.username}}
                </div>
                <div class="email">
-                  {{form.email.label}}
+                  <p>{{form.email.label}}</p>
                   {{form.email}}
                </div>
                <div class="phone">
-                  {{form.phone.label}}
+                  <p>{{form.phone.label}}</p>
                   {{form.phone}}
                </div>
                <div class="password">
-                  {{form.password1.label}}
+                  <p>{{form.password1.label}}</p>
                   {{form.password1}}
                </div>
                <div class="password-confirmation">
-                  {{form.password2.label}}
+                  <p>{{form.password2.label}}</p>
                   {{form.password2}}
                </div>
             </div>
             <button type="submit">Sign Up</button>
-            <span><a href="{% url 'login' %}">Already Have An Account</a></span>
+            <span><a href="{% url 'login' %}">Already Have An Account?</a></span>
          </form>
       </div>
       <div class="right">

@@ -1,11 +1,10 @@
-input{
-    border-radius: 12px;
-    outline: palevioletred;
-}
 .main{
     width: 80rem;
     margin-left: 1rem;
     display: flex;
+}
+nav {
+    z-index: 9;
 }
 .heading-tag{
     margin: 1.5rem 0;
@@ -13,7 +12,7 @@ input{
 .left{
     width: 40rem;
     height: auto;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin-right: 1rem;
 }
 .login-options{
@@ -23,9 +22,9 @@ input{
     justify-content: space-around;
 }
 .logos{
-    width: 18rem;
+    width: 16.5rem;
     border: 1px solid rgb(213, 208, 208);
-    border-radius: 12px;
+    border-radius: 25px;
     display: flex;
     margin: 0.5rem 0;
     justify-content: center;
@@ -52,33 +51,212 @@ hr{
     margin-left: 2rem;
 }
 .form-box{
-    border: solid 1px green;
     margin: 0 1rem 1rem 1rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
 }
-.names{
-    border: 1px solid pink;
-    display: flex;
-    padding: 1rem;
-    justify-content: space-around;
-    gap: 1rem;
+.form-box input{
+    font-size: 16px;
 }
-.first_name{
-    width: 18rem;
-    border: 1px solid orange;
-}
-.last_name{
-    width: 18rem;
-    border: 1px solid orange;
-}
+/* This is the first and llast name block */
+    .names{
+        position: relative;
+        display: flex;
+        /* padding: 1rem; */
+        justify-content: space-around;
+        /* gap: 1rem; */
+    }
+    .first_name{
+        width: 18rem;
+        margin-left: -5px;
 
+    }
+    .first_name p{
+        position:absolute;
+        width: 5.3rem;
+        bottom: 2.165rem;
+        left: 1.8rem;
+        font-size: 15px;
+        background-color: white;
+        color: #000000;
+        font-weight: 400;
 
+    }
+    .first_name input{
+        height: 1.5rem;
+        padding: 0.6rem;
+        /* width: 13.9rem; */
+        width: 16rem;
+        border: 1.5px solid #99bdf0;
+        border-radius: 25px;
+    }
+    .last_name{
+        width: 18rem;
+    }
+    .last_name p{
+        position:absolute;
+        width: 5.3rem;
+        bottom: 2.165rem;
+        right: 11.8rem;
+        font-size: 15px;
+        background-color: white;
+        color: #000000;
+        font-weight: 400;
 
-
-
+    }
+    .last_name input{
+        height: 1.5rem;
+        padding: 0.6rem;
+        /* width: 14rem; */
+        width: 16rem;
+        border: 1.5px solid #99bdf0;
+        border-radius: 25px;
+    }
+/*Names block ends here*/
+/*Username block*/
+    .username{
+        position: relative;
+        width: 35.8rem;
+        margin: 1rem 0;
+        padding: 0.5rem 0;
+    }
+    .username p{
+        position: absolute;
+        width: 6rem;
+        bottom: 2.4rem;
+        left: 1.5rem;
+        font-size: 18px;
+        font-weight: 400;
+        color: #000000;
+        background-color: #ffffff;
+    }
+    .username input{
+        border: 1.5px solid #99bdf0;
+        /* width: 32rem; */
+        width: 34.4rem;
+        padding: 0.6rem;
+        border-radius: 25px;
+    }
+/*Username blobk end*/
+/*email block*/
+    .email{
+        position: relative;
+        width: 35.8rem;
+        margin: 1rem 0;
+        padding: 0.5rem 0;
+    }
+    .email p{
+        width: 4rem;
+        position: absolute;
+        bottom: 2.4rem;
+        left: 1.5rem;
+        font-size: 18px;
+        font-weight: 400;
+        color: #000000;
+        background-color: #ffffff;
+    }
+    .email input{
+        border: 1.5px solid #99bdf0;
+        /* width: 32rem; */
+        width: 34.4rem;
+        padding: 0.6rem;
+        border-radius: 25px;
+    }
+/*email block end*/
+/*phone block*/
+    .phone{
+        width: 35.8rem;
+        position: relative;
+        margin: 1rem 0;
+        padding: 0.5rem 0;
+    }
+    .phone p{
+        width: 4rem;
+        position: absolute;
+        bottom: 2.4rem;
+        left: 1.5rem;
+        font-size: 18px;
+        font-weight: 400;
+        color: #000000;
+        background-color: #ffffff;
+    }
+    .phone input{
+        border: 1.5px solid #99bdf0;
+        /* width: 32rem; */
+        width: 34.4rem;
+        padding: 0.6rem;
+        border-radius: 25px;
+    }
+/*phone block end*/
+/*password block*/
+    .password{
+        width: 35.8rem;
+        position: relative;
+        margin: 1rem 0;
+        padding: 0.5rem 0;
+    }
+    .password p{
+        width: 6rem;
+        position: absolute;
+        bottom: 2.4rem;
+        left: 1.5rem;
+        font-size: 18px;
+        font-weight: 400;
+        color: #000000;
+        background-color: #ffffff;
+    }
+    .password input{
+        border: 1.5px solid #99bdf0;
+        /* width: 32rem; */
+        width: 34.4rem;
+        padding: 0.6rem;
+        border-radius: 25px;
+    }
+/*password block end*/
+/*password-confirmation block*/
+    .password-confirmation{
+        width: 35.8rem;
+        position: relative;
+        margin: 1rem 0;
+        padding: 0.5rem 0;
+    }
+    .password-confirmation p{
+        width: 17rem;
+        position: absolute;
+        bottom: 2.4rem;
+        left: 1.5rem;
+        font-size: 18px;
+        font-weight: 400;
+        color: #000000;
+        background-color: #ffffff;
+    }
+    .password-confirmation input{
+        border: 1.5px solid #99bdf0;
+        /* width: 32rem; */
+        width: 34.4rem;
+        padding: 0.6rem;
+        border-radius: 25px;
+    }
+/*password-confirmation block end*/
+/*Signup button*/
+    button{
+        width: 14rem;
+        padding: 0.6rem;
+        font-size: 18px;
+        border-radius: 25px;
+        color: #ffffff;
+        align-self: center;
+        background-color: #000000;
+        cursor: pointer;
+    }
+    span{
+        font-size: 14px;
+        font-weight: 200;
+        color: #3E3E3E;
+    }
+/*Signup button end*/
 .right{
     width: 40rem;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }

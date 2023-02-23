@@ -3,22 +3,20 @@ from django import forms
 from django.forms import widgets
 from .models import CustomUser
 class CustomUserCreationForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=True, help_text='Required.' )
-    last_name = forms.CharField(max_length=30, required=True, help_text='Required.')
-    email = forms.EmailField(max_length=254, required=True, help_text='Required. Enter a valid email address.')
+    first_name = forms.CharField(max_length=30, required=True, help_text='Required.',widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
+    last_name = forms.CharField(max_length=30, required=True, help_text='Required.',widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
+    email = forms.EmailField(max_length=254, required=True, help_text='Required. Enter a valid email address.',widget=forms.TextInput(attrs={'placeholder': 'example@gmail.com'}))
     class Meta(UserCreationForm):
         model = CustomUser
         fields = ('username', 'email', 'phone', 'first_name', 'last_name','password1','password2')
+        widgets = {
+            'phone': forms.TextInput(attrs={'placeholder': '+91 ##########'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Username'})
+        }
         
 class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
         fields = ('username', 'email', 'phone', 'first_name', 'last_name')
-        # widget = {
-        #     'username': forms.TextInput(attrs={'class':'username_name'}),
-        #     'email': forms.TextInput(attrs={'class':'email_name'}),
-        #     'phome': forms.NumberInput(attrs={'class':'phome_name'}),
-        #     'first_name': forms.TextInput(attrs={'class':'first_name'}),
-        #     'last_name': forms.TextInput(attrs={'class':'last_name'})
-        # }
+        
