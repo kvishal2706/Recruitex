@@ -41,13 +41,16 @@ nav {
 .google p{
     margin-left: 0.5rem;
 }
+.facebook{
+    padding-right: 0.7rem;
+}
 .logos img{
     height: 40px;
 }
 hr{
     margin-bottom: 0.7rem;
     width: 36rem;
-    border: 0.5px solid black;
+    border: 1px solid #3483f0;
     margin-left: 2rem;
 }
 .form-box{
@@ -79,16 +82,16 @@ hr{
         left: 1.8rem;
         font-size: 15px;
         background-color: white;
-        color: #000000;
+        color: #3483f0;
         font-weight: 400;
 
     }
     .first_name input{
         height: 1.5rem;
-        padding: 0.6rem;
+        padding: 0.6rem 2rem;
         /* width: 13.9rem; */
-        width: 16rem;
-        border: 1.5px solid #99bdf0;
+        width: 13.5rem;
+        border: 1.5px solid #000000;
         border-radius: 25px;
     }
     .last_name{
@@ -98,19 +101,19 @@ hr{
         position:absolute;
         width: 5.3rem;
         bottom: 2.165rem;
-        right: 11.8rem;
+        right: 11rem;
         font-size: 15px;
         background-color: white;
-        color: #000000;
+        color: #3483f0;
         font-weight: 400;
 
     }
     .last_name input{
         height: 1.5rem;
-        padding: 0.6rem;
-        /* width: 14rem; */
-        width: 16rem;
-        border: 1.5px solid #99bdf0;
+        padding: 0.6rem 2rem;
+        /* width: 13.9rem; */
+        width: 13.5rem;
+        border: 1.5px solid #000000;
         border-radius: 25px;
     }
 /*Names block ends here*/
@@ -128,14 +131,14 @@ hr{
         left: 1.5rem;
         font-size: 18px;
         font-weight: 400;
-        color: #000000;
+        color: #3483f0;
         background-color: #ffffff;
     }
     .username input{
-        border: 1.5px solid #99bdf0;
+        border: 1.5px solid #000;
         /* width: 32rem; */
-        width: 34.4rem;
-        padding: 0.6rem;
+        width: 32rem;
+        padding: 0.6rem 1.9rem;
         border-radius: 25px;
     }
 /*Username blobk end*/
@@ -153,14 +156,14 @@ hr{
         left: 1.5rem;
         font-size: 18px;
         font-weight: 400;
-        color: #000000;
+        color: #3483f0;
         background-color: #ffffff;
     }
     .email input{
-        border: 1.5px solid #99bdf0;
+        border: 1.5px solid #000;
         /* width: 32rem; */
-        width: 34.4rem;
-        padding: 0.6rem;
+        width: 32rem;
+        padding: 0.6rem 1.9rem;
         border-radius: 25px;
     }
 /*email block end*/
@@ -178,14 +181,14 @@ hr{
         left: 1.5rem;
         font-size: 18px;
         font-weight: 400;
-        color: #000000;
+        color: #3483f0;
         background-color: #ffffff;
     }
     .phone input{
-        border: 1.5px solid #99bdf0;
+        border: 1.5px solid #000;
         /* width: 32rem; */
-        width: 34.4rem;
-        padding: 0.6rem;
+        width: 32rem;
+        padding: 0.6rem 1.9rem;
         border-radius: 25px;
     }
 /*phone block end*/
@@ -203,14 +206,14 @@ hr{
         left: 1.5rem;
         font-size: 18px;
         font-weight: 400;
-        color: #000000;
+        color: #3483f0;
         background-color: #ffffff;
     }
     .password input{
-        border: 1.5px solid #99bdf0;
+        border: 1.5px solid #000;
         /* width: 32rem; */
-        width: 34.4rem;
-        padding: 0.6rem;
+        width: 32rem;
+        padding: 0.6rem 1.9rem;
         border-radius: 25px;
     }
 /*password block end*/
@@ -222,20 +225,20 @@ hr{
         padding: 0.5rem 0;
     }
     .password-confirmation p{
-        width: 17rem;
+        width: 13rem;
         position: absolute;
         bottom: 2.4rem;
         left: 1.5rem;
         font-size: 18px;
         font-weight: 400;
-        color: #000000;
+        color: #3483f0;
         background-color: #ffffff;
     }
     .password-confirmation input{
-        border: 1.5px solid #99bdf0;
+        border: 1.5px solid #000;
         /* width: 32rem; */
-        width: 34.4rem;
-        padding: 0.6rem;
+        width: 32rem;
+        padding: 0.6rem 1.9rem;
         border-radius: 25px;
     }
 /*password-confirmation block end*/
