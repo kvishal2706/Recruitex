@@ -19,38 +19,45 @@
             </div>
          </div>
          <hr>
-         <form class = "form-box" action="" method="post">
+         <form class = "form-box" action="{% url 'signup' %}" method="post">
             {% csrf_token %} 
             <div class="form-inputs">
                <div class="names">
                   <div class="first_name">
                      <p>{{form.first_name.label}}</p>
                      {{form.first_name}}
+                     <span>{{form.first_name.errors}}</span>
                   </div>
                   <div class="last_name">
                      <p>{{form.last_name.label}}</p>
                      {{form.last_name}}
+                     <span>{{form.last_name.errors}}</span>
                   </div>
                </div>
                <div class="username">
                   <p>{{form.username.label}}</p>
                   {{form.username}}
+                  <span>{{form.username.errors}}</span>
                </div>
                <div class="email">
                   <p>{{form.email.label}}</p>
                   {{form.email}}
+                  <span>{{form.email.errors}}</span>
                </div>
                <div class="phone">
                   <p>{{form.phone.label}}</p>
                   {{form.phone}}
+                  <span>{{form.phone.errors}}</span>
                </div>
                <div class="password">
                   <p>{{form.password1.label}}</p>
                   {{form.password1}}
+                  <span>{{form.password1.errors}}</span>
                </div>
                <div class="password-confirmation">
                   <p>{{form.password2.label}}</p>
                   {{form.password2}}
+                  <span>{{form.password2.errors}}</span>
                </div>
             </div>
             <button type="submit">Sign Up</button>
