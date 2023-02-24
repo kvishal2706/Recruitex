@@ -9,27 +9,8 @@ def SignUpView(request):
     if request.method=='POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            print("1")
-            print("1")
-            print("1")
-            print("1")
-            print("1")
-            print("1")
-            print("1")
-            print("1")
-            print("1")
             form.save()
             return redirect('home-page')
-        else:
-            print("2")
-            print("2")
-            print("2")
-            print("2")
-            print("2")
-            print("2")
-            print("2")
-            print("2")
-            print("2")
             
     return render(request, 'registration/UserSignup.html',{
         'form': form

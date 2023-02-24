@@ -22,45 +22,49 @@
          <form class = "form-box" action="{% url 'signup' %}" method="post">
             {% csrf_token %} 
             <div class="form-inputs">
+               {% if form.first_name.errors or form.last_name.errors or form.username.errors or form.email.errors or form.phone.errors or form.password1.errors or form.password2.errors%}
+                  <div class="errors">
+                     {{form.email.errors}}
+                     {{form.password1.errors}}
+                     {{form.password2.errors}}
+                     {{form.phone.errors}}
+                     {{form.first_name.errors}}
+                     {{form.last_name.errors}}
+                     {{form.username.errors}}
+                  </div>
+               {% endif %}
                <div class="names">
-                  <div class="first_name">
+                  <div class="first_name {% if form.first_name.errors %} error{% endif %} ">
                      <p>{{form.first_name.label}}</p>
                      {{form.first_name}}
-                     <span>{{form.first_name.errors}}</span>
                   </div>
-                  <div class="last_name">
+                  <div class="last_name {% if form.last_name.errors %} error{% endif %} ">
                      <p>{{form.last_name.label}}</p>
                      {{form.last_name}}
-                     <span>{{form.last_name.errors}}</span>
                   </div>
                </div>
-               <div class="username">
+               <div class="username {% if form.username.errors %} error{% endif %} ">
                   <p>{{form.username.label}}</p>
                   {{form.username}}
-                  <span>{{form.username.errors}}</span>
                </div>
-               <div class="email">
+               <div class="email {% if form.email.errors %}error{% endif %}">
                   <p>{{form.email.label}}</p>
                   {{form.email}}
-                  <span>{{form.email.errors}}</span>
                </div>
-               <div class="phone">
+               <div class="phone {% if form.phone.errors %} error{% endif %} ">
                   <p>{{form.phone.label}}</p>
                   {{form.phone}}
-                  <span>{{form.phone.errors}}</span>
                </div>
-               <div class="password">
+               <div class="password {% if form.password1.errors %} error{% endif %} ">
                   <p>{{form.password1.label}}</p>
                   {{form.password1}}
-                  <span>{{form.password1.errors}}</span>
                </div>
-               <div class="password-confirmation">
+               <div class="password-confirmation{% if form.password2.errors %} error{% endif %}">
                   <p>{{form.password2.label}}</p>
                   {{form.password2}}
-                  <span>{{form.password2.errors}}</span>
                </div>
             </div>
-            <button type="submit">Sign Up</button>
+            <button class="signup-button" type="submit">Sign Up</button>
             <span><a href="{% url 'login' %}">Already Have An Account?</a></span>
          </form>
       </div>

@@ -3,14 +3,18 @@
     margin-left: 1rem;
     display: flex;
 }
-
+ul{
+    color: red;
+    font-weight: 200;
+    list-style-type: none;
+}
 .heading-tag{
     margin: 1.5rem 0;
 }
 .left{
     width: 40rem;
     height: auto;
-    border: 2px solid #3483f0;
+    border: 2px solid #aac5ee;
     margin-right: 1rem;
 }
 .login-options{
@@ -240,7 +244,7 @@ hr{
     }
 /*password-confirmation block end*/
 /*Signup button*/
-    button{
+.signup-button  {
         width: 14rem;
         padding: 0.6rem;
         font-size: 18px;
@@ -256,6 +260,15 @@ hr{
         color: #3E3E3E;
     }
 /*Signup button end*/
+/*errors*/
+.error input{
+    border: 2.5px solid #ff0000;
+}
+.errors{
+    text-align: start;
+    margin-bottom: 1.5rem;
+}
+/*errors end*/
 .right{
     width: 40rem;
     /* border: 1px solid red; */
