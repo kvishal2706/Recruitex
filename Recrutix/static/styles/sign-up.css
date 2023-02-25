@@ -24,7 +24,7 @@ ul{
     justify-content: space-around;
 }
 .logos{
-    width: 16.5rem;
+    width: 14rem;
     border-radius: 25px;
     display: flex;
     margin: 0.5rem 0;
@@ -34,8 +34,8 @@ ul{
 
 }
 .logos p{
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 12px;
+    font-weight: 500;
     color: #000000;
     margin-bottom: 1rem;
 }
@@ -46,7 +46,11 @@ ul{
     padding-right: 0.7rem;
 }
 .logos img{
-    height: 40px;
+    height: 30px;
+}
+.logos:hover{
+    border: 1px solid #aac5ee;
+    box-shadow: 3px 3px 6px grey;
 }
 hr{
     margin-bottom: 0.7rem;
@@ -68,7 +72,7 @@ hr{
         position: relative;
         display: flex;
         /* padding: 1rem; */
-        justify-content: space-around;
+        justify-content: space-evenly;
         /* gap: 1rem; */
     }
     .first_name{
@@ -80,7 +84,7 @@ hr{
         position:absolute;
         width: 5.3rem;
         bottom: 2.165rem;
-        left: 1.8rem;
+        left: 2.9rem;
         font-size: 15px;
         background-color: #ffffff;
         color: #3483f0;
@@ -91,13 +95,13 @@ hr{
         height: 1.5rem;
         padding: 0.6rem 2rem;
         /* width: 13.9rem; */
-        width: 13.5rem;
-        /* border: 1.5px solid #000000; */
+        width: 10rem;
+        border: 1.5px solid #000000;
         border-radius: 25px;
-        border-radius: 34px;
+        /* border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9;
+                        -5px -5px 7px #f9f9f9; */
     }
     .last_name{
         width: 18rem;
@@ -106,7 +110,7 @@ hr{
         position:absolute;
         width: 5.3rem;
         bottom: 2.165rem;
-        right: 11rem;
+        right: 9.5rem;
         font-size: 15px;
         background-color: #ffffff;
         color: #3483f0;
@@ -117,13 +121,13 @@ hr{
         height: 1.5rem;
         padding: 0.6rem 2rem;
         /* width: 13.9rem; */
-        width: 13.5rem;
-        /* border: 1.5px solid #000000; */
+        width: 10rem;
+        border: 1.5px solid #000000;
         border-radius: 25px;
-        border-radius: 34px;
+        /* border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9;
+                        -5px -5px 7px #f9f9f9; */
     }
 /*Names block ends here*/
 /*Username block*/
@@ -137,22 +141,22 @@ hr{
         position: absolute;
         width: 6rem;
         bottom: 2.4rem;
-        left: 1.5rem;
+        left: 3rem;
         font-size: 18px;
         font-weight: 400;
         color: #3483f0;
         background-color: #ffffff;
     }
     .username input{
-        /* border: 1.5px solid #000; */
-        /* width: 32rem; */
-        width: 32rem;
+        border: 1.5px solid #000;
+        /* width: 28rem; */
+        width: 28rem;
         padding: 0.6rem 1.9rem;
         border-radius: 25px;
-        border-radius: 34px;
+        /* border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9;
+                        -5px -5px 7px #f9f9f9; */
     }
 /*Username blobk end*/
 /*email block*/
@@ -166,22 +170,22 @@ hr{
         width: 4rem;
         position: absolute;
         bottom: 2.4rem;
-        left: 1.5rem;
+        left: 3rem;
         font-size: 18px;
         font-weight: 400;
         color: #3483f0;
         background-color: #ffffff;
     }
     .email input{
-        /* border: 1.5px solid #000; */
-        /* width: 32rem; */
-        width: 32rem;
+        border: 1.5px solid #000;
+        /* width: 28rem; */
+        width: 28rem;
         padding: 0.6rem 1.9rem;
         border-radius: 25px;
-        border-radius: 34px;
+        /* border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9;
+                        -5px -5px 7px #f9f9f9; */
     }
 /*email block end*/
 /*phone block*/
@@ -195,22 +199,22 @@ hr{
         width: 4rem;
         position: absolute;
         bottom: 2.4rem;
-        left: 1.5rem;
+        left: 3rem;
         font-size: 18px;
         font-weight: 400;
         color: #3483f0;
         background-color: #ffffff;
     }
     .phone input{
-        /* border: 1.5px solid #000; */
-        /* width: 32rem; */
-        width: 32rem;
+        border: 1.5px solid #000;
+        /* width: 28rem; */
+        width: 28rem;
         padding: 0.6rem 1.9rem;
         border-radius: 25px;
-        border-radius: 34px;
+        /* border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9;
+                        -5px -5px 7px #f9f9f9; */
     }
 /*phone block end*/
 /*password block*/
@@ -224,22 +228,22 @@ hr{
         width: 6rem;
         position: absolute;
         bottom: 2.4rem;
-        left: 1.5rem;
+        left: 3rem;
         font-size: 18px;
         font-weight: 400;
         color: #3483f0;
         background-color: #ffffff;
     }
     .password input{
-        /* border: 1.5px solid #000; */
-        /* width: 32rem; */
-        width: 32rem;
+        border: 1.5px solid #000;
+        /* width: 28rem; */
+        width: 28rem;
         padding: 0.6rem 1.9rem;
         border-radius: 25px;
-        border-radius: 34px;
+        /* border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9;
+                        -5px -5px 7px #f9f9f9; */
     }
 /*password block end*/
 /*password-confirmation block*/
@@ -253,22 +257,22 @@ hr{
         width: 13rem;
         position: absolute;
         bottom: 2.4rem;
-        left: 1.5rem;
+        left: 3rem;
         font-size: 18px;
         font-weight: 400;
         color: #3483f0;
         background-color: #ffffff;
     }
     .password-confirmation input{
-        /* border: 1.5px solid #000; */
-        /* width: 32rem; */
-        width: 32rem;
+        border: 1.5px solid #000;
+        /* width: 28rem; */
+        width: 28rem;
         padding: 0.6rem 1.9rem;
         border-radius: 25px;
-        border-radius: 34px;
+        /* border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9;
+                        -5px -5px 7px #f9f9f9; */
     }
 /*password-confirmation block end*/
 /*Signup button*/
