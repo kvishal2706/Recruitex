@@ -27,10 +27,5 @@ class Jobs(models.Model):
     def get_absolute_url(self):
         return reverse("job_details", args=[self.slug])
     
-    
-    def update_url(self):
-        return reverse("job_edit", args=[self.slug])
-    
-    
-    def delete_url(self):
-        return reverse("job_delete", args=[self.slug])
+
+# class tags(models.Model):
