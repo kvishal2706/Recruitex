@@ -18,12 +18,10 @@ a{
 }
 body{
     width: 82.5rem;
-    margin: 7rem auto;
 }
 nav{
     position: fixed;
     width: 90rem;
-    margin-left: -4rem;
     z-index: 9;
     top: 0px;
     height: 2rem;
@@ -90,6 +88,7 @@ footer{
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
+    margin-left: 4rem;
 }
 footer .footer-first{
     height: 10rem;
