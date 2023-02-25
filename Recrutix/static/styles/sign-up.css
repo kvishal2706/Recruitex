@@ -96,12 +96,12 @@ hr{
         padding: 0.6rem 2rem;
         /* width: 13.9rem; */
         width: 10rem;
-        border: 1.5px solid #000000;
+        /* border: 1.5px solid #000000; */
         border-radius: 25px;
-        /* border-radius: 34px;
+        border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9; */
+                        -5px -5px 7px #f9f9f9;
     }
     .last_name{
         width: 18rem;
@@ -122,12 +122,12 @@ hr{
         padding: 0.6rem 2rem;
         /* width: 13.9rem; */
         width: 10rem;
-        border: 1.5px solid #000000;
+        /* border: 1.5px solid #000000; */
         border-radius: 25px;
-        /* border-radius: 34px;
+        border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9; */
+                        -5px -5px 7px #f9f9f9;
     }
 /*Names block ends here*/
 /*Username block*/
@@ -148,15 +148,15 @@ hr{
         background-color: #ffffff;
     }
     .username input{
-        border: 1.5px solid #000;
+        /* border: 1.5px solid #000; */
         /* width: 28rem; */
         width: 28rem;
         padding: 0.6rem 1.9rem;
-        border-radius: 25px;
-        /* border-radius: 34px;
+        /* border-radius: 25px; */
+        border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9; */
+                        -5px -5px 7px #f9f9f9;
     }
 /*Username blobk end*/
 /*email block*/
@@ -177,15 +177,15 @@ hr{
         background-color: #ffffff;
     }
     .email input{
-        border: 1.5px solid #000;
+        /* border: 1.5px solid #000; */
         /* width: 28rem; */
         width: 28rem;
         padding: 0.6rem 1.9rem;
         border-radius: 25px;
-        /* border-radius: 34px;
+        border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9; */
+                        -5px -5px 7px #f9f9f9;
     }
 /*email block end*/
 /*phone block*/
@@ -206,15 +206,15 @@ hr{
         background-color: #ffffff;
     }
     .phone input{
-        border: 1.5px solid #000;
+        /* border: 1.5px solid #000; */
         /* width: 28rem; */
         width: 28rem;
         padding: 0.6rem 1.9rem;
         border-radius: 25px;
-        /* border-radius: 34px;
+        border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9; */
+                        -5px -5px 7px #f9f9f9;
     }
 /*phone block end*/
 /*password block*/
@@ -235,15 +235,15 @@ hr{
         background-color: #ffffff;
     }
     .password input{
-        border: 1.5px solid #000;
+        /* border: 1.5px solid #000; */
         /* width: 28rem; */
         width: 28rem;
         padding: 0.6rem 1.9rem;
         border-radius: 25px;
-        /* border-radius: 34px;
+        border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9; */
+                        -5px -5px 7px #f9f9f9;
     }
 /*password block end*/
 /*password-confirmation block*/
@@ -264,15 +264,15 @@ hr{
         background-color: #ffffff;
     }
     .password-confirmation input{
-        border: 1.5px solid #000;
+        /* border: 1.5px solid #000; */
         /* width: 28rem; */
         width: 28rem;
         padding: 0.6rem 1.9rem;
         border-radius: 25px;
-        /* border-radius: 34px;
+        border-radius: 34px;
         background: #ffffff;
         box-shadow:   5px 5px 7px #c7c7c7,
-                        -5px -5px 7px #f9f9f9; */
+                        -5px -5px 7px #f9f9f9;
     }
 /*password-confirmation block end*/
 /*Signup button*/
