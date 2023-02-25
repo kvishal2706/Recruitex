@@ -12,6 +12,9 @@
       <h5>{{jobs.designation}}</h5>
       <span>{{jobs.location}}</span>
       <span>{{jobs.salary}}</span>
+      {% for job_tag in jobs.tag.all %}
+         <span>{{job_tag.name}}</span>
+      {% endfor %}
    </div>
    <div>{{ jobs.body }}</div>
 </div>

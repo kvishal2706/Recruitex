@@ -3,6 +3,13 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 
+class Tag(models.Model):
+    name=models.CharField(max_length=200)
+    created=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+    
 class Jobs(models.Model):
     title=models.CharField(max_length=50,null=False,blank=False)
     designation=models.CharField(max_length=50,null=False,blank=False)
@@ -10,7 +17,7 @@ class Jobs(models.Model):
     salary=models.CharField(max_length=20,null=False,blank=False)
     # qualification
     #preffered qualification
-    #added tags using manytomany
+    tag=models.ManyToManyField(Tag,blank=True)
     about_job=models.TextField(null=False,blank=False)
     about_company=models.TextField(null=False,blank=False)
     workings=models.TextField(null=False,blank=False)
@@ -29,4 +36,3 @@ class Jobs(models.Model):
         return reverse("job_details", args=[self.slug])
     
 
-# class tags(models.Model):
