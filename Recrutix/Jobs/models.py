@@ -11,10 +11,16 @@ class Tag(models.Model):
         return self.name
     
 class Jobs(models.Model):
+    Jobs_types=(
+        ('Online','Work-From-Home'),
+        ('Offline','From Office')
+    )
+
     title=models.CharField(max_length=50,null=False,blank=False)
     designation=models.CharField(max_length=50,null=False,blank=False)
     location=models.CharField(max_length=70,null=False,blank=False)
     salary=models.CharField(max_length=20,null=False,blank=False)
+    type=models.CharField(max_length=20,choices=Jobs_types,blank=False,null=False)
     # qualification
     #preffered qualification
     tag=models.ManyToManyField(Tag,blank=True)
