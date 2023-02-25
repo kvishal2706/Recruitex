@@ -10,6 +10,7 @@ class Jobs(models.Model):
     salary=models.CharField(max_length=20,null=False,blank=False)
     # qualification
     #preffered qualification
+    #added tags using manytomany
     about_job=models.TextField(null=False,blank=False)
     about_company=models.TextField(null=False,blank=False)
     workings=models.TextField(null=False,blank=False)
