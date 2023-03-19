@@ -49,7 +49,6 @@ ul{
     height: 30px;
 }
 .logos:hover{
-    border: 1px solid #aac5ee;
     box-shadow: 3px 3px 6px grey;
 }
 hr{
