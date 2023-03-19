@@ -1,4 +1,5 @@
-{% load static %} {% load static tailwind_tags %}
+{% load static %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -7,6 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <script src="https://kit.fontawesome.com/106669e900.js" crossorigin="anonymous"></script>
       <title>Document</title>
+      {% block links %}{% endblock links %}
       {% tailwind_css %}
    </head>
    <body class="font-body">
@@ -15,8 +17,8 @@
             <div class="w-56 pl-4 min-w-xs">
                <a href="{% url 'home-page' %}"><img src="{% static 'images/logo.png' %}" alt="Company logo"/></a>
             </div>
-            <div class="items-center bg-white border-2 border-gray-100">
-               <input class="w-72 h-12 border-2 rounded-full border-white py-2 px-4 outline-none" placeholder="Search" type="text"/>
+            <div class="items-center bg-white border-2 rounded-full border-gray-200">
+               <input class="w-72 h-12 rounded-full border-white py-2 px-4 outline-none" placeholder="Search" type="text"/>
                <button class="w-20 h-10 rounded-full bg-black text-white mr-2" type="button"> Search </button>
             </div>
             <div class="flex justify-between gap-5 items-center">
@@ -44,8 +46,8 @@
          <div class="flex justify-around h-40 bg-gray-100 items-center">
             <p class="text-4xl">Subsribe Newsletters</p>
             <div class="bg-white flex items-center h-14">
-               <input class="w-80 h-9 border-none text-base ml-4 outline-none" placeholder="Enter your email" type="text"/>
-               <button class="text-white text-lg bg-black py-2 px-4 mr-2 cursor-pointer rounded-full" type="button"> Subscribe Now </button>
+               <input class="w-80 h-14 border-none text-base mr-4 outline-none" placeholder="Enter your email" type="text"/>
+               <button class="text-white text-lg bg-black py-2 px-4 mr-2 cursor-pointer " type="button"> Subscribe Now </button>
             </div>
          </div>
          <div class="flex justify-between py-8 px-4">

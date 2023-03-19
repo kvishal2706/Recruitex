@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block links %}
-<link rel="stylesheet" href="{% static 'styles/login.css' %}">
+<link rel="stylesheet" href="{% static 'css/dist/login.css' %}">
 {% endblock links %}
 {% block content %}
-<h2>Login</h2>
+<h2 class = " font-serif font-medium text-4xl">Login</h2>
 <form action="" method="post">{% csrf_token %}
     <div class="login-form">
         <div class="username">
@@ -16,7 +16,7 @@
             {{form.password}}
         </div>
     </div>
-    <button type="submit">Login</button><br>
-    <span><a href="{% url 'password_reset' %}">Forgot Password?</a></span>
+    <button class="w-40 ml-7 p-2 text-lg rounded-3xl text-white center bg-black cursor-pointer" type="submit">Login</button><br>
+    <span class="text-sm ml-7 font-extralight text-gray-600"><a href="{% url 'password_reset' %}">Forgot Password?</a></span>
 </form>
 {% endblock content %}
