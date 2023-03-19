@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Welcome to our page</h2>
+    <h2>
+        Welcome to our page
+    </h2>
 
-{% if user.is_authenticated %}
-    <p>Hi {{ user.username | title }}</p>
-    <a href="{% url 'password_change' %}">Change Password</a>
-    {% else %}
-    <p>Please Login to use our website full functionally.</p>
-{% endif %}
+    {% if user.is_authenticated %}
+        <p>Hi {{ user.username | title }}</p>
+        <a href="{% url 'password_change' %}">Change Password</a>
+        {% else %}
+        <p>Please Login to use our website full functionally.</p>
+    {% endif %}
 
 {% endblock content %}

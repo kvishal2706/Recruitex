@@ -8,4 +8,5 @@ urlpatterns = [
     path('',include('accounts.urls')),
     path('jobs/',include('Jobs.urls')),
     path('accounts/',include('django.contrib.auth.urls')),
+    path("__reload__/", include("django_browser_reload.urls"))
 ]

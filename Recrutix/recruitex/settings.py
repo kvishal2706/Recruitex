@@ -37,17 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    ##### Added Apps #####
     'accounts',
     'Jobs',
-
+    'tailwind',
+    'theme',
+    'django_browser_reload',
+    ##### Added Apps #####
     ###### 3rd Party apps   #######
     # 'location_field.apps.DefaultConfig',
     # 'django_filters'
 ]
-
+TAILWIND_APP_NAME = 'theme'
 AUTH_USER_MODEL = 'accounts.CustomUser'
+INTERNAL_IPS = ["127.0.0.1",]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_browser_reload.middleware.BrowserReloadMiddleware'
 ]
 
 ROOT_URLCONF = 'recruitex.urls'
@@ -134,8 +137,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'  #static files 
-STATICFILES_DIRS= [str(BASE_DIR.joinpath('static'))]
+STATIC_URL = 'theme/static/'  #static files 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

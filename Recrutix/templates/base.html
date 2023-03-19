@@ -1,26 +1,32 @@
 {% load static %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
+<style>
+    input{
+        outline: none;
+    }
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/106669e900.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
     {% block links %}{% endblock links %}
     <title>Document</title>
+    {% tailwind_css %}
 </head>
-<body>
+<body class ="font-body" >
     <header>
-        <nav>
-            <div class="logo">
+        <nav class=" bg-gray-50 flex justify-between w-full h-20 items-center m-auto">
+            <div class="w-56 pl-4 min-w-xs">
                 <a href="{% url 'home-page' %}"><img src="{% static 'images/logo.png' %}" alt="Company logo"></a>
             </div>
-            <div class="search-bar">
-                <input placeholder="Search" type="text">
-                <button type = "button" >Search</button>
+            <div class="items-center">
+                <input class="w-72 h-10 border-2 rounded-full border-gray-100 py-2 px-4 outline-none" placeholder="Search" type="text">
+                <button class="w-20 h-9 border-2 rounded-full bg-black text-white" type = "button" >Search</button>
             </div>
-            <div class="links">
+            <div class="flex justify-between gap-5 items-center">
                 <a href="{% url 'jobs_list' %}">Jobs</a>
                 <a href=""><p>Notifications</p></a>
                 <a href=""><p>Messages</p></a>
@@ -31,7 +37,7 @@
                 <a href="{% url 'logout' %}">Logout</a>
                 {% endif %}
                 <a href="">
-                    <div>
+                    <div class="w-16 pr-4">
                         <img src="{% static 'images/profile-logo.png' %}" alt="profile logo">
                     </div>
                 </a>
@@ -47,7 +53,7 @@
         <div class="footer-first">
             <p>Subsribe Newsletters</p>
             <div class="subscribe-form">
-                <input placeholder = "Enter your email" type="text">
+                <input class ="outline-none" placeholder = "Enter your email" type="text">
                 <button type = "button" >Subscribe Now</button>
             </div>
         </div>
