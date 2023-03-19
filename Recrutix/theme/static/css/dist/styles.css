@@ -800,6 +800,16 @@ select{
   border-width: 2px;
 }
 
+.border-white{
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.border-gray-50{
+  --tw-border-opacity: 1;
+  border-color: rgb(249 250 251 / var(--tw-border-opacity));
+}
+
 .border-gray-100{
   --tw-border-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
@@ -813,11 +823,6 @@ select{
 .bg-gray-50{
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
-.bg-red-600{
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 
 .px-4{
@@ -877,20 +882,44 @@ select{
   outline-style: dotted;
 }
 
+.focus\:border-2:focus{
+  border-width: 2px;
+}
+
+.focus\:border:focus{
+  border-width: 1px;
+}
+
+.focus\:border-white:focus{
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.focus\:border-black:focus{
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.focus\:border-red-500:focus{
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
 .focus\:outline-none:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
 
-.focus\:outline-dotted:focus{
-  outline-style: dotted;
+.active\:border-2:active{
+  border-width: 2px;
+}
+
+.active\:border-red-500:active{
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
 .active\:outline-none:active{
   outline: 2px solid transparent;
   outline-offset: 2px;
-}
-
-.active\:outline-dotted:active{
-  outline-style: dotted;
 }
