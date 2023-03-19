@@ -1,24 +1,21 @@
 {% extends 'base.html' %} 
 {% block title %}Jobs{% endblock title %} 
 {% block content %} 
-{% for jobs in jobss %}
-<div>
-   <div>
-      {% comment %}
-      <h2><a href="{{ jobs.get_absolute_url }}">{{ jobs.title }}</a></h2>
-      {% endcomment %}
-      <h2><a href="{{ jobs.get_absolute_url }}">{{ jobs.title }}</a></h2>
-      <span>{{jobs.date}}</span>
-      <h5>{{jobs.designation}}</h5>
-      <span>{{jobs.location}}</span>
-      <span>{{jobs.salary}}</span>
-      {% for job_tag in jobs.tag.all %}
-         <span>{{job_tag.name}}</span>
-      {% endfor %}
-   </div>
-   <div>{{ jobs.body }}</div>
+<div class="border mx-16 flex flex-wrap justify-start grow shrink basis-auto items-stretch gap-y-4 gap-x-4">
+   {% for jobs in jobss %}
+      <div class="border m-auto mt-4">
+         <div>
+            <h2><a href="{{ jobs.get_absolute_url }}">{{ jobs.title }}</a></h2>
+            <span>{{jobs.date}}</span>
+            <h5>{{jobs.designation}}</h5>
+            <span>{{jobs.location}}</span>
+            <span>{{jobs.salary}}</span>
+            {% for job_tag in jobs.tag.all %}
+               <span>{{job_tag.name}}</span>
+            {% endfor %}
+         </div>
+         <div>{{ jobs.body }}</div>
+      </div>
+   {% endfor %} 
 </div>
-
-<br />
-{% endfor %} 
 {% endblock content %}

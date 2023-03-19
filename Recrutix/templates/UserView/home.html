@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2 class="text-5xl">
+    <h2 class="font-serif font-medium text-4xl my-6">
         Welcome to our page
     </h2>
 
@@ -9,7 +9,7 @@
         <p class="mt-4 text-xl font-extralight">Hi {{ user.username | title }}</p>
         <a href="{% url 'password_change' %}">Change Password</a>
         {% else %}
-        <p class="mt-4 text-xl font-extralight">Please Login to use our website full functionally.</p>
+        <p class="mt-4 text-lg font-extralight">Please Login to use our website full functionally.</p>
     {% endif %}
 
 {% endblock content %}

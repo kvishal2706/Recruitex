@@ -23,7 +23,7 @@ class Jobs(models.Model):
     type=models.CharField(max_length=20,choices=Jobs_types,blank=False,null=False)
     # qualification
     #preffered qualification
-    tag=models.ManyToManyField(Tag,blank=True)
+    tag=models.ManyToManyField('Tag',blank=True)
     about_job=models.TextField(null=False,blank=False)
     about_company=models.TextField(null=False,blank=False)
     workings=models.TextField(null=False,blank=False)

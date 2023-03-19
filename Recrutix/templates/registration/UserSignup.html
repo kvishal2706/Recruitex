@@ -1,25 +1,28 @@
 {% extends 'base.html' %} 
-{% load static %}
+{% load static %} 
+{% comment %} {% block links %}
+<link rel="stylesheet" href="{% static 'css/dist/signup.css' %}">
+{% endblock links %} {% endcomment %}
 {% block content %}
-   <h2 class="heading-tag">Create A New Account</h2>
-   <div class="main">
-      <div class="left">
-         <div class="login-options">
-            <div class="google logos">
-               <img src="{% static 'images/google-logo.png' %}" alt="google logo">
-               <p>SignUp with Google Account</p>
+   <h2 class = " font-serif font-medium text-4xl my-6">Create A New Account</h2>
+   <div class="flex justify-around w-full items-center m-auto">
+      <div class="w-2/5 border-2 border-blue-200 mr-4">
+         <div class="w-full m-4 mb-2 flex justify-around">
+            <div class="w-1/2 rounded-3xl flex justify-center items-center my-2 mr-8 cursor-pointer hover:shadow-lg">
+               <img class='h-9' src="{% static 'images/google-logo.png' %}" alt="google logo">
+               <p class="text-xs font-medium text-black ml-2">SignUp with Google Account</p>
             </div>
-            <div class="facebook logos">
-               <img src="{% static 'images/facebook-logo.png' %}" alt="facebook logo">
-               <p>SignUp with Facebook Account</p>
+            <div class="mr-8 w-1/2 rounded-3xl flex justify-center items-center my-2 cursor-pointer hover:shadow-lg">
+               <img class='h-10' src="{% static 'images/facebook-logo.png' %}" alt="facebook logo">
+               <p class="text-xs font-medium text-black ml-1">SignUp with Facebook Account</p>
             </div>
          </div>
-         <hr>
-         <form class = "form-box" action="{% url 'signup' %}" method="post">
+         <hr class="mb-3 w-11/12 mx-4 border border-blue-400">
+         <form class = "m-4 mt-0 p-4 flex-col" action="{% url 'signup' %}" method="post">
             {% csrf_token %} 
-            <div class="form-inputs">
+            <div class="">
                {% if form.first_name.errors or form.last_name.errors or form.username.errors or form.email.errors or form.phone.errors or form.password1.errors or form.password2.errors%}
-                  <div class="errors">
+                  <div class="text-red-600 font-extralight list-none">
                      {{form.email.errors}}
                      {{form.password1.errors}}
                      {{form.password2.errors}}
@@ -28,44 +31,45 @@
                      {{form.last_name.errors}}
                      {{form.username.errors}}
                   </div>
+                  {% comment %} absolute w-20 left-4 text-base bg-white text-blue-500 font-normal {% endcomment %}
                {% endif %}
-               <div class="names">
-                  <div class="first_name {% if form.first_name.errors %} error{% endif %} ">
-                     <p>{{form.first_name.label}}</p>
+               <div class="relative flex justify-around ">
+                  <div class="first_name w-1/2 relative{% if form.first_name.errors %} error{% endif %} ">
+                     <p class="absolute left-4 bottom-8 z-10 w-24 bg-white text-blue-500">{{form.first_name.label}}</p>
                      {{form.first_name}}
                   </div>
-                  <div class="last_name {% if form.last_name.errors %} error{% endif %} ">
-                     <p>{{form.last_name.label}}</p>
+                  <div class="last_name w-1/2  relative{% if form.last_name.errors %} error{% endif %} ">
+                     <p class="absolute left-4 bottom-8 z-10 w-24 bg-white text-blue-500">{{form.last_name.label}}</p>
                      {{form.last_name}}
                   </div>
                </div>
-               <div class="username {% if form.username.errors %} error{% endif %} ">
-                  <p>{{form.username.label}}</p>
+               <div class="relative my-6 p-2 {% if form.username.errors %} error{% endif %} ">
+                  <p class="absolute left-4 bottom-10 z-10 w-24  bg-white text-blue-500">{{form.username.label}}</p>
                   {{form.username}}
                </div>
-               <div class="email {% if form.email.errors %}error{% endif %}">
-                  <p>{{form.email.label}}</p>
+               <div class="relative my-6 p-2 {% if form.username.errors %} error{% endif %} ">
+                  <p class="absolute left-4 bottom-10 z-10 w-16  bg-white text-blue-500">{{form.email.label}}</p>
                   {{form.email}}
                </div>
-               <div class="phone {% if form.phone.errors %} error{% endif %} ">
-                  <p>{{form.phone.label}}</p>
+               <div class="relative my-6 p-2 {% if form.username.errors %} error{% endif %} ">
+                  <p class="absolute left-4 bottom-10 z-10 w-16  bg-white text-blue-500">{{form.phone.label}}</p>
                   {{form.phone}}
                </div>
-               <div class="password {% if form.password1.errors %} error{% endif %} ">
-                  <p>{{form.password1.label}}</p>
+               <div class="relative my-6 p-2 {% if form.username.errors %} error{% endif %} ">
+                  <p class="absolute left-4 bottom-10 z-10 w-24  bg-white text-blue-500">{{form.password1.label}}</p>
                   {{form.password1}}
                </div>
-               <div class="password-confirmation{% if form.password2.errors %} error{% endif %}">
-                  <p>{{form.password2.label}}</p>
+               <div class="relative my-6 p-2 {% if form.username.errors %} error{% endif %} ">
+                  <p class="absolute left-4 bottom-10 z-10 w-48  bg-white text-blue-500">{{form.password2.label}}</p>
                   {{form.password2}}
                </div>
             </div>
-            <button class="signup-button" type="submit">Sign Up</button>
-            <span><a href="{% url 'login' %}">Already Have An Account?</a></span>
+            <button class="w-56 p-3 text-lg rounded-3xl text-white self-center bg-black cursor-pointer" type="submit">Sign Up</button><br>
+            <span class="text-sm font-extralight text-gray-600"><a href="{% url 'login' %}">Already Have An Account?</a></span>
          </form>
       </div>
-      <div class="right">
-   
+      <div class="w-3/12 border-2">
+         <img class="w-96 mr-8" src="{% static 'images/temp.jpeg' %}" alt="">
       </div>
    </div>
 {% endblock content %}
