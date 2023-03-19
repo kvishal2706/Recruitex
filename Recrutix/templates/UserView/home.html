@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>
+    <h2 class="text-5xl">
         Welcome to our page
     </h2>
 
     {% if user.is_authenticated %}
-        <p>Hi {{ user.username | title }}</p>
+        <p class="mt-4 text-xl font-extralight">Hi {{ user.username | title }}</p>
         <a href="{% url 'password_change' %}">Change Password</a>
         {% else %}
-        <p>Please Login to use our website full functionally.</p>
+        <p class="mt-4 text-xl font-extralight">Please Login to use our website full functionally.</p>
     {% endif %}
 
 {% endblock content %}
