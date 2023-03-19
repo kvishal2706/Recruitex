@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
     ###### 3rd Party apps   #######
     # 'location_field.apps.DefaultConfig',
-    'django_filters'
+    # 'django_filters'
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
