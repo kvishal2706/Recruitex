@@ -1,28 +1,46 @@
 {% extends 'base.html' %} 
+{% load static %}
 {% block title %}Jobs{% endblock title %}
+{% block links %}
+<script src="https://kit.fontawesome.com/106669e900.js" crossorigin="anonymous"></script>
+{% endblock links %}
 {% block content %}
-<div class="flex mx-20 gap-4 border">
+<div class="flex mx-20 gap-4">
    <div class="w-2/5 border border-red-500"></div>
-   <div class=" w-full border border-green-500 flex justify-around">
-      {% for jobs in jobss %}
+   <div class=" w-full border py-4 flex justify-around">
+{% for jobs in jobss %}
       <a href="{{ jobs.get_absolute_url }}">
-      <div class="border border-pink-600 w-72 h-64">
-         <h2>{{ jobs.title }}</h2>
-         {% comment %} logo {% endcomment %}
-         <span>{{jobs.date}}</span>
-         <h5>{{jobs.designation}}</h5>
-         <span>{{jobs.location}}</span>
-         <span>{{jobs.salary}}</span>
-         <div>
-            {% for job_tag in jobs.tag.all %}
-            <div>
-               <span>{{job_tag.name}}</span>
+      <div class="border w-72 h-64 mx-2">
+         <div class='flex w-full my-4 justify-around'>
+            <img class="h-14 ml-3 mt-4" src="{% static 'images/Facebook-logo.png' %}" alt="">
+            <div class="w-44 pt-5 flex-col items-start text-left">
+               <h2 class="font-bold">{{ jobs.title }}</h2>
+               <span class="font-normal text-gray-400">{{jobs.date}}</span>
             </div>
-            {% endfor %}
+         </div>
+         <div class="flex-col text-left w-full mx-8">
+            <h5 class = "font-semibold text-xl">{{jobs.designation}}</h5>
+            <div class="flex gap-4 mt-4">
+               {% for job_tag in jobs.tag.all %}
+               <div class="px-3 py-1 bg-orange-100 text-orange-700 font-normal rounded-md">
+                  <span>{{job_tag.name}}</span>
+               </div>
+               {% endfor %}
+            </div>
+            <div class="flex gap-3 mt-5 text-gray-500">
+               <div class="flex items-center">
+                  <img class="h-5" src="{% static 'images/location.png' %}" alt="">
+                  <span class="mx-2">{{jobs.location}}</span>
+               </div>
+               <div class="flex items-center">
+                  <img class="h-5" src="{% static 'images/salary.png' %}" alt="">
+                  <span class="mx-2">{{jobs.salary}}</span>
+               </div>
+            </div>
          </div>
       </div>
       </a>
-      {% endfor %}
+{% endfor %}
    </div>
 </div>
 {% endblock content %}

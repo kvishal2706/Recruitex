@@ -28,7 +28,7 @@ class Jobs(models.Model):
     about_job=models.TextField(null=False,blank=False)
     about_company=models.TextField(null=False,blank=False)
     workings=models.TextField(null=False,blank=False)
-    date=models.DateTimeField(auto_now_add=True)
+    date=models.DateField(auto_now_add=True)
     recruiter=models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
