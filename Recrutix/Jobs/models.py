@@ -21,9 +21,9 @@ class Jobs(models.Model):
     location=models.CharField(max_length=70,null=False,blank=False)
     salary=models.CharField(max_length=20,null=False,blank=False)
     type=models.CharField(max_length=20,choices=Jobs_types,blank=False,null=False)
-    # qualification
-    #preffered qualifxication
-    # logo_link = models.ImageField(upload_to=)
+    #qualification
+    #preffered qualification
+    #logo = models.ImageField(upload_to=None,null=True, blank=True)
     tag=models.ManyToManyField('Tag',blank=True)
     about_job=models.TextField(null=False,blank=False)
     about_company=models.TextField(null=False,blank=False)
