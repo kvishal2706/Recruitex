@@ -1,21 +1,28 @@
 {% extends 'base.html' %} 
-{% block title %}Jobs{% endblock title %} 
-{% block content %} 
-<div class="border mx-16 flex flex-wrap justify-start grow shrink basis-auto items-stretch gap-y-4 gap-x-4">
-   {% for jobs in jobss %}
-      <div class="border m-auto mt-4">
+{% block title %}Jobs{% endblock title %}
+{% block content %}
+<div class="flex mx-20 gap-4 border">
+   <div class="w-2/5 border border-red-500"></div>
+   <div class=" w-full border border-green-500 flex justify-around">
+      {% for jobs in jobss %}
+      <a href="{{ jobs.get_absolute_url }}">
+      <div class="border border-pink-600 w-72 h-64">
+         <h2>{{ jobs.title }}</h2>
+         {% comment %} logo {% endcomment %}
+         <span>{{jobs.date}}</span>
+         <h5>{{jobs.designation}}</h5>
+         <span>{{jobs.location}}</span>
+         <span>{{jobs.salary}}</span>
          <div>
-            <h2><a href="{{ jobs.get_absolute_url }}">{{ jobs.title }}</a></h2>
-            <span>{{jobs.date}}</span>
-            <h5>{{jobs.designation}}</h5>
-            <span>{{jobs.location}}</span>
-            <span>{{jobs.salary}}</span>
             {% for job_tag in jobs.tag.all %}
+            <div>
                <span>{{job_tag.name}}</span>
+            </div>
             {% endfor %}
          </div>
-         <div>{{ jobs.body }}</div>
       </div>
-   {% endfor %} 
+      </a>
+      {% endfor %}
+   </div>
 </div>
 {% endblock content %}

@@ -22,7 +22,8 @@ class Jobs(models.Model):
     salary=models.CharField(max_length=20,null=False,blank=False)
     type=models.CharField(max_length=20,choices=Jobs_types,blank=False,null=False)
     # qualification
-    #preffered qualification
+    #preffered qualifxication
+    # logo_link = models.ImageField(upload_to=)
     tag=models.ManyToManyField('Tag',blank=True)
     about_job=models.TextField(null=False,blank=False)
     about_company=models.TextField(null=False,blank=False)
