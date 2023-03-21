@@ -42,4 +42,12 @@ class Jobs(models.Model):
     def get_absolute_url(self):
         return reverse("job_details", args=[self.slug])
     
-
+class ApplicationForm(models.Model):
+    first_name = models.CharField(max_length=50, null=False, blank=False)
+    last_name = models.CharField(max_length=50, null=False, blank=False)
+    email = models.EmailField(max_length=254, null=False,blank=False)
+    about_you = models.TextField(null=True,blank=True)
+    why_you = models.TextField(name=False,blank=False)
+    
+    def __str__(self):
+        return f"{self.first_name}, {self.email}"

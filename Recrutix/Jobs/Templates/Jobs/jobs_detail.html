@@ -1,15 +1,56 @@
 <!-- templates/jobs_detail.html -->
-{% extends 'base.html' %} {% block content %}
-
-<div class="jobs-entry">
+{% extends 'base.html' %} 
+{% load static %}
+{% block links %}<script src="https://cdn.tailwindcss.com"></script>{% endblock links %}
+{% block content %}
+<div>
+   <img src="{% static 'images/Facebook-logo.png' %}" alt="">
    <h2>{{ object.title }}</h2>
-   <p>by {{ object.designation }} | {{ object.date }}</p>
+   <p>{{ object.designation }}</p>
+   <p>{{ object.date }}</p>
    <p>{{ object.salary }}</p>
+   <div>
+      <h3>Minimum Qualifications</h3>
+      <ul>
+         <li>4+ years of experience in webflow development</li>
+         <li>Exceptional visual and UI design skills, with a deep knowledge of best practice</li>
+         <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+         <li>Expert skill level using Figma</li>
+         <li>Nam feugiat enim a urna blandit ullamcorper. Nunc purus urna, auctor quis</li>
+         <li>Quisque sed est non erat ultricies condimentum sed quis nisi.</li>
+         <li>Fluent in English (spoken and written)</li>
+      </ul>
+   </div>
+   <div>
+      <h3>Preferred Qualifications</h3>
+      <ul>
+         <li>Exceptional visual and UI design skills, with a deep knowledge of best practice</li>
+         <li>Quisque sed est non erat ultricies condimentum sed quis nisi.</li>
+         <li>Comfortable running workshops and gathering insight from the team</li>
+         <li>Quisque sed est non erat ultricies condimentum sed.</li>
+      </ul>
+   </div>
+   <div>
+      <h3>About the Job</h3>
+      <p>{{object.about_job}}</p>
+   </div>
+   <div>
+      <h3>About the Company</h3>
+      <p>{{object.about_company}}</p>
+   </div>
+   <div>
+      <h3>Working at {{object.title}} </h3>
+      <p>{{object.about_workings}}</p>
+   </div>
+   <div>
+      <h3>Appy Job now</h3>
+   </div>
 </div>
-<p>
-   <a href="{{ object.update_url }}">Edit</a> |
-   <a href="{{ object.delete_url }}">Delete</a>
-</p>
-<p>Back to <a href="{% url 'jobs_list' %}">All jobss</a>.</p>
+<form action="{% url 'job_details' object.slug%}" method='post'>
+   {% csrf_token %} 
+   {{form.as_p}}
+   <button type = "Submit"> Apply Now</button>
+</form>
+<p><a href="{% url 'jobs_list' %}">Back to All jobs</a>.</p>
 
 {% endblock content %}

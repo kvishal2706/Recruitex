@@ -17,5 +17,5 @@ def SignUpView(request):
     })
 
 def index(request):
-    return render(request,'UserView/home.html')
+    return render(request,'UserView/home.html') 
 
