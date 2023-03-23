@@ -1,5 +1,4 @@
-{% load static %}
-{% load static tailwind_tags %}
+{% load static %} {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -10,31 +9,29 @@
       <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
       <title>Document</title>
       <script src="https://kit.fontawesome.com/106669e900.js" crossorigin="anonymous"></script>
-      {% block links %}{% endblock links %}
-      {% tailwind_css %}
+      {% block links %}{% endblock links %} {% tailwind_css %}
       <script src="https://cdn.tailwindcss.com"></script>
    </head>
-   <body class="font-sans m-auto max-w-screen-2xl border-2 border-gray-50 transition-all ease-in duration-300 ">
+   <body class="font-sans m-auto max-w-screen-2xl border-2 border-gray-50 transition-all ease-in duration-300">
       <header>
          <nav class="flex justify-between w-full h-20 items-center m-auto bg-gray-50 max-md:bg-gray-100">
             <div class="w-56 pl-4 min-w-xs">
-               <a href="{% url 'home-page' %}"><img src="{% static 'images/logo.png' %}" alt="Company logo"/></a>
+               <a href="{% url 'home-page' %}" ><img src="{% static 'images/logo.png' %}" alt="Company logo"/></a>
             </div>
-            <div class=" flex items-center bg-white border-2 rounded-full border-gray-200">
+            <div class="flex items-center bg-white border-2 rounded-full border-gray-200">
                <input class="lg:w-72 md:w-32 h-10 max-sm:w-24 rounded-full border-white py-2 px-4 outline-none" placeholder="Search" type="text"/>
-               <button class="lg:w-24 md:w-16 lg:h-10 max-xl:hidden lg:rounded-full bg-black text-white" type="button"> Search </button>
-               <img class="h-10 xl:hidden" src="{% static 'images/search.png' %}" alt="">
+               <button class="lg:w-24 md:w-16 lg:h-10 max-xl:hidden lg:rounded-full bg-black text-white" type="button">Search</button>
+               <img class="h-10 xl:hidden" src="{% static 'images/search.png' %}" alt=""/>
             </div>
-            <div class="max-md:flex-col max-md:hidden justify-between gap-5 md:gap-3 md:text-sm max-md:absolute max-md:bg-white max-md:border max-md:left-0 max-md:text-lg xl:text-base items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 bg-gray-50 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
-
-               <a href="{% url 'jobs_list' %}">Jobs</a>
-               <a href=""><p>Notifications</p></a>
-               <a href=""><p>Messages</p></a>
+            <div class="max-md:flex-col max-md:hidden justify-between gap-5 md:gap-3 md:text-sm max-md:absolute max-md:bg-white max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 bg-gray-50 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
+               <a class="{% block jobs %} {% endblock jobs %}" href="{% url 'jobs_list' %}">Jobs</a>
+               <a class="{% block notifications %} {% endblock notifications %}" href="" ><p>Notifications</p></a>
+               <a class="{% block messages %} {% endblock messages %}" href=""><p>Messages</p></a>
                {% if not user.is_authenticated %}
-               <a href="{% url 'signup' %}">SignUp</a>
-               <a href="{% url 'login' %}">Login</a>
+               <a class="{% block signup %} {% endblock signup %}" href="{% url 'signup' %}" >SignUp</a>
+               <a class="{% block login %} {% endblock login %}" href="{% url 'login' %}" >Login</a>
                {% else %}
-               <a href="{% url 'logout' %}">Logout</a>
+               <a class="{% block logout %} {% endblock logout %}" href="{% url 'logout' %}">Logout</a>
                {% endif %}
                <a href="">
                   <div class="w-16 pr-4">
@@ -50,14 +47,18 @@
       </div>
       <footer class="flex-col mx-16">
          <div class="flex justify-around h-40 bg-gray-100 items-center max-sm:h-28 max-md:h-32">
-            <p class="text-4xl max-lg:text-3xl max-md:text-xl max-sm:text-base max-sm:font-medium">Subsribe Newsletters</p>
+            <p class="text-4xl max-lg:text-3xl max-md:text-xl max-sm:text-base max-sm:font-medium">
+               Subsribe Newsletters
+            </p>
             <div class="bg-white flex items-center h-14 max-lg:h-10">
                <input class="w-80 h-14 border-none text-base mr-4 outline-none max-lg:w-44 max-lg:h-10 max-md:w-32 max-sm:w-24" placeholder="Enter your email" type="text"/>
-               <button class="text-white text-lg bg-black py-2 px-4 mr-2 cursor-pointer max-lg:text-base max-lg:mr-0 max-lg:py-1  max-sm:text-sm" type="button"> Subscribe Now </button>
+               <button class="text-white text-lg bg-black py-2 px-4 mr-2 cursor-pointer max-lg:text-base max-lg:mr-0 max-lg:py-1 max-sm:text-sm" type="button">
+                  Subscribe Now
+               </button>
             </div>
          </div>
          <div class="flex justify-between items-center py-8 px-4">
-            <div class=" flex text-base justify-start gap-5 text-gray-700 max-md:flex-col max-md:gap-2 max-md:ml-10 max-lg:text-sm max-lg:gap-2">
+            <div class="flex text-base justify-start gap-5 text-gray-700 max-md:flex-col max-md:gap-2 max-md:ml-10 max-lg:text-sm xl:font-semibold max-lg:gap-2">
                <a href=""><p>About us</p></a>
                <a href=""><p>Features</p></a>
                <a href=""><p>User Example</p></a>
@@ -71,19 +72,26 @@
                <a class="social-icons" href="https://youtube.com"><i class="fa-brands fa-2x fa-youtube"></i></a>
             </div>
          </div>
-         <hr class="text-gray-500">
+         <hr class="text-gray-500" />
          <div class="flex justify-start gap-6 pl-4 pt-2 font-extralight">
             <a href=""><p>Terms Of Use</p></a>
             <a href=""><p>Privacy Policy</p></a>
          </div>
       </footer>
       <script>
-         function Menu(e){
-            let list = document.querySelector('#items');
-            let main = document.querySelector('#main');
-            e.name ==='menu' ? 
-            (e.name ='close', list.classList.add(['top-[80px]']), list.classList.remove(['max-md:opacity-0']), list.classList.remove(['max-md:hidden']), main.classList.add(['mt-48'])) : 
-            (e.name = 'menu', list.classList.remove(['top-[80px]']), list.classList.add(['max-md:opacity-0']), main.classList.remove(['mt-48']))
+         function Menu(e) {
+            let list = document.querySelector("#items");
+            let main = document.querySelector("#main");
+            e.name === "menu"
+               ? ((e.name = "close"),
+                 list.classList.add(["top-[80px]"]),
+                 list.classList.remove(["max-md:opacity-0"]),
+                 list.classList.remove(["max-md:hidden"]),
+                 main.classList.add(["mt-48"]))
+               : ((e.name = "menu"),
+                 list.classList.remove(["top-[80px]"]),
+                 list.classList.add(["max-md:opacity-0"]),
+                 main.classList.remove(["mt-48"]));
          }
       </script>
    </body>
