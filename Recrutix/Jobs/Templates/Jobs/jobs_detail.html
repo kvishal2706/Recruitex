@@ -57,7 +57,7 @@
          <p class="text-base text-medium text-gray-600 leading-7 pl-2">{{object.about_company}}</p>
       </div>
       <div class="mt-5 mb-7">
-         <h3 class="font-semibold text-3xl mb-3">Working at {{object.title}} </h3>
+         <h3 class="font-semibold text-3xl mb-3">Working at <span class="text-orange-500 font-semibold">{{object.title}}</span> </h3>
          <p class="text-base text-medium text-gray-600 leading-7 pl-2">{{object.workings}}</p>
       </div>
       <hr id="apply" class = "border border-gray-100 mx-3 mb-10">
@@ -74,11 +74,10 @@
          </form>
       </div>
    </div>
-   <div class = "w-1/4 border-2 border-gray-50 h-96 p-6">
-      <h3 class="font-semibold text-3xl text-left mb-4">Location</h3>
-      <a href="https://www.google.com/maps/@15.3970162,75.0260553,15z">
-         <img class = "mb-4" src="{% static 'images/maps.png' %}" alt="maps">
-      </a>
+   <div class = "w-1/4 border-2 border-gray-50 p-6 h-fit">
+      <h3 class="font-semibold text-3xl text-left mb-4 font-sans">Location</h3>
+      {% comment %} {{object.loaction}} {% endcomment %}
+      <iframe src="{{object.embedded_location_url}}"  width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" frameborder="0"></iframe>
       <hr class = "border border-gray-100 mx-3 mb-4">
       <a href="#apply">
          <p class="w-full bg-black text-white py-1">Apply for Job</p>

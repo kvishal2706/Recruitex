@@ -2,6 +2,28 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <style>
+         .dropdown {
+            position: relative;
+            display: inline-block;
+          }
+          
+          .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            right:1rem;
+            
+          }
+          
+          .dropdown:hover .dropdown-content {
+            display: block;
+          }
+      </style>
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,19 +45,24 @@
                <button class="lg:w-24 md:w-16 lg:h-10 max-xl:hidden lg:rounded-full bg-black text-white" type="button">Search</button>
                <img class="h-10 xl:hidden" src="{% static 'images/search.png' %}" alt=""/>
             </div>
-            <div class="max-md:flex-col max-md:hidden justify-between gap-5 md:gap-3 md:text-sm max-md:absolute max-md:bg-white max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 bg-gray-50 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
+            <div class="max-md:flex-col max-md:hidden justify-between xl:gap-6 md:gap-3 md:text-sm max-md:absolute max-md:bg-white max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 bg-gray-50 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
                <a class="{% block jobs %} {% endblock jobs %}" href="{% url 'jobs_list' %}">Jobs</a>
                <a class="{% block notifications %} {% endblock notifications %}" href="" ><p>Notifications</p></a>
                <a class="{% block messages %} {% endblock messages %}" href=""><p>Messages</p></a>
                {% if not user.is_authenticated %}
                <a class="{% block signup %} {% endblock signup %}" href="{% url 'signup' %}" >SignUp</a>
                <a class="{% block login %} {% endblock login %}" href="{% url 'login' %}" >Login</a>
-               {% else %}
-               <a class="{% block logout %} {% endblock logout %}" href="{% url 'logout' %}">Logout</a>
                {% endif %}
                <a href="">
-                  <div class="w-16 pr-4">
+                  <div class="w-16 pr-4 relative dropdown">
                      <img src="{% static 'images/profile-logo.png' %}" alt="profile logo"/>
+                     <div class="dropdown-content text-sm">
+                        <a href="">Myprofile</a><hr class="my-1">
+                        <a href="">Help</a><hr class="my-1">
+                        <a href="">settings and Privacy</a><hr class="mb-1">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}">Logout</a>{% endif %}
+                     </div>
                   </div>
                </a>
             </div>

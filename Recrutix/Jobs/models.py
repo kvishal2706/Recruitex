@@ -9,22 +9,40 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+class Jobs_type(models.Model):
+    name = models.CharField(max_length=15)
+    created = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.name
+    
+class Job_Duration_type(models.Model):
+    name = models.CharField(max_length=15)
+    created = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.name
     
 class Jobs(models.Model):
-    Jobs_types=(
-        ('Online','Work-From-Home'),
-        ('Offline','From Office')
-    )
-
+    # Jobs_types=(
+    #     ('Online','Work-From-Home'),
+    #     ('Offline','From Office')
+    # )
+    # Part_full_time = (
+    #     ('Temporary','Part Time'),('Permanent','Full Time')
+    # )
     title=models.CharField(max_length=50,null=False,blank=False)
     designation=models.CharField(max_length=50,null=False,blank=False)
-    location=models.CharField(max_length=70,null=False,blank=False)
+    location=models.CharField(help_text="Enter company's location (city name)",max_length=255,null=False,blank=False)
     salary=models.CharField(max_length=20,null=False,blank=False)
-    type=models.CharField(max_length=20,choices=Jobs_types,blank=False,null=False)
+    type=models.ForeignKey('Jobs_type',default=None ,on_delete=models.CASCADE)
     #qualification
     #preffered qualification
     #logo = models.ImageField(upload_to=None,null=True, blank=True)
-    tag=models.ManyToManyField('Tag',blank=True)
+    # tag=models.ManyToManyField('Tag',blank=True)
+    job_Category=models.ForeignKey('Tag',default=None ,on_delete=models.CASCADE)
+    job_duration_type=models.ForeignKey('Job_Duration_type',default=None ,on_delete=models.CASCADE)
     about_job=models.TextField(null=False,blank=False)
     about_company=models.TextField(null=False,blank=False)
     workings=models.TextField(null=False,blank=False)
@@ -34,6 +52,8 @@ class Jobs(models.Model):
         on_delete=models.CASCADE,
     )
     slug=models.SlugField(default="",blank=True,null=False,db_index=True)
+    embedded_location_url = models.TextField(help_text="Embeded url from maps of company only src",blank=True, null=False)
+    # job_applied_users = models.ManyToManyField("accounts.CustomUser", blank=True)
 
     def __str__(self):
         return self.title
