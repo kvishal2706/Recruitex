@@ -13,6 +13,13 @@ class Gender(models.Model):
     def __str__(self):
         return self.name
 
+class Project(models.Model):
+    title = models.CharField(max_length=50)
+    skills_used = models.ManyToManyField("Skills")
+    project_description=models.TextField(default="")
+    project_images = models.ImageField(upload_to=f"accounts/projects/{title}/")
+
+
 class CustomUser(AbstractUser):
     gender = models.ForeignKey('Gender', on_delete=models.CASCADE, default="", null=True)
     phone=models.CharField(max_length=12,null = False, blank = False, default="")
@@ -28,6 +35,6 @@ class CustomUser(AbstractUser):
     twitter_link = models.CharField(default="", max_length=255)
     instagram_link = models.CharField(default="", max_length=255)
     youtube_link = models.CharField(default="", max_length=255)
-    # projects=models.('Jobs_type',default=None ,on_delete=models.CASCADE)
+    projects=models.ManyToManyField('Project',default=None)
 
     
