@@ -7,7 +7,14 @@ class Skills(models.Model):
     def __str__(self):
         return self.name
 
+class Gender(models.Model):
+    name = models.CharField(max_length=7)
+    
+    def __str__(self):
+        return self.name
+
 class CustomUser(AbstractUser):
+    gender = models.ForeignKey('Gender', on_delete=models.CASCADE, default="", null=True)
     phone=models.CharField(max_length=12,null = False, blank = False, default="")
     profile_photo = models.ImageField(upload_to="accounts/profile_photos", default="default_profile.png" ,blank=True)
     applied_jobs = models.ManyToManyField("Jobs.Jobs")
@@ -21,6 +28,6 @@ class CustomUser(AbstractUser):
     twitter_link = models.CharField(default="", max_length=255)
     instagram_link = models.CharField(default="", max_length=255)
     youtube_link = models.CharField(default="", max_length=255)
-   
+    # projects=models.('Jobs_type',default=None ,on_delete=models.CASCADE)
 
     
