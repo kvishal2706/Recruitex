@@ -1,10 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+class Skills(models.Model):
+    name= models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.name
 
 class CustomUser(AbstractUser):
-    phone=models.CharField(max_length=12,null = True, blank = True)
+    phone=models.CharField(max_length=12,null = False, blank = False, default="")
+    profile_photo = models.ImageField(upload_to="accounts/profile_photos", default="default_profile.png" ,blank=True)
     applied_jobs = models.ManyToManyField("Jobs.Jobs")
+    Major_skill = models.CharField(max_length=30,help_text="Eg: Frontend Dveloper and designer", null=False, blank=False, default="")
+    address = models.CharField(max_length=50, default="", help_text="Hyderabad, India")
+    about_me = models.TextField(blank=False, null=False, default="")
+    skills_tag = models.ManyToManyField("Skills")
+    skills = models.CharField(max_length=255, blank=False, null=False, default="")
+    interests = models.CharField(max_length=255, blank=False, null=False, default="")
+    facebook_link = models.CharField(default="", max_length=255)
+    twitter_link = models.CharField(default="", max_length=255)
+    instagram_link = models.CharField(default="", max_length=255)
+    youtube_link = models.CharField(default="", max_length=255)
    
 
     

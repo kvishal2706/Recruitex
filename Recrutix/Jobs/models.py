@@ -39,7 +39,7 @@ class Jobs(models.Model):
     type=models.ForeignKey('Jobs_type',default=None ,on_delete=models.CASCADE)
     #qualification
     #preffered qualification
-    #logo = models.ImageField(upload_to=None,null=True, blank=True)
+    logo = models.ImageField(upload_to="Jobs/job_logo",default="", blank=False)
     # tag=models.ManyToManyField('Tag',blank=True)
     job_Category=models.ForeignKey('Tag',default=None ,on_delete=models.CASCADE)
     job_duration_type=models.ForeignKey('Job_Duration_type',default=None ,on_delete=models.CASCADE)

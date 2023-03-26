@@ -19,8 +19,9 @@
          <form class = "m-4 mt-0 p-4 flex-col" action="{% url 'signup' %}" method="post">
             {% csrf_token %} 
             <div class="">
-               {% if form.first_name.errors or form.last_name.errors or form.username.errors or form.email.errors or form.phone.errors or form.password1.errors or form.password2.errors%}
-                  <div class="text-red-600 font-extralight list-none">
+               {% if form.errors or form.first_name.errors or form.last_name.errors or form.username.errors or form.email.errors or form.phone.errors or form.password1.errors or form.password2.errors or from.profile_photo.errors%}
+                  <div class="text-red-600 font-extralight list-none mb-12">
+                     {% comment %} {{form.errors}} {% endcomment %}
                      {{form.email.errors}}
                      {{form.password1.errors}}
                      {{form.password2.errors}}
@@ -28,6 +29,7 @@
                      {{form.first_name.errors}}
                      {{form.last_name.errors}}
                      {{form.username.errors}}
+                     {{form.profile_photo.errors}}
                   </div>
                   {% comment %} absolute w-20 left-4 text-base bg-white text-blue-500 font-normal {% endcomment %}
                {% endif %}
@@ -41,25 +43,29 @@
                      {{form.last_name}}
                   </div>
                </div>
-               <div class="relative my-6 p-2 {% if form.username.errors %} error{% endif %} ">
+               <div class="relative my-6 p-2 {% if form.username.errors %} bg-red-200 {% endif %} ">
                   <p class="absolute left-4 bottom-10 z-10 w-24  bg-white text-blue-500">{{form.username.label}}</p>
                   {{form.username}}
                </div>
-               <div class="relative my-6 p-2 {% if form.username.errors %} error{% endif %} ">
+               <div class="relative my-6 p-2 {% if form.email.errors %} bg-red-200 {% endif %} ">
                   <p class="absolute left-4 bottom-10 z-10 w-16  bg-white text-blue-500">{{form.email.label}}</p>
                   {{form.email}}
                </div>
-               <div class="relative my-6 p-2 {% if form.username.errors %} error{% endif %} ">
+               <div class="relative my-6 p-2 {% if form.phone.errors %} bg-red-200 {% endif %} ">
                   <p class="absolute left-4 bottom-10 z-10 w-16  bg-white text-blue-500">{{form.phone.label}}</p>
                   {{form.phone}}
                </div>
-               <div class="relative my-6 p-2 {% if form.username.errors %} error{% endif %} ">
+               <div class="relative my-6 p-2 {% if form.password1.errors %} bg-red-200{% endif %} ">
                   <p class="absolute left-4 bottom-10 z-10 w-24  bg-white text-blue-500">{{form.password1.label}}</p>
                   {{form.password1}}
                </div>
-               <div class="relative my-6 p-2 {% if form.username.errors %} error{% endif %} ">
+               <div class="relative my-6 p-2 {% if form.password2.errors %} bg-red-200{% endif %} ">
                   <p class="absolute left-4 bottom-10 z-10 w-48  bg-white text-blue-500">{{form.password2.label}}</p>
                   {{form.password2}}
+               </div>
+               <div class="text-left pl-4 flex mb-4 border p-2 mx-2 border-gray-400 {% if form.profile_photo.errors %} bg-red-200 {% endif %} ">
+                  <p class="mr-4 text-lg text-gray-500"> Profile Photo:  </p>
+                  {{form.profile_photo}}
                </div>
             </div>
             <button class="w-56 p-3 text-lg rounded-3xl text-white self-center bg-black cursor-pointer" type="submit">Sign Up</button><br>

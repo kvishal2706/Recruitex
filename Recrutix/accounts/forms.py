@@ -10,7 +10,7 @@ class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(max_length=254, required=True, help_text='Required. Enter a valid email address.',widget=forms.TextInput(attrs={'placeholder': 'example@gmail.com','class':'text-base w-full'}))
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('first_name', 'username', 'email', 'phone', 'last_name','password1','password2')
+        fields = ('first_name', 'username', 'email', 'phone', 'last_name','password1','password2','profile_photo')
         widgets = {
             'phone': forms.TextInput(attrs={'placeholder': '+91 ##########','class':'text-base  w-full'}),
             'username': forms.TextInput(attrs={'placeholder': 'Username','class':'text-base w-full'}),
