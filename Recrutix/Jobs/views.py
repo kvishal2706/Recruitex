@@ -4,6 +4,7 @@ from django.views.generic import ListView,DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from .forms import ApplicationForm
+from.filters import JobFilter
 
 from django.contrib.auth.mixins import (
 LoginRequiredMixin,
@@ -11,28 +12,10 @@ UserPassesTestMixin # new
 )
 
 def JobsListView(request):
-    # model=Jobs
-    # template_name="jobs_list.html"
-    # context_object_name="jobss"
-    category = request.GET.get('category')
-    type = request.GET.get('type')
-    duration = request.GET.get('duration')
-    tags = Tag.objects.all()
-    job_duration = Job_Duration_type.objects.all()
-    jobs_type = Jobs_type.objects.all()
-    if category:
-        jobs = Jobs.objects.filter(job_Category = category)
-    elif type:
-        jobs = Jobs.objects.filter(type = type)
-    elif duration:
-        jobs = Jobs.objects.filter(job_duration_type = duration)
-    else:
-        jobs = Jobs.objects.all()
+    job_filter = JobFilter(request.GET, queryset = Jobs.objects.all())
     return render(request, "Jobs/jobs_list.html",{
-        'jobss': jobs,
-        'tags':tags,
-        'type':jobs_type,
-        'duration':job_duration
+        'jobs': job_filter.qs,
+        'form': job_filter.form
     })
 
 def JobsDetailView(request, slug):  # new
