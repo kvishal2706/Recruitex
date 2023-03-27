@@ -6,19 +6,32 @@
 {% endblock links %}
 {% block content %}
 <h2 class = " font-serif font-medium text-4xl">Login</h2>
-<form action="" method="post">{% csrf_token %}
-    {% csrf_token %}
-    <div class="login-form">
-        <div class="username">
-            <p>{{form.username.label}}</p>
-            {{form.username}}
+<div class="flex justify-center">
+    <div class="w-2/5 mr-4" style="min-width: 450px;">
+        <div class="w-full m-4 mb-2 flex justify-around">
+              <a href={% url 'social:begin' 'google-oauth2' %} class="w-1/2 rounded-3xl flex justify-center gap-2 py-3 items-center my-2 mr-8 cursor-pointer hover:shadow-lg">
+                 <img class='h-9' src="{% static 'images/google-logo.png' %}" alt="google logo">
+                 <p class="text-xs font-medium text-black ml-2">SignUp with Google</p>
+              </a>
+           <div class="mr-8 w-1/2 rounded-3xl flex justify-center gap-4  py-3 items-center my-2 cursor-pointer hover:shadow-lg">
+              <img class='h-9' src="{% static 'images/github-logo.png' %}" alt="facebook logo">
+              <p class="text-xs font-medium text-black ml-1">SignUp with Github</p>
+           </div>
         </div>
-        <div class="password">
-            <p>{{form.password.label}}</p>
-            {{form.password}}
+    <form action="" method="post">{% csrf_token %}
+        {% csrf_token %}
+        <div class="login-form">
+            <div class="username">
+                <p>{{form.username.label}}</p>
+                {{form.username}}
+            </div>
+            <div class="password">
+                <p>{{form.password.label}}</p>
+                {{form.password}}
+            </div>
         </div>
-    </div>
-    <button class="w-40 ml-7 p-2 text-lg rounded-3xl text-white center bg-black cursor-pointer" type="submit">Login</button><br>
-    <span class="text-sm ml-7 font-extralight text-gray-600"><a href="{% url 'password_reset' %}">Forgot Password?</a></span>
-</form>
+        <button class="w-40 ml-7 p-2 text-lg rounded-3xl text-white center bg-black cursor-pointer" type="submit">Login</button><br>
+        <span class="text-sm ml-7 font-extralight text-gray-600"><a href="{% url 'password_reset' %}">Forgot Password?</a></span>
+    </form>
+</div>
 {% endblock content %}
