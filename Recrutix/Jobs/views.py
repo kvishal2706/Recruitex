@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
 from .models import Jobs,Tag,Job_Duration_type,Jobs_type
 from django.views.generic import ListView,DetailView
 from django.views.generic.edit import CreateView
@@ -11,13 +12,15 @@ LoginRequiredMixin,
 UserPassesTestMixin # new
 )
 
+@login_required
 def JobsListView(request):
     job_filter = JobFilter(request.GET, queryset = Jobs.objects.all())
     return render(request, "Jobs/jobs_list.html",{
         'jobs': job_filter.qs,
         'form': job_filter.form
     })
-
+    
+@login_required
 def JobsDetailView(request, slug):  # new
     model = get_object_or_404(Jobs, slug=slug)
     job = Jobs.objects.filter(slug=slug)
@@ -34,10 +37,12 @@ def JobsDetailView(request, slug):  # new
         'object':model
     })
     
-
+    
+@login_required
 def UpdateJob(request, slug):
     return render(request, 'Jobs/jobs_edit.html')
 
+@login_required
 def DeleteJob(request, slug):
     return render(request, 'Jobs/jobs_delete.html')
 

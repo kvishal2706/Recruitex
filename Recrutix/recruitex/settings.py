@@ -150,6 +150,7 @@ MEDIA_URL = '/media/'
 ACCOUNT_DEFAULT_HTTP_PROTOCOL='http'
 
 AUTHENTICATION_BACKENDS = [
+    'social_core.backends.github.GithubOAuth2',
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
@@ -161,3 +162,6 @@ LOGOUT_REDIRECT_URL = 'home'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '444897408219-spnhju2gqucupqhl9f156qr5khj03rmq.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+SOCIAL_AUTH_GITHUB_KEY = 'c33932ae1096fb47bfc6'
+SOCIAL_AUTH_GITHUB_SECRET = '68dbb21d30ef5989e1fccbfb2315cd2347a1465d'

@@ -10,10 +10,10 @@
                   <img class='h-9' src="{% static 'images/google-logo.png' %}" alt="google logo">
                   <p class="text-xs font-medium text-black ml-2">SignUp with Google</p>
                </a>
-            <div class="mr-8 w-1/2 rounded-3xl flex justify-center gap-4  py-3 items-center my-2 cursor-pointer hover:shadow-lg">
+            <a href={% url 'social:begin' 'github' %} class="mr-8 w-1/2 rounded-3xl flex justify-center gap-4  py-3 items-center my-2 cursor-pointer hover:shadow-lg">
                <img class='h-9' src="{% static 'images/github-logo.png' %}" alt="facebook logo">
                <p class="text-xs font-medium text-black ml-1">SignUp with Github</p>
-            </div>
+            </a>
          </div>
          <hr class="mb-3 w-11/12 mx-4 border border-blue-400">
          <form class = "m-4 mt-0 p-4 flex-col" action="{% url 'signup' %}" method="post">
