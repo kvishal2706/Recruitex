@@ -20,6 +20,7 @@ def JobsListView(request):
 
 def JobsDetailView(request, slug):  # new
     model = get_object_or_404(Jobs, slug=slug)
+    job = Jobs.objects.filter(slug=slug)
     form = ApplicationForm()
     if request.method =='POST':
         form = ApplicationForm(request.POST)

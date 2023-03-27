@@ -63,7 +63,7 @@
       <hr id="apply" class = "border border-gray-100 mx-3 mb-10">
       <div>
          <h3 class="font-semibold text-3xl mb-4">Appy Job now</h3>
-         <form class = "flex-col font-light"action="{% url 'job_details' object.slug%}" method='post'>
+         <form class = "flex-col font-light"action="{% url 'job_details' object.slug%}" method='POST'>
             {% csrf_token %} 
             <p>{{form.first_name}}</p>
             <p>{{form.last_name}}</p>

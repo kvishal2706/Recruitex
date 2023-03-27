@@ -47,6 +47,7 @@ class Jobs(models.Model):
     about_company=models.TextField(null=False,blank=False)
     workings=models.TextField(null=False,blank=False)
     date=models.DateField(auto_now_add=True)
+    no_of_openings = models.IntegerField(default=10)
     recruiter=models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
@@ -68,6 +69,6 @@ class ApplicationForm(models.Model):
     email = models.EmailField(max_length=254, null=False,blank=False)
     about_you = models.TextField(null=True,blank=True)
     why_you = models.TextField(name=False,blank=False)
-    
+    # job = models.ForeignKey("Jobs", on_delete=models.DO_NOTHING, default="")
     def __str__(self):
         return f"{self.first_name}, {self.email}"
