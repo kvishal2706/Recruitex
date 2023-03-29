@@ -27,3 +27,6 @@ def about_us(request):
 def contact_us(request):
     return render(request, 'UserView/contact_us.html')
 
+
+def profiles_list(request):
+    pass

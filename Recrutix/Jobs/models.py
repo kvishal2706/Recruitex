@@ -25,13 +25,6 @@ class Job_Duration_type(models.Model):
         return self.name
     
 class Jobs(models.Model):
-    # Jobs_types=(
-    #     ('Online','Work-From-Home'),
-    #     ('Offline','From Office')
-    # )
-    # Part_full_time = (
-    #     ('Temporary','Part Time'),('Permanent','Full Time')
-    # )
     title=models.CharField(max_length=50,null=False,blank=False)
     designation=models.CharField(max_length=50,null=False,blank=False)
     location=models.CharField(help_text="Enter company's location (city name)",max_length=255,null=False,blank=False)

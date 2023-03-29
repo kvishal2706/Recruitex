@@ -27,3 +27,9 @@ class CustomUserChangeForm(UserChangeForm):
         fields = ('first_name', 'username', 'email', 'phone', 'last_name')
         
         # text-base h-6 py-3 px-8 w-72 rounded-3xl bg-white 
+        
+        
+        
+class loginForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter your Username/Email','class':'bg-red-200'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Enter your Password','class': 'bg-red-200'}))

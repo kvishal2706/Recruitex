@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from .forms import ApplicationForm
 from.filters import JobFilter
+from django.db.models import Q
 
 from django.contrib.auth.mixins import (
 LoginRequiredMixin,
@@ -15,8 +16,17 @@ UserPassesTestMixin # new
 @login_required
 def JobsListView(request):
     job_filter = JobFilter(request.GET, queryset = Jobs.objects.all())
+    jobs = Jobs.objects.all()
+    if 'q' in request.GET:
+        query = request.GET['q']
+        multiple_query = Q(Q(title__icontains=query) | Q(designation__icontains=query)| Q(location__icontains=query))
+        jobs = Jobs.objects.filter(multiple_query)
+    elif job_filter:
+        jobs = job_filter.qs
+    else:
+        jobs = Jobs.objects.all()
     return render(request, "Jobs/jobs_list.html",{
-        'jobs': job_filter.qs,
+        'jobs': jobs,
         'form': job_filter.form
     })
     
