@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .dropdown {
+           position: relative;
+           display: inline-block;
+         }
+         
+         .dropdown-content {
+           display: none;
+           position: absolute;
+           background-color: #f9f9f9;
+           min-width: 160px;
+           box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+           padding: 12px 16px;
+           z-index: 1;
+           right:1rem;
+           
+         }
+         
+         .dropdown:hover .dropdown-content {
+           display: block;
+         }
+     </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="flex z-10 justify-between w-full h-20 items-center m-auto bg-transparent max-md:bg-gray-100">
+        <div class="w-56 pl-4 min-w-xs">
+           <a href="{% url 'home-page' %}" ><img src="{% static 'images/logo.png' %}" alt="Company logo"/></a>
+        </div>
+        <div class="flex items-center bg-white border-2 rounded-full border-gray-200">
+           <input class="lg:w-72 md:w-32 h-10 max-sm:w-24 rounded-full border-white py-2 px-4 outline-none" placeholder="Search" type="text"/>
+           <button class="lg:w-24 md:w-16 lg:h-10 max-xl:hidden lg:rounded-full bg-black text-white" type="button">Search</button>
+           <img class="h-10 xl:hidden" src="{% static 'images/search.png' %}" alt=""/>
+        </div>
+        <div class="max-md:flex-col max-md:hidden justify-between xl:gap-6 md:gap-3 md:text-sm max-md:absolute max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
+           <a class="{% block jobs %} {% endblock jobs %}" href="{% url 'jobs_list' %}">Jobs</a>
+           <a class="{% block notifications %} {% endblock notifications %}" href="" ><p>Notifications</p></a>
+           <a class="{% block messages %} {% endblock messages %}" href=""><p>Messages</p></a>
+           {% if not user.is_authenticated %}
+           <a class="{% block signup %} {% endblock signup %}" href="{% url 'signup' %}" >SignUp</a>
+           <a class="{% block login %} {% endblock login %}" href="{% url 'login' %}" >Login</a>
+           {% endif %}
+           <a href="">
+              <div class="w-16 pr-4 relative dropdown">
+                 <img src="{% static 'images/profile-logo.png' %}" alt="profile logo"/>
+                 <div class="dropdown-content text-sm">
+                    <a href="">Myprofile</a><hr class="my-1">
+                    <a href="">Help</a><hr class="my-1">
+                    <a href="">settings and Privacy</a><hr class="mb-1">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Logout</a>{% endif %}
+                 </div>
+              </div>
+           </a>
+        </div>
+        <span class="text-3xl font-bold md:hidden mx-4 cursor-pointer"><ion-icon name="menu" onclick="Menu(this)"></ion-icon></span>
+     </nav>
+     <div>
+        <img class="absolute -z-50 top-0" src="{% static 'images/about-us.png' %}" alt="">
+     </div>
+     <div class="mt-[885px] w-100vw text-center">
+        <h2 class="text-4xl font-medium text-orange-500">About Us</h2>
+        <p class="px-96 mt-4">Welcome to our job recruiting platform! We are a team of dedicated professionals who are passionate about connecting job seekers with the right employers.</p>
+        <p class="px-72 mt-3">Our platform was born out of a desire to simplify the job search process and provide a seamless experience for both job seekers and employers. We understand that looking for a job can be a daunting task, and that's why we've created a platform that makes it easy for you to find your dream job.</p>
+        <h2 class="text-4xl font-medium text-orange-500 mt-6">Vision</h2>
+        <p class="px-72 mt-4">Our vision is to revolutionize the job search process by creating a platform that empowers job seekers and employers alike. We believe that everyone should have the opportunity to find their dream job, and we are committed to making that a reality.</p>
+        <h2 class="text-4xl font-medium text-orange-500 mt-6">Mission</h2>
+        <p class="px-72 mt-4">Our mission is to empower job seekers and employers by providing a user-friendly and efficient platform that streamlines the job search process. We aim to connect job seekers with the right employers and vice versa, making the hiring process smoother and more effective.</p>
+    </div>
+     <footer class="flex-col mx-16">
+        <div class="flex justify-around h-40 bg-gray-100 items-center max-sm:h-28 max-md:h-32">
+           <p class="text-4xl max-lg:text-3xl max-md:text-xl max-sm:text-base max-sm:font-medium">
+              Subsribe Newsletters
+           </p>
+           <div class="bg-white flex items-center h-14 max-lg:h-10">
+              <input class="w-80 h-14 border-none text-base mr-4 outline-none max-lg:w-44 max-lg:h-10 max-md:w-32 max-sm:w-24" placeholder="Enter your email" type="text"/>
+              <button class="text-white text-lg bg-black py-2 px-4 mr-2 cursor-pointer max-lg:text-base max-lg:mr-0 max-lg:py-1 max-sm:text-sm" type="button">
+                 Subscribe Now
+              </button>
+           </div>
+        </div>
+        <div class="flex justify-between items-center py-8 px-4">
+           <div class="flex text-base justify-start gap-5 text-gray-700 max-md:flex-col max-md:gap-2 max-md:ml-10 max-lg:text-sm xl:font-semibold max-lg:gap-2">
+              <a href={% url 'about_us' %}><p>About us</p></a>
+              <a href=""><p>Features</p></a>
+              <a href=""><p>User Example</p></a>
+              <a href=""><p>Job Recruter's acc</p></a>
+              <a href=""><p>Resources</p></a>
+              <a href=""><p>Contact Us</p></a>
+           </div>
+           <div class="flex justify-end gap-5 max-md:flex-col max-md:gap-1 max-md:mr-10 max-lg:text-base text-xl">
+              <a class="social-icons" href="https://facebook.com"><i class="fa-brands fa-2x fa-square-facebook"></i></a>
+              <a class="social-icons" href="https://twitter.com"><i class="fa-brands fa-2x fa-twitter"></i></a>
+              <a class="social-icons" href="https://instagram.com"><i class="fa-brands fa-2x fa-instagram"></i></a>
+              <a class="social-icons" href="https://youtube.com"><i class="fa-brands fa-2x fa-youtube"></i></a>
+           </div>
+        </div>
+        <hr class="text-gray-500" />
+        <div class="flex justify-start gap-6 pl-4 pt-2 font-extralight">
+           <a href=""><p>Terms Of Use</p></a>
+           <a href=""><p>Privacy Policy</p></a>
+        </div>
+     </footer>
+</body>
+</html>

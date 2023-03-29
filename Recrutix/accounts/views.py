@@ -21,3 +21,9 @@ def SignUpView(request):
 def index(request):
     return render(request,'UserView/home.html') 
 
+def about_us(request):
+    return render(request, 'UserView/about_us.html')
+
+def contact_us(request):
+    return render(request, 'UserView/contact_us.html')
+
