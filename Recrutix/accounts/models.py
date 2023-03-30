@@ -1,3 +1,5 @@
+# from datetime import timezone
+from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -7,7 +9,7 @@ class Skills(models.Model):
     def __str__(self):
         return self.name
 
-class Gender(models.Model):
+class Gender_type(models.Model):
     name = models.CharField(max_length=7)
     
     def __str__(self):
@@ -21,7 +23,7 @@ class Project(models.Model):
 
 
 class CustomUser(AbstractUser):
-    gender = models.ForeignKey('Gender', on_delete=models.CASCADE, default="", null=True)
+    gender = models.ForeignKey('Gender_type', on_delete=models.CASCADE, default="", null=True)
     phone=models.CharField(max_length=12,null = False, blank = False, default="")
     profile_photo = models.ImageField(upload_to="accounts/profile_photos", default="default_profile.png" ,blank=True)
     applied_jobs = models.ManyToManyField("Jobs.Jobs")
@@ -36,5 +38,12 @@ class CustomUser(AbstractUser):
     instagram_link = models.CharField(default="", max_length=255)
     youtube_link = models.CharField(default="", max_length=255)
     projects=models.ManyToManyField('Project',default=None)
+
+class SubscribedUsers(models.Model):
+    email = models.EmailField(max_length=254, unique=True)
+    created_date = models.DateTimeField('Date created', default=timezone.now)
+    
+    def __str__(self):
+        return self.email
 
     

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
-from .models import Jobs,Tag,Job_Duration_type,Jobs_type
+from .models import Jobs,Tag,Jobs_type
 from django.views.generic import ListView,DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy

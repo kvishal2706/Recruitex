@@ -26,6 +26,14 @@ SECRET_KEY = 'django-insecure-8o*ag0kct*ze)-ncz3o((m#n)jphk0q(pot@sv%l7_j2fm0f#_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'raghavagatadi12@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = "zxlijkxmwvljxvdm"
+
+
 ALLOWED_HOSTS = []
 
 
@@ -43,8 +51,10 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_browser_reload',
-    'social_django'
+    'social_django',
 ]
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
 TAILWIND_APP_NAME = 'theme'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 INTERNAL_IPS = ["127.0.0.1",]
@@ -165,3 +175,4 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
 SOCIAL_AUTH_GITHUB_KEY = 'c33932ae1096fb47bfc6'
 SOCIAL_AUTH_GITHUB_SECRET = '68dbb21d30ef5989e1fccbfb2315cd2347a1465d'
+

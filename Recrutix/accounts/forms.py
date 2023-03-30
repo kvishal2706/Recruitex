@@ -1,8 +1,9 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.forms import AuthenticationForm
 from django import forms
-from django.forms import widgets
+from django.forms import ModelForm
 from .models import CustomUser
+from tinymce.widgets import TinyMCE
 
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True, help_text='Required.',widget=forms.TextInput(attrs={'placeholder': 'First Name','class':'text-base w-11/12  focus:border-2 focus:border-purple-400'}))
@@ -33,3 +34,9 @@ class CustomUserChangeForm(UserChangeForm):
 class loginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter your Username/Email','class':'bg-red-200'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Enter your Password','class': 'bg-red-200'}))
+    
+class NewsletterForm(forms.Form):
+    subject = forms.CharField()
+    receivers = forms.CharField()
+    message = forms.CharField(widget=TinyMCE(), label="Email content")
+    

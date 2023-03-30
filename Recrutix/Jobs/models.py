@@ -4,7 +4,7 @@ from django.urls import reverse
 
 
 class Tag(models.Model):
-    name=models.CharField(max_length=200)
+    name=models.CharField(max_length=200, unique=True)
     created=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -17,7 +17,7 @@ class Jobs_type(models.Model):
     def __str__(self):
         return self.name
     
-class Job_Duration_type(models.Model):
+class Job_Duration(models.Model):
     name = models.CharField(max_length=15)
     created = models.DateTimeField(auto_now_add=True)
     
@@ -35,7 +35,7 @@ class Jobs(models.Model):
     logo = models.ImageField(upload_to="Jobs/job_logo",default="", blank=False)
     # tag=models.ManyToManyField('Tag',blank=True)
     job_Category=models.ForeignKey('Tag',default=None ,on_delete=models.CASCADE)
-    job_duration_type=models.ForeignKey('Job_Duration_type',default=None ,on_delete=models.CASCADE)
+    job_duration_type=models.ForeignKey('Job_Duration',default=None ,on_delete=models.CASCADE)
     about_job=models.TextField(null=False,blank=False)
     about_company=models.TextField(null=False,blank=False)
     workings=models.TextField(null=False,blank=False)
