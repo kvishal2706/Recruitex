@@ -87,8 +87,8 @@ def newsletter(request):
             
             # mail = send_mail(subject,email_message, settings.EMAIL_HOST_USER, receivers, fail_silently=False)
             # mail2 = send_mail('Subject','body','raghavagatadi12@gmail.com',receivers, fail_silently=False)
-            mail = EmailMessage(subject, email_message, 'raghavagatadi12@gmail.com', receivers, bcc=receivers)
-            
+            mail = EmailMessage(subject, email_message, f'Recrutix {request.user.email}', receivers, bcc=receivers)
+            mail.content_subtype='html'
             if mail.send():
                 messages.success(request,"Email sent successfully.")
             else:
