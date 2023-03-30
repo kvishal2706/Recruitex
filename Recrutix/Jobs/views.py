@@ -13,7 +13,7 @@ LoginRequiredMixin,
 UserPassesTestMixin # new
 )
 
-@login_required
+
 def JobsListView(request):
     job_filter = JobFilter(request.GET, queryset = Jobs.objects.all())
     jobs = Jobs.objects.all()

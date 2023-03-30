@@ -17,7 +17,7 @@ class Project(models.Model):
     title = models.CharField(max_length=50)
     skills_used = models.ManyToManyField("Skills")
     project_description=models.TextField(default="")
-    project_images = models.ImageField(upload_to=f"accounts/projects/{title}/")
+    project_images = models.ImageField(upload_to=f"accounts/projects/{title}/", default="")
 
 
 class CustomUser(AbstractUser):
@@ -25,7 +25,7 @@ class CustomUser(AbstractUser):
     phone=models.CharField(max_length=12,null = False, blank = False, default="")
     profile_photo = models.ImageField(upload_to="accounts/profile_photos", default="default_profile.png" ,blank=True)
     applied_jobs = models.ManyToManyField("Jobs.Jobs")
-    Major_skill = models.CharField(max_length=30,help_text="Eg: Frontend Dveloper and designer", null=False, blank=False, default="")
+    Major_skill = models.CharField(max_length=30,help_text="Eg: Frontend Developer and designer", null=False, blank=False, default="")
     address = models.CharField(max_length=50, default="", help_text="Hyderabad, India")
     about_me = models.TextField(blank=False, null=False, default="")
     skills_tag = models.ManyToManyField("Skills")

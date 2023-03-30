@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .forms import CustomUserCreationForm
+from .models import CustomUser
 
 
 def SignUpView(request):
@@ -29,4 +30,6 @@ def contact_us(request):
 
 
 def profiles_list(request):
-    pass
+    profiles = CustomUser.objects.all()
+    print(profiles)
+    return render(request, 'UserView/profiles.html',{'profiles':profiles})

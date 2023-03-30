@@ -42,6 +42,7 @@
         </div>
         <div class="max-md:flex-col max-md:hidden justify-between xl:gap-6 md:gap-3 md:text-sm max-md:absolute max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
            <a class="{% block jobs %} {% endblock jobs %}" href="{% url 'jobs_list' %}">Jobs</a>
+           <a class="{% block profiles %} {% endblock profiles %}" href="{% url 'profiles-list' %}">Profiles</a>
            <a class="{% block notifications %} {% endblock notifications %}" href="" ><p>Notifications</p></a>
            <a class="{% block messages %} {% endblock messages %}" href=""><p>Messages</p></a>
            {% if not user.is_authenticated %}
