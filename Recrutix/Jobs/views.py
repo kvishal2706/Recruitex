@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from .forms import ApplicationForm
 from.filters import JobFilter
 from django.db.models import Q
+from accounts.models import CustomUser
 
 from django.contrib.auth.mixins import (
 LoginRequiredMixin,
@@ -30,32 +31,31 @@ def JobsListView(request):
         'form': job_filter.form
     })
     
+
 @login_required
 def JobsDetailView(request, slug):  # new
     model = get_object_or_404(Jobs, slug=slug)
-    print(model)
+    # print(model)
     form = ApplicationForm()
     if request.method =='POST':
         form = ApplicationForm(request.POST)
-        print('22222222')
+
         if form.is_valid():
             ferm = form.save(commit=False)
-            print('1111111')
             model.job_applied_users.add(request.user)
-            print('3333333333')
             ferm.job = model
-            print('444444444444')
+            request.user.applied_jobs.add(model)
             print(ferm.job)
             ferm.save()
-            print('5555555555')
             return redirect('jobs_list')
+        
     # template_name = 'Jobs/jobs_detail.html'
     return render(request, 'Jobs/jobs_detail.html', {
         'form': form,
         'object':model
     })
     
-    
+
 @login_required
 def UpdateJob(request, slug):
     return render(request, 'Jobs/jobs_edit.html')

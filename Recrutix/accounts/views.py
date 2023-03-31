@@ -13,11 +13,13 @@ from django.core.exceptions import ValidationError
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.conf import settings
+from django.db.models import Q
 
 
 def SignUpView(request):
     form = CustomUserCreationForm()
     print(form)
+
     if request.method=='POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -42,31 +44,36 @@ def contact_us(request):
 
 def profiles_list(request):
     profiles = CustomUser.objects.all()
-    print(profiles)
+
+    if 'q' in request.GET:
+        query=request.GET['q']
+        profiles=CustomUser.objects.filter(username__icontains=query)
+    # print(profiles)
     return render(request, 'UserView/profiles.html',{'profiles':profiles})
 
 def subscribe(request):
+
     if request.method == 'POST':
-        print("1111111")
         email = request.POST.get('email', None)
+
         if not email:
-            print("2222222")
             messages.error(request,"You must enter valid email.")
             return redirect('/')
+        
         if get_user_model().objects.filter(email=email).first():
-            print("3333333")
             messages.error(request, f"FOund registered user with associsted {email} email.")
             return redirect(request.META.get("HTTP_REFERER",'/'))
+
         subscribe_users = SubscribedUsers.objects.filter(email=email).first()
+
         if subscribe_users:
-            print("4444444")
             messages.error(request, f"{email} email address is already ")
             return redirect(request.META.get("HTTP_REFERER",'/'))
+        
         try:
-            print("5555555")
             validate_email(email)
+
         except ValidationError as e:
-            print("6666666")
             messages.error(request, e.messages[0])
             return redirect('/')
         
@@ -74,12 +81,15 @@ def subscribe(request):
         subscribe_model_instance.email = email
         subscribe_model_instance.save()
         messages.success(request, f"{email} email was successfully subscrubed to our newsletters!")
+
         return redirect(request.META.get("HTTP_REFERER",'/'))
-    
+
+
 @user_passes_test(lambda u: u.is_superuser)
 def newsletter(request):
     if request.method=='POST':
         form = NewsletterForm(request.POST)
+
         if form.is_valid():
             subject = form.cleaned_data.get('subject')
             receivers = form.cleaned_data.get('receivers').split(', ')
@@ -89,10 +99,13 @@ def newsletter(request):
             # mail2 = send_mail('Subject','body','raghavagatadi12@gmail.com',receivers, fail_silently=False)
             mail = EmailMessage(subject, email_message, f'Recrutix {request.user.email}', receivers, bcc=receivers)
             mail.content_subtype='html'
+
             if mail.send():
                 messages.success(request,"Email sent successfully.")
+
             else:
                 messages.error(request, "There was error sending email")
+                
         else:
             for error in list(form.errors.values()):
                 messages.error(request, error)
