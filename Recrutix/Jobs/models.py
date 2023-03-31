@@ -42,12 +42,12 @@ class Jobs(models.Model):
     date=models.DateField(auto_now_add=True)
     no_of_openings = models.IntegerField(default=10)
     recruiter=models.ForeignKey(
-        get_user_model(),
+        get_user_model(),related_name='recruiter_name',null=True, blank=True,
         on_delete=models.CASCADE,
     )
     slug=models.SlugField(default="",blank=True,null=False,db_index=True)
     embedded_location_url = models.TextField(help_text="Embeded url from maps of company only src",blank=True, null=False)
-    # job_applied_users = models.ManyToManyField("accounts.CustomUser", blank=True)
+    job_applied_users = models.ManyToManyField(get_user_model(), related_name='job_applied_users', blank=True)
 
     def __str__(self):
         return self.title
@@ -62,6 +62,6 @@ class ApplicationForm(models.Model):
     email = models.EmailField(max_length=254, null=False,blank=False)
     about_you = models.TextField(null=True,blank=True)
     why_you = models.TextField(name=False,blank=False)
-    # job = models.ForeignKey("Jobs", on_delete=models.DO_NOTHING, default="")
+    job = models.ForeignKey("Jobs", on_delete=models.DO_NOTHING, default="")
     def __str__(self):
         return f"{self.first_name}, {self.email}"

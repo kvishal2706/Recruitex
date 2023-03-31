@@ -39,6 +39,8 @@ class CustomUser(AbstractUser):
     youtube_link = models.CharField(default="", max_length=255)
     projects=models.ManyToManyField('Project',default=None)
 
+
+
 class SubscribedUsers(models.Model):
     email = models.EmailField(max_length=254, unique=True)
     created_date = models.DateTimeField('Date created', default=timezone.now)
