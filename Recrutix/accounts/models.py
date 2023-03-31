@@ -17,6 +17,7 @@ class Gender_type(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=50)
+    source_link = models.CharField(max_length=255)
     skills_used = models.ManyToManyField("Skills")
     project_description=models.TextField(default="")
     project_images = models.ImageField(upload_to=f"accounts/projects/{title}/", default="")
@@ -38,7 +39,7 @@ class CustomUser(AbstractUser):
     instagram_link = models.CharField(default="", max_length=255)
     youtube_link = models.CharField(default="", max_length=255)
     projects=models.ManyToManyField('Project',default=None)
-
+    
 
 
 class SubscribedUsers(models.Model):

@@ -12,6 +12,7 @@ class ApplicationForm(ModelForm):
     class Meta:
         model = ApplicationForm
         fields = '__all__'
+        exclude = ('job',)
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['first_name'].widget.attrs.update({'placeholder':'First name','class': 'border border-gray-300 w-full text-black m-2 px-4 py-2'})

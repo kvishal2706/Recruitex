@@ -39,10 +39,15 @@ def JobsDetailView(request, slug):  # new
         form = ApplicationForm(request.POST)
         print('22222222')
         if form.is_valid():
+            ferm = form.save(commit=False)
             print('1111111')
             model.job_applied_users.add(request.user)
-            form.job = model
-            form.save()
+            print('3333333333')
+            ferm.job = model
+            print('444444444444')
+            print(ferm.job)
+            ferm.save()
+            print('5555555555')
             return redirect('jobs_list')
     # template_name = 'Jobs/jobs_detail.html'
     return render(request, 'Jobs/jobs_detail.html', {
