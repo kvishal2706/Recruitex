@@ -44,12 +44,13 @@ class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = '__all__'
+        exclude = ('created_date',)
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs.update({'placeholder':'Name', 'class':'w-80 my-2 p-3 bg-[#111534] text-black focus:outline-none focus:bg-[#1E2A7B] text-white rounded-tr-2xl rounded-bl-2xl'})
-        self.fields['email'].widget.attrs.update({'placeholder':'Enter your Email', 'class':'w-80 my-2 p-3 bg-[#111534] text-black focus:outline-none focus:bg-[#1E2A7B] text-white rounded-tr-2xl rounded-bl-2xl'})
-        self.fields['feedback'].widget.attrs.update({'placeholder':'Please enter your Valuable Feedback', 'class':'w-80 my-2 p-3 h-32 bg-[#111534] text-black focus:outline-none focus:bg-[#1E2A7B] text-white rounded-tr-2xl rounded-bl-2xl'})
+        self.fields['name'].widget.attrs.update({'placeholder':'Name', 'class':'w-80 my-2 p-3 bg-[#111534] text-black focus:outline-none focus:bg-[#1E2A7B] text-white rounded-tr-2xl rounded-bl-2xl border-e-2 border-s-2 border-[#0089A5]'})
+        self.fields['email'].widget.attrs.update({'placeholder':'Enter your Email', 'class':'w-80 my-2 p-3 bg-[#111534] text-black focus:outline-none focus:bg-[#1E2A7B] text-white rounded-tr-2xl rounded-bl-2xl border-e-2 border-s-2 border-[#0089A5]'})
+        self.fields['feedback'].widget.attrs.update({'placeholder':'Please enter your Valuable Feedback', 'class':'w-80 my-2 p-3 h-32 bg-[#111534] text-black focus:outline-none focus:bg-[#1E2A7B] text-white rounded-tr-2xl rounded-bl-2xl border-e-2 border-s-2 border-[#0089A5]'})
     
     
     

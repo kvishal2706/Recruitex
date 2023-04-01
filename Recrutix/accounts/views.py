@@ -52,7 +52,7 @@ def contact_us(request):
 
 def profile_page(request, slug):
     user = CustomUser.objects.filter(slug=slug)
-    return render(request,'', {'my': user})
+    return render(request,'UserView/profile_page.html', {'my': user})
 
 
 

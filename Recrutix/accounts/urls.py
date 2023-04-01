@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.contrib.auth import views
 from django.urls import path
 from .views import SignUpView,index,about_us,contact_us,profiles_list,subscribe,newsletter,profile_page
-from .forms import loginForm
 
 urlpatterns = [
     path('signup/',SignUpView,name="signup"),

@@ -30,9 +30,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Contact Us</title>
 </head>
-<body>
+<body class="font-sans m-auto max-w-screen-2xl border-2 border-gray-50 transition-all ease-in duration-300">
     <nav class="flex z-10 justify-between w-full h-20 items-center m-auto bg-transparent max-md:bg-gray-100">
-        <div class="w-56 pl-4 min-w-xs">
+        <div class="w-56 pl-4 ml-4 min-w-xs">
            <a href="{% url 'home-page' %}" ><img src="{% static 'images/logo.png' %}" alt="Company logo"/></a>
         </div>
         <div class="max-md:flex-col max-md:hidden justify-between xl:gap-6 md:gap-3 md:text-sm max-md:absolute max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
@@ -40,14 +40,14 @@
            <a class="{% block profiles %} {% endblock profiles %}" href="{% url 'profiles-list' %}">Profiles</a>
            <a class="{% block notifications %} {% endblock notifications %}" href="" ><p>Notifications</p></a>
            <a class="{% block messages %} {% endblock messages %}" href=""><p>Messages</p></a>
-           {% if not user.is_authenticated %}
+           {% if not user.is_recruiter %}
            <a class="{% block signup %} {% endblock signup %}" href="{% url 'signup' %}" >SignUp</a>
            <a class="{% block login %} {% endblock login %}" href="{% url 'login' %}" >Login</a>
            {% endif %}
               <div class="w-16 pr-4 relative dropdown">
                  <img src="{% static 'images/profile-logo.png' %}" alt="profile logo"/>
                  <div class="dropdown-content text-sm">
-                    <a href="">Myprofile</a><hr class="my-1">
+                    <a href="{% url 'profile-page' user.slug %}">Myprofile</a><hr class="my-1">
                     <a href="">Help</a><hr class="my-1">
                     <a href="">settings and Privacy</a><hr class="mb-1">
                     {% if user.is_authenticated %}
@@ -77,7 +77,7 @@
          <div>
             {{form.feedback}}
          </div>
-         <button class="font-medium py-3 px-5 text-gray-300 rounded-xl bg-[#111534] hover:scale-[1.1] hover:bg-[#1E2A7B]" type="submit"> Submit</button>
+         <button class="font-medium py-3 px-5 text-gray-300  rounded-tr-2xl rounded-bl-2xl border-e-2 border-s-2 border-[#0089A5] bg-[#111534] hover:scale-[1.1] hover:bg-[#1E2A7B]" type="submit"> Submit</button>
       </form>
      </div>
      <div class="mt-[180px] w-100vw text-center">

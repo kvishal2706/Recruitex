@@ -42,7 +42,7 @@
    <body class="font-sans m-auto max-w-screen-2xl border-2 border-gray-50 transition-all ease-in duration-300">
       <header>
          <nav class="flex justify-between w-full h-20 items-center m-auto bg-gray-50 max-md:bg-gray-100">
-            <div class="w-56 pl-4 min-w-xs">
+            <div class="w-56 pl-4 min-w-xs ml-4">
                <a href="{% url 'home-page' %}" ><img src="{% static 'images/logo.png' %}" alt="Company logo"/></a>
             </div>
             <div class="max-md:flex-col max-md:hidden justify-between xl:gap-6 md:gap-3 md:text-sm max-md:absolute max-md:bg-white max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 bg-gray-50 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
@@ -57,7 +57,7 @@
                   <div class="w-16 pr-4 relative dropdown">
                      <img src="{% static 'images/profile-logo.png' %}" alt="profile logo"/>
                      <div class="dropdown-content text-sm">
-                        <a href="">Myprofile</a><hr class="my-1">
+                        <a href="{% url 'profile-page' user.slug %}">Myprofile</a><hr class="my-1">
                         <a href="">Help</a><hr class="my-1">
                         <a href="">settings and Privacy</a><hr class="mb-1">
                         {% if user.is_authenticated %}

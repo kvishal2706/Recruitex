@@ -32,7 +32,7 @@
 </head>
 <body>
     <nav class="flex z-10 justify-between w-full h-20 items-center m-auto bg-transparent max-md:bg-gray-100">
-        <div class="w-56 pl-4 min-w-xs">
+        <div class="w-56 pl-4 ml-4 min-w-xs">
            <a href="{% url 'home-page' %}" ><img src="{% static 'images/logo.png' %}" alt="Company logo"/></a>
         </div>
         <div class="max-md:flex-col max-md:hidden justify-between xl:gap-6 md:gap-3 md:text-sm max-md:absolute max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
@@ -47,7 +47,7 @@
               <div class="w-16 pr-4 relative dropdown">
                  <img src="{% static 'images/profile-logo.png' %}" alt="profile logo"/>
                  <div class="dropdown-content text-sm">
-                    <a href="">Myprofile</a><hr class="my-1">
+                    <a href="{% url 'profile-page' user.slug %}">Myprofile</a><hr class="my-1">
                     <a href="">Help</a><hr class="my-1">
                     <a href="">settings and Privacy</a><hr class="mb-1">
                     {% if user.is_authenticated %}
@@ -64,7 +64,7 @@
       {% for msg in messages %}
          {{msg}}
       {% endfor %}
-   </div>
+   </div class="font-sans m-auto max-w-screen-2xl border-2 border-gray-50 transition-all ease-in duration-300">
      <div class="mt-[885px] w-100vw text-center">
         <h2 class="text-4xl font-medium text-orange-500">About Us</h2>
         <p class="px-96 mt-4">Welcome to our job recruiting platform! We are a team of dedicated professionals who are passionate about connecting job seekers with the right employers.</p>
