@@ -14,6 +14,7 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.conf import settings
 from django.db.models import Q
+from .forms import FeedbackForm
 
 
 def SignUpView(request):
@@ -39,7 +40,20 @@ def about_us(request):
     return render(request, 'UserView/about_us.html')
 
 def contact_us(request):
-    return render(request, 'UserView/contact_us.html')
+    form = FeedbackForm()
+    if request.method =='POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thank you for your feedback.")
+            return redirect('home-page')
+    return render(request, 'UserView/contact_us.html', {'form': form})
+
+
+def profile_page(request, slug):
+    user = CustomUser.objects.filter(slug=slug)
+    return render(request,'', {'my': user})
+
 
 
 def profiles_list(request):

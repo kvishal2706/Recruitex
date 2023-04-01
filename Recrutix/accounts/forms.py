@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.forms import AuthenticationForm
 from django import forms
 from django.forms import ModelForm
-from .models import CustomUser
+from .models import CustomUser, Feedback
 from tinymce.widgets import TinyMCE
 
 class CustomUserCreationForm(UserCreationForm):
@@ -39,4 +39,17 @@ class NewsletterForm(forms.Form):
     subject = forms.CharField()
     receivers = forms.CharField()
     message = forms.CharField(widget=TinyMCE(), label="Email content")
+    
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = '__all__'
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update({'placeholder':'Name', 'class':'w-80 my-2 p-3 bg-[#111534] text-black focus:outline-none focus:bg-[#1E2A7B] text-white rounded-tr-2xl rounded-bl-2xl'})
+        self.fields['email'].widget.attrs.update({'placeholder':'Enter your Email', 'class':'w-80 my-2 p-3 bg-[#111534] text-black focus:outline-none focus:bg-[#1E2A7B] text-white rounded-tr-2xl rounded-bl-2xl'})
+        self.fields['feedback'].widget.attrs.update({'placeholder':'Please enter your Valuable Feedback', 'class':'w-80 my-2 p-3 h-32 bg-[#111534] text-black focus:outline-none focus:bg-[#1E2A7B] text-white rounded-tr-2xl rounded-bl-2xl'})
+    
+    
     

@@ -10,6 +10,7 @@ class SubscribedUsersAdmin(admin.ModelAdmin):
 
 
 class CustomUserAdmin(UserAdmin):
+    prepopulated_fields = {"slug":("username",)}
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
