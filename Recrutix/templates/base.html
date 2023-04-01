@@ -34,7 +34,7 @@
       <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
       <title>Home</title>
-      <script src="https://kit.fontawesome.com/106669e900.js" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       {% block links %}{% endblock links %} {% tailwind_css %}
       <link rel="stylesheet" href="{% static 'css/dist/base.css' %}">
       <script src="https://cdn.tailwindcss.com"></script>
@@ -57,7 +57,9 @@
                   <div class="w-16 pr-4 relative dropdown">
                      <img src="{% static 'images/profile-logo.png' %}" alt="profile logo"/>
                      <div class="dropdown-content text-sm">
+                        {% if user.is_authenticated %}
                         <a href="{% url 'profile-page' user.slug %}">Myprofile</a><hr class="my-1">
+                        {% endif %}
                         <a href="">Help</a><hr class="my-1">
                         <a href="">settings and Privacy</a><hr class="mb-1">
                         {% if user.is_authenticated %}

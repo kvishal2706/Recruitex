@@ -1,4 +1,5 @@
 from .forms import CustomUserCreationForm,NewsletterForm
+from django.contrib.auth.decorators import login_required
 from .models import CustomUser, SubscribedUsers
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
@@ -49,7 +50,7 @@ def contact_us(request):
             return redirect('home-page')
     return render(request, 'UserView/contact_us.html', {'form': form})
 
-
+@login_required
 def profile_page(request, slug):
     user = CustomUser.objects.filter(slug=slug)
     return render(request,'UserView/profile_page.html', {'my': user})

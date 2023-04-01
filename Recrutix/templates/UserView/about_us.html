@@ -47,7 +47,9 @@
               <div class="w-16 pr-4 relative dropdown">
                  <img src="{% static 'images/profile-logo.png' %}" alt="profile logo"/>
                  <div class="dropdown-content text-sm">
-                    <a href="{% url 'profile-page' user.slug %}">Myprofile</a><hr class="my-1">
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'profile-page' user.slug %}">Myprofile</a><hr class="my-1">
+                  {% endif %}
                     <a href="">Help</a><hr class="my-1">
                     <a href="">settings and Privacy</a><hr class="mb-1">
                     {% if user.is_authenticated %}

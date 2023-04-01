@@ -11,5 +11,5 @@ urlpatterns = [
     path('profiles/', profiles_list, name = 'profiles-list'),
     path('subscribe/', subscribe,name = 'subscribe'),
     path('newsletter/', newsletter, name= 'newsletter'),
-    path('<slug:slug>', profile_page, name='profile-page')
+    path('profile/<slug:slug>', profile_page, name='profile-page')
 ]
