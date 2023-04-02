@@ -35,7 +35,7 @@ def JobsListView(request):
 @login_required
 def JobsDetailView(request, slug):  # new
     model = get_object_or_404(Jobs, slug=slug)
-    # print(model)
+    print(model.skills_required)
     form = ApplicationForm()
     if request.method =='POST':
         form = ApplicationForm(request.POST)

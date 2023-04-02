@@ -16,6 +16,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.db.models import Q
 from .forms import FeedbackForm
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse, HttpResponseNotFound
 
 
 def SignUpView(request):
@@ -129,3 +131,29 @@ def newsletter(request):
     form = NewsletterForm()
     form.fields['receivers'].initial = ','.join([active.email for active in SubscribedUsers.objects.all()])
     return render(request, 'UserView/newsletter.html', {'form':form})
+
+
+def cv_view(request, slug):
+    fs = FileSystemStorage()
+    profile = CustomUser.objects.get(slug = slug)
+    file_path = str(profile.cv.path)
+    if fs.exists(file_path):
+        with fs.open(file_path) as pdf:
+            response = HttpResponse(pdf, content_type="application/pdf")
+            response['content-Disposition'] = f'inline; filename = {profile.cv.path}'
+            return response
+    else:
+        HttpResponseNotFound("The requested file not found")
+        
+def resume_view(request, slug):
+    fs = FileSystemStorage()
+    profile = CustomUser.objects.get(slug = slug)
+    file_path = str(profile.resume.path)
+    if fs.exists(file_path):
+        with fs.open(file_path) as pdf:
+            response = HttpResponse(pdf, content_type="application/pdf")
+            response['content-Disposition'] = f'inline; filename = {profile.resume.path}'
+            return response
+    else:
+        HttpResponseNotFound("The requested file not found")
+    

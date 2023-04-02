@@ -11,7 +11,7 @@ class Tag(models.Model):
         return self.name
 
 class Jobs_type(models.Model):
-    name = models.CharField(max_length=15)
+    name = models.CharField(max_length=16)
     created = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
@@ -40,6 +40,7 @@ class Jobs(models.Model):
     about_company=models.TextField(null=False,blank=False)
     workings=models.TextField(null=False,blank=False)
     date=models.DateField(auto_now_add=True)
+    skills_required = models.ManyToManyField("accounts.Skills", default="", blank=True)
     no_of_openings = models.IntegerField(default=10)
     recruiter=models.ForeignKey(
         get_user_model(),related_name='recruiter_name',null=True, blank=True,

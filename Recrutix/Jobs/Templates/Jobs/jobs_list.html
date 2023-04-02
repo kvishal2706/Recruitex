@@ -7,7 +7,7 @@
 {% endblock links %}
 {% block content %}
 <div class="flex mx-20 gap-4 mt-8">
-   <div class="w-1/4 border-2 h-fit border-gray-100 p-4 text-left">
+   <div class="w-1/4 min-w-[250px] border-2 h-fit border-gray-100 p-4 text-left">
       <div class="flex items-center gap-3">
          <i class="fa-solid fa-circle-info"></i>
          <p class="text-orange-500 font-semibold font-mono">FILTER JOBS</p>
@@ -43,7 +43,7 @@
       <div class=" w-fit h-fit border pb-6 pt-4 px-2 flex-row-reverse justify-around mb-6 flex-wrap">
          {% for jobs in jobs %}
       <a href="{{ jobs.get_absolute_url }}">
-      <div class="border w-72 h-64 mx-2 mt-7" style="box-shadow: 5px 5px 10px #c5c5c5">
+      <div class="border min-w-[20rem]  h-64 mx-2 mt-7" style="box-shadow: 5px 5px 10px #c5c5c5">
          <div class='flex w-full my-4 justify-around'>
             <img class="h-14 ml-3 mt-4" src="/media/{{jobs.logo}}" alt="">
             <div class="w-44 pt-5 flex-col items-start text-left">
@@ -67,7 +67,7 @@
                   <span class="mx-2">{{jobs.location}}</span>
                </div>
                <div class="flex items-center">
-                  <img class="h-5" src="{% static 'images/salary.png' %}" alt="">
+                  <img class="h-5" src="{% static 'images/money.png' %}" alt="">
                   <span class="mx-2">{{jobs.salary}}</span>
                </div>
             </div>

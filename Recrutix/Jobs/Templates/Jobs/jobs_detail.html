@@ -25,6 +25,11 @@
                <p>{{ object.salary }}</p>
             </div>
          </div>
+         <div class="flex gap-2 mb-8 flex-wrap">
+            {% for skill in object.skills_required.all %}
+               <p class="p-2 px-3 border-2 border-[#8b9881ef] rounded-full"> {{skill}} </p>
+            {% endfor %}
+         </div>
       </div>
       <hr class = "border border-gray-100 mx-3 mb-14">
       <div class="">
