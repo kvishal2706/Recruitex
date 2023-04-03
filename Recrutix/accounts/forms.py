@@ -11,7 +11,7 @@ class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(max_length=254, required=True, help_text='Required. Enter a valid email address.',widget=forms.TextInput(attrs={'placeholder': 'example@gmail.com','class':'text-base w-full focus:border-2 focus:border-[#18d85b]'}))
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('first_name', 'username', 'email', 'phone', 'last_name','password1','password2','profile_photo')
+        fields = ('first_name', 'username', 'email', 'phone', 'last_name','password1','password2')
         widgets = {
             'phone': forms.TextInput(attrs={'placeholder': '+91 ##########','class':'text-base  w-full focus:border-2 focus:border-[#18d85b]'}),
             'username': forms.TextInput(attrs={'placeholder': 'Username','class':'text-base w-full focus:border-2 focus:border-[#18d85b]'}),
@@ -54,3 +54,25 @@ class FeedbackForm(forms.ModelForm):
     
     
     
+    
+class UserSignupForm_2(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ('gender','profile_photo','dob','age','salary','address','about_me','languages','interests','facebook_link','twitter_link','instagram_link','youtube_link')
+        
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['gender'].widget.attrs.update({'class':'w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['profile_photo'].widget.attrs.update({'class':'w-[15rem] px-4 py-2 focus:outline-none border-0'})
+        self.fields['dob'].widget.attrs.update({'placeholder':'YYYY-MM-DD','class':'min-w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['age'].widget.attrs.update({'placeholder':'Eg: 18','class':'min-w-[16rem] ml-8 px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['salary'].widget.attrs.update({'placeholder':'','class':'min-w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['address'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['about_me'].widget.attrs.update({'placeholder':'Write a short description about you','class':'h-20 w-full border-0 rounded-lg p-2 mt-2'})
+        self.fields['languages'].widget.attrs.update({'placeholder':'','class':'w-[12rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['interests'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['facebook_link'].widget.attrs.update({'placeholder':'','class':'w-[12rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['twitter_link'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['instagram_link'].widget.attrs.update({'placeholder':'','class':'w-[12rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['youtube_link'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        

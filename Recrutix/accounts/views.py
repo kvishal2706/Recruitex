@@ -1,4 +1,4 @@
-from .forms import CustomUserCreationForm,NewsletterForm
+from .forms import CustomUserCreationForm,NewsletterForm,UserSignupForm_2
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser, SubscribedUsers
 from django.core.mail import send_mail
@@ -22,19 +22,28 @@ from django.http import HttpResponse, HttpResponseNotFound
 
 def SignUpView(request):
     form = CustomUserCreationForm()
-    print(form)
 
     if request.method=='POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home-page')
+            return redirect('signup-2')
             
     return render(request, 'registration/UserSignup.html',{
         'form': form
     })
 
-
+def Signup_page2(request):
+    form = UserSignupForm_2()
+    
+    if request.method =='POST':
+        form = UserSignupForm_2(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home-page')
+    return render(request,'registration/signUpPage_2.html',{
+        'form':form
+        })
 
 def index(request):
     return render(request,'UserView/home.html') 
