@@ -27,23 +27,24 @@ def SignUpView(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('signup-2')
+            messages.INFO(request,"Signup Successful. It is requested to add complete imformation")
+            return redirect('home-page')
             
     return render(request, 'registration/UserSignup.html',{
         'form': form
     })
 
-def Signup_page2(request):
-    form = UserSignupForm_2()
+# def Signup_page2(request):
+#     form = UserSignupForm_2()
     
-    if request.method =='POST':
-        form = UserSignupForm_2(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home-page')
-    return render(request,'registration/signUpPage_2.html',{
-        'form':form
-        })
+#     if request.method =='POST':
+#         form = UserSignupForm_2(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('home-page')
+#     return render(request,'registration/signUpPage_2.html',{
+#         'form':form
+#         })
 
 def index(request):
     return render(request,'UserView/home.html') 

@@ -43,63 +43,71 @@
     </div>
     <div class=" flex gap-16 px-[12.5%] justify-between my-4">
         <div class="w-[70%] text-left">
-            <div class="py-4">
-                <h1 class="text-lg font-semibold font-body mb-3">About the Candidate</h1>
-                <p class="text-[0.8rem] text-[#909090] font-medium leading-8"> {{user.about_me|linebreaksbr}} </p>
-            </div>
-            <div>
-                <h1 class="text-lg font-semibold font-body mb-5">Qualifications</h1>
+            {% if user.about_me %}
+                <div class="py-4">
+                    <h1 class="text-lg font-semibold font-body mb-3">About the Candidate</h1>
+                    <p class="text-[0.8rem] text-[#909090] font-medium leading-8"> {{user.about_me|linebreaksbr}} </p>
+                </div>
+            {% endif %}
+            {% if user.qualifications.all %}
                 <div>
-                    {% for qualification in user.qualifications.all %}
-                        <div class="flex gap-6 items-center">
-                            <div class=" text-center rounded-full bg-[#f7cece] w-7 pt-[5px] mt-2 h-7 text-sm text-[#f65353] font-medium" style="box-shadow:0px 0px 4px">{{qualification.degree_type|make_list|first|title}}</div>
-                            <div>
-                                <div class="flex gap-2 items-baseline">
-                                    <h1 class="text-base font-semibold"> {{qualification.field_of_study}} </h1>
-                                    <p class="text-[0.7rem] text-[#f65353]"> {{qualification.start_year}}-{{qualification.end_year}} </p>
-                                </div>
+                    <h1 class="text-lg font-semibold font-body mb-5">Qualifications</h1>
+                    <div>
+                        {% for qualification in user.qualifications.all %}
+                            <div class="flex gap-6 items-center">
+                                <div class=" text-center rounded-full bg-[#f7cece] w-7 pt-[5px] mt-2 h-7 text-sm text-[#f65353] font-medium" style="box-shadow:0px 0px 4px">{{qualification.degree_type|make_list|first|title}}</div>
                                 <div>
-                                    <p class="text-xs font-medium text-[#bf2d2d]"> {{qualification.institute_name}}<span class="text-black font-normal"> ({{qualification.degree_type}}) </span></p>
+                                    <div class="flex gap-2 items-baseline">
+                                        <h1 class="text-base font-semibold"> {{qualification.field_of_study}} </h1>
+                                        <p class="text-[0.7rem] text-[#f65353]"> {{qualification.start_year}}-{{qualification.end_year}} </p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-medium text-[#bf2d2d]"> {{qualification.institute_name}}<span class="text-black font-normal"> ({{qualification.degree_type}}) </span></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="h-12 border-l ml-3 mt-2"></div>
-                        {% endfor %}
-                        <div class="h-12 border-l border-white mt-[-48px] ml-3"></div>
+                            <div class="h-12 border-l ml-3 mt-2"></div>
+                            {% endfor %}
+                            <div class="h-12 border-l border-white mt-[-48px] ml-3"></div>
+                    </div>
                 </div>
-            </div>
-            <div class=" {% if user.qualifications.all %}mt-[-48px]{% endif %} ">
-                <h1 class="text-lg font-semibold font-body my-5">Work and Experience</h1>
-                <div>
-                    {% for work in user.work_experience.all %}
-                        <div class="flex gap-6 items-center">
-                            <div class=" text-center rounded-full bg-[#d3e4da] w-7 pt-[5px] mt-2 h-7 text-sm text-[#5e7862] font-medium" style="box-shadow:0px 0px 4px">{{work.job_title|make_list|first|title}}</div>
-                            <div>
-                                <div class="flex gap-2 items-baseline">
-                                    <h1 class="text-base font-semibold"> {{work.job_title}} </h1>
-                                    <p class="text-[0.7rem] text-[#79967f]"> {{work.joining_date}}{% if work.leaving_date %}-{{work.end_year}}{% endif %} </p>
-                                </div>
+            {% endif %}
+            {% if user.work_experience.all%}
+                <div class=" {% if user.qualifications.all %}mt-[-48px]{% endif %} ">
+                    <h1 class="text-lg font-semibold font-body my-5">Work and Experience</h1>
+                    <div>
+                        {% for work in user.work_experience.all %}
+                            <div class="flex gap-6 items-center">
+                                <div class=" text-center rounded-full bg-[#d3e4da] w-7 pt-[5px] mt-2 h-7 text-sm text-[#5e7862] font-medium" style="box-shadow:0px 0px 4px">{{work.job_title|make_list|first|title}}</div>
                                 <div>
-                                    <p class="text-xs font-semibold text-[#79967f]"> {{work.company_name}}</p>
+                                    <div class="flex gap-2 items-baseline">
+                                        <h1 class="text-base font-semibold"> {{work.job_title}} </h1>
+                                        <p class="text-[0.7rem] text-[#79967f]"> {{work.joining_date}}{% if work.leaving_date %}-{{work.end_year}}{% endif %} </p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-semibold text-[#79967f]"> {{work.company_name}}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="h-16 border-l ml-3 mt-2 px-9 text-">
-                            <p class="text-[0.8rem] text-[#909090] font-medium leading-8"> {{work.experience_description}} </p>
-                        </div>
-                        {% endfor %}
+                            <div class="h-16 border-l ml-3 mt-2 px-9 text-">
+                                <p class="text-[0.8rem] text-[#909090] font-medium leading-8"> {{work.experience_description}} </p>
+                            </div>
+                            {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
         <div class="w-[27%]">
             <div class="bg-[#d6e4d8] h-fit p-4 rounded-lg">
-                <div class="flex gap-5 items-center my-2">
-                    <img class="h-6" src="{% static 'images/money-green.png' %}" alt="">
-                    <div class="text-left text-xs">
-                        <h1 class="font-semibold">Salary Offered</h1>
-                        <p class="text-[#909090] font-medium"> {{user.salary}} </p>
+                {% if user.salary %}
+                    <div class="flex gap-5 items-center my-2">
+                        <img class="h-6" src="{% static 'images/money-green.png' %}" alt="">
+                        <div class="text-left text-xs">
+                            <h1 class="font-semibold">Salary Offered</h1>
+                            <p class="text-[#909090] font-medium"> {{user.salary}} </p>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
                 {% if user.experience %}
                     <div class="flex gap-5 items-center mt-[1.85rem]">
                         <img class="h-6" src="{% static 'images/calendar-green.png' %}" alt="">
@@ -127,6 +135,7 @@
                         </div>
                     </div>
                 {% endif %}
+                {% if user.qualification %}
                     <div class="flex gap-5 items-center mt-[1.85rem]">
                         <img class="h-6" src="{% static 'images/certificate-green.png' %}" alt="">
                         <div class="text-left text-xs">
@@ -134,6 +143,7 @@
                             <p class="text-[#909090] font-medium"> {{user.qualification}} </p>
                         </div>
                     </div>
+                {% endif %}
                 {% if user.languages %}
                     <div class="flex gap-5 items-center mt-[1.85rem]">
                         <img class="h-6" src="{% static 'images/language-green.png' %}" alt="">

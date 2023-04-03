@@ -1,4 +1,5 @@
 from datetime import date
+from django.utils.text import slugify
 from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -58,7 +59,8 @@ class CustomUser(AbstractUser):
     age = models.IntegerField(blank=True, null=True)
     profile_photo = models.ImageField(upload_to="accounts/profile_photos", default="default_profile.png" , null=True, blank=True)
     salary = models.CharField(max_length=50, default="", blank=True, null=True)
-    address = models.CharField(max_length=50, default="", help_text="Hyderabad, India", null=True, blank=True)
+    qualification = models.CharField(max_length=50, default="", blank=True, null=True)
+    address = models.CharField(max_length=255, default="", help_text="Hyderabad, India", null=True, blank=True)
     about_me = models.TextField( null=True, blank=True, default="")
     languages = models.CharField(max_length=100, blank=True, null=True, default="")
     interests = models.CharField(max_length=255,  null=True, blank=True, default="")
@@ -78,6 +80,9 @@ class CustomUser(AbstractUser):
     slug=models.SlugField(default="",blank=True,null=False,db_index=True)
     is_recruiter = models.BooleanField(default=False)
     
+    def save(self, *args,**kwargs):
+        self.slug = slugify(self.username)
+        super().save(*args, **kwargs)
 
 
 class SubscribedUsers(models.Model):
