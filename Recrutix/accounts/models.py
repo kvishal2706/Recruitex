@@ -28,6 +28,27 @@ class Award(models.Model):
     
     def __str__(self):
         return self.title
+    
+class Qualification(models.Model):
+    institute_name = models.CharField(max_length=255, blank=False, null=False)
+    degree_type = models.CharField(max_length=255, blank=False, null=False)
+    field_of_study = models.CharField(max_length=255, blank=False, null=False)
+    start_year = models.IntegerField(blank=False, null=False)
+    end_year = models.IntegerField(blank=False, null=False)
+
+    def __str__(self):
+        return F"{self.institute_name}, {self.degree_type}"
+
+class WorkandExperience(models.Model):
+    job_title = models.CharField(max_length=255, blank=False, null=False)
+    company_name = models.CharField(max_length=255, blank=False, null=False)
+    joining_date = models.DateField(auto_now=False, auto_now_add=False, blank=False, null=False)
+    leaving_date = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
+    experience_description = models.TextField(blank=False, name=False)
+    
+    
+    def __str__(self):
+        return f"{self.job_title}, {self.company_name}"
 
 class CustomUser(AbstractUser):
     username = models.CharField(max_length=100, unique=True, blank=False, null=False, default="")
@@ -53,6 +74,8 @@ class CustomUser(AbstractUser):
     applied_jobs = models.ManyToManyField("Jobs.Jobs",blank=True)
     cv = models.FileField(upload_to=f"accounts/cv", max_length=255, default="", null=True, blank=True)
     resume = models.FileField(upload_to="accounts/resume", max_length=255, default="", null=True, blank=True)
+    qualifications = models.ManyToManyField('Qualification', blank=True)
+    work_experience = models.ManyToManyField('WorkandExperience', blank=True)
     awards = models.ForeignKey("Award",on_delete=models.CASCADE, blank=True, null=True)
     slug=models.SlugField(default="",blank=True,null=True,db_index=True)
     is_recruiter = models.BooleanField(default=False)
