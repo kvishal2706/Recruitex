@@ -1,6 +1,6 @@
 <!-- templates/article_new.html -->
 {% extends 'base.html' %} {% block content %}
-
+{% block title %}New-job{% endblock title %}
 <h1>New article</h1>
 <form action="" method="post">
    {% csrf_token %} {{ form.as_p }}
