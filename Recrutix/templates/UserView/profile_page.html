@@ -63,12 +63,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="h-16 border-l ml-3 mt-2"></div>
+                        <div class="h-12 border-l ml-3 mt-2"></div>
                         {% endfor %}
-                        <div class="h-16 border-l border-white mt-[-64px] ml-3"></div>
+                        <div class="h-12 border-l border-white mt-[-48px] ml-3"></div>
                 </div>
             </div>
-            <div class="mt-[-64px]">
+            <div class=" {% if user.qualifications.all %}mt-[-48px]{% endif %} ">
                 <h1 class="text-lg font-semibold font-body my-5">Work and Experience</h1>
                 <div>
                     {% for work in user.work_experience.all %}
@@ -178,13 +178,13 @@
             {% if user.cv or user.resume %}
             <div class="flex-col bg-[#e8eeff] mt-4 p-4 text-left rounded-lg">
                 {% if user.cv %}
-                <a href="{% url 'cv-view' user.slug %}" class="flex justify-between p-4 rounded-lg items-center bg-[#d0d5fa]">
+                <a href="{% url 'cv-view' user.slug %}" target="_new" class="flex justify-between p-4 rounded-lg items-center bg-[#d0d5fa]">
                     <h1 class="font-semibold text-[#3a3a3a] text-sm">CV</h1>
                     <img class="h-6" src="{% static 'images/pdf.png' %}" alt="">
                 </a>
                 {% endif %}
                 {% if user.resume %}
-                <a href="{% url 'resume-view' user.slug %}" class="flex justify-between p-4 mt-2 rounded-lg items-center bg-[#d0d5fa]">
+                <a href="{% url 'resume-view' user.slug %}" target="_new" class="flex justify-between p-4 mt-2 rounded-lg items-center bg-[#d0d5fa]">
                     <h1 class="font-semibold text-[#3a3a3a] text-sm">Resume</h1>
                     <img class="h-6" src="{% static 'images/pdf.png' %}" alt="">
                 </a>

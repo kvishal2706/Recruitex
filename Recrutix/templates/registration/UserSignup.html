@@ -1,21 +1,21 @@
 {% extends 'base.html' %} 
 {% load static %} 
-{% block signup %}text-orange-500 font-semibold text-lg{% endblock signup %}
+{% block signup %}text-green-600 font-semibold text-lg{% endblock signup %}
 {% block content %}
-   <h2 class = " font-serif font-medium text-4xl my-6 text-purple-600">Create A New Account</h2>
+   <h2 class = " font-serif font-medium text-4xl my-6 text-[#17bb50]">Create A New Account</h2>
    <div class="flex justify-around w-full items-center m-auto">
-      <div class="w-2/5 mr-4 border-2 border-purple-400 mb-4" style="min-width: 450px;">
+      <div class="w-2/5 mr-4 border-2 border-[#97efb6] mb-4" style="min-width: 450px;">
          <div class="w-full m-4 mb-2 flex justify-around">
-               <a href={% url 'social:begin' 'google-oauth2' %} class="w-1/2 rounded-3xl flex justify-center gap-2 py-3 items-center my-2 mr-8 cursor-pointer hover:shadow-lg border-2 border-purple-100">
+               <a href={% url 'social:begin' 'google-oauth2' %} class="w-1/2 rounded-3xl flex justify-center gap-2 py-3 items-center my-2 mr-8 cursor-pointer hover:shadow-lg hover:scale-[1.02] border-2 border-green-100">
                   <img class='h-9' src="{% static 'images/google-logo.png' %}" alt="google logo">
                   <p class="text-xs font-medium text-black ml-2">SignUp with Google</p>
                </a>
-            <a href={% url 'social:begin' 'github' %} class="mr-8 w-1/2 rounded-3xl flex justify-center gap-4  py-3 items-center my-2 cursor-pointer hover:shadow-lg border-2 border-purple-100">
+            <a href={% url 'social:begin' 'github' %} class="mr-8 w-1/2 rounded-3xl flex justify-center gap-4  py-3 items-center my-2 cursor-pointer hover:shadow-lg hover:scale-[1.02] border-2 border-green-100">
                <img class='h-9' src="{% static 'images/github-logo.png' %}" alt="facebook logo">
                <p class="text-xs font-medium text-black ml-1">SignUp with Github</p>
             </a>
          </div>
-         <hr class="mb-3 w-11/12 mx-4 border border-purple-400">
+         <hr class="mb-3 w-11/12 mx-4 border border-[#97efb6]">
          <form class = "m-4 mt-0 p-4 flex-col" action="{% url 'signup' %}" method="post">
             {% csrf_token %} 
             <div class="">
@@ -31,45 +31,45 @@
                      {{form.username.errors}}
                      {{form.profile_photo.errors}}
                   </div>
-                  {% comment %} absolute w-20 left-4 text-base bg-white text-purple-500 font-normal {% endcomment %}
+                  {% comment %} absolute w-20 left-4 text-base bg-white text-[#48e47f] font-normal {% endcomment %}
                {% endif %}
                <div class="relative flex justify-around ">
                   <div class="first_name w-1/2 relative{% if form.first_name.errors %} error{% endif %} ">
-                     <p class="absolute left-4 bottom-8 z-10 w-24 bg-white text-purple-500">{{form.first_name.label}}</p>
+                     <p class="absolute left-4 bottom-8 z-10 w-24 bg-white text-[#17bb50]">{{form.first_name.label}}</p>
                      {{form.first_name}}
                   </div>
                   <div class="last_name w-1/2  relative{% if form.last_name.errors %} error{% endif %} ">
-                     <p class="absolute left-4 bottom-8 z-10 w-24 bg-white text-purple-500">{{form.last_name.label}}</p>
+                     <p class="absolute left-4 bottom-8 z-10 w-24 bg-white text-[#17bb50]">{{form.last_name.label}}</p>
                      {{form.last_name}}
                   </div>
                </div>
                <div class="relative my-6 p-2 {% if form.username.errors %} bg-red-200 {% endif %} ">
-                  <p class="absolute left-4 bottom-10 z-10 w-24  bg-white text-purple-500">{{form.username.label}}</p>
+                  <p class="absolute left-4 bottom-10 z-10 w-24  bg-white text-[#17bb50]">{{form.username.label}}</p>
                   {{form.username}}
                </div>
                <div class="relative my-6 p-2 {% if form.email.errors %} bg-red-200 {% endif %} ">
-                  <p class="absolute left-4 bottom-10 z-10 w-16  bg-white text-purple-500">{{form.email.label}}</p>
+                  <p class="absolute left-4 bottom-10 z-10 w-16  bg-white text-[#17bb50]">{{form.email.label}}</p>
                   {{form.email}}
                </div>
                <div class="relative my-6 p-2 {% if form.phone.errors %} bg-red-200 {% endif %} ">
-                  <p class="absolute left-4 bottom-10 z-10 w-16  bg-white text-purple-500">{{form.phone.label}}</p>
+                  <p class="absolute left-4 bottom-10 z-10 w-16  bg-white text-[#17bb50]">{{form.phone.label}}</p>
                   {{form.phone}}
                </div>
                <div class="relative my-6 p-2 {% if form.password1.errors %} bg-red-200{% endif %} ">
-                  <p class="absolute left-4 bottom-10 z-10 w-24  bg-white text-purple-500">{{form.password1.label}}</p>
+                  <p class="absolute left-4 bottom-10 z-10 w-24  bg-white text-[#17bb50]">{{form.password1.label}}</p>
                   {{form.password1}}
                </div>
                <div class="relative my-6 p-2 {% if form.password2.errors %} bg-red-200{% endif %} ">
-                  <p class="absolute left-4 bottom-10 z-10 w-48  bg-white text-purple-500">{{form.password2.label}}</p>
+                  <p class="absolute left-4 bottom-10 z-10 w-48  bg-white text-[#17bb50]">{{form.password2.label}}</p>
                   {{form.password2}}
                </div>
             </div>
-            <button class="w-56 p-3 text-lg rounded-3xl text-white self-center bg-black cursor-pointer" type="submit">Sign Up</button><br>
-            <span class="text-sm font-extralight text-gray-600"><a href="{% url 'login' %}">Already Have An Account?</a></span>
+            <button class="w-56 p-3 text-lg rounded-3xl text-white self-center bg-green-400 cursor-pointer hover:scale-[1.04]" type="submit">Sign Up</button><br>
+            <span class="text-sm font-extralight text-green-700"><a href="{% url 'login' %}">Already Have An Account?</a></span>
          </form>
       </div>
       <div class="w-[800px] h-full">
-         <img class="w-full mr-8" src="{% static 'images/signup.png' %}" alt="">
+         <img class="w-full mr-8" src="{% static 'images/signup.jpg' %}" alt="">
       </div>
    </div>
 {% endblock content %}
