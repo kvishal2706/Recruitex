@@ -1,14 +1,22 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.forms import AuthenticationForm
 from django import forms
+from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.forms import ModelForm
-from .models import CustomUser, Feedback, Qualification, WorkandExperience
+from .models import CustomUser, Feedback, Qualification, WorkandExperience,Skills
 from tinymce.widgets import TinyMCE
 
 
 class DateInput(forms.DateInput):
     input_type = 'date'
 
+class SkillsForm(forms.ModelForm):
+    skills_tag = forms.ModelMultipleChoiceField(queryset=Skills.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class':''}))
+    class Meta:
+        model = CustomUser
+        fields = ('skills_tag',)
+    
+    
 
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True, help_text='Required.',widget=forms.TextInput(attrs={'placeholder': 'First Name','class':'text-base w-11/12  focus:border-2 focus:border-[#18d85b]'}))

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Add Skills{% endblock title %}
+{% block styles %}
+#id_skills_tag{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+#id_skills_tag div{
+    margin: 0.5rem 1rem ;
+    border-radius: 20px;
+    display:flex;
+    gap: 10;
+   padding:10px;
+   background-color: #c5d7c8;
+}
+#id_skills_tag div:hover{
+   background-color: #798a7c;
+}
+
+#id_skills_tag div input{
+    border-radius:12px;
+}
+
+
+{% endblock styles %}
+{% block content %}
+<div class="p-20 bg-[#8ca18f]">
+    <div class="text-center rounded-xl bg-[#fff]">
+            <div class="text-right px-10 pt-2"><p class="text-red-500 ">NOTE: options are in alphabetical order.</p></div>
+            <form action="{% url 'add-skills' %}" method='POST'>
+                {% csrf_token %}
+                <p class="text-5xl font-semibold text-[#3b4b3e] mb-6 pt-5">{{form.skills_tag.label}}</p>
+                {{form.skills_tag}}
+                <button class="px-6 py-2 rounded-full bg-black text-white my-4" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

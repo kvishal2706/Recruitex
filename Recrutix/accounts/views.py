@@ -1,4 +1,4 @@
-from .forms import CustomUserCreationForm,NewsletterForm,UpdateInformationForm,addQualificationsForm,addWorkExperienceForm
+from .forms import CustomUserCreationForm,NewsletterForm,UpdateInformationForm,addQualificationsForm,addWorkExperienceForm,SkillsForm
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser, SubscribedUsers, Qualification,WorkandExperience
 from django.core.mail import send_mail
@@ -79,6 +79,18 @@ def add_workExperience(request):
             User.work_experience.add(work_experience)
             return redirect('add-workExperience')
     return render(request,'registration/add_workexperience.html',{
+        'form':form
+    })
+
+def add_skills(request):
+    User = request.user
+    form = SkillsForm(instance=User)
+    if request.method=='POST':
+        form = SkillsForm(request.POST,instance=User)
+        if form.is_valid():
+            form.save()
+            return redirect('profile-page', slug = request.user.slug)
+    return render(request,'registration/add_skills.html',{
         'form':form
     })
     
