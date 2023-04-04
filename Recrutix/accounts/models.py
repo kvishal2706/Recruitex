@@ -31,6 +31,7 @@ class Award(models.Model):
         return self.title
     
 class Qualification(models.Model):
+    id = models.AutoField(primary_key=True)
     institute_name = models.CharField(max_length=255, blank=False, null=False)
     degree_type = models.CharField(max_length=255, blank=False, null=False)
     field_of_study = models.CharField(max_length=255, blank=False, null=False)
@@ -41,6 +42,7 @@ class Qualification(models.Model):
         return F"{self.institute_name}, {self.degree_type}"
 
 class WorkandExperience(models.Model):
+    id = models.AutoField(primary_key=True)
     job_title = models.CharField(max_length=255, blank=False, null=False)
     company_name = models.CharField(max_length=255, blank=False, null=False)
     joining_date = models.DateField(auto_now=False, auto_now_add=False, blank=False, null=False)
@@ -57,7 +59,7 @@ class CustomUser(AbstractUser):
     gender = models.ForeignKey('Gender_type', on_delete=models.CASCADE, default="", null=True, blank=True)
     dob = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
-    profile_photo = models.ImageField(upload_to="accounts/profile_photos", default="default_profile.png" , null=True, blank=True)
+    profile_photo = models.ImageField(upload_to="accounts/profile_photos/", default="default_profile.png" , null=True, blank=True)
     salary = models.CharField(max_length=50, default="", blank=True, null=True)
     qualification = models.CharField(max_length=50, default="", blank=True, null=True)
     address = models.CharField(max_length=255, default="", help_text="Hyderabad, India", null=True, blank=True)
@@ -72,8 +74,8 @@ class CustomUser(AbstractUser):
     skills_tag = models.ManyToManyField("Skills")
     projects=models.ManyToManyField('Project',default=None, blank=True)
     applied_jobs = models.ManyToManyField("Jobs.Jobs",blank=True)
-    cv = models.FileField(upload_to=f"accounts/cv", max_length=255, default="", null=True, blank=True)
-    resume = models.FileField(upload_to="accounts/resume", max_length=255, default="", null=True, blank=True)
+    cv = models.FileField(upload_to=f"accounts/cv/", max_length=255, default="", null=True, blank=True)
+    resume = models.FileField(upload_to="accounts/resume/", max_length=255, default="", null=True, blank=True)
     qualifications = models.ManyToManyField('Qualification', blank=True)
     work_experience = models.ManyToManyField('WorkandExperience', blank=True)
     awards = models.ManyToManyField("Award", blank=True)

@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Signup-2</title>
+    <title>Update Information</title>
 </head>
 <body>
     <div class="bg-[#c5d0c4] mb-4 py-4 px-[18%]">
         <div class="bg-white p-6 rounded-xl">
-            <h2 class = " font-body font-bold text-5xl mb-8 text-[#546c5d]">Personal Information</h2>
-            <form action="{% url 'signup-2'%}" method='POST'>
+            <h2 class = " font-body font-bold text-5xl mb-8 text-[#546c5d]">Update Information</h2>
+            <form action="{% url 'update-information'%}" enctype="multipart/form-data" method='POST'>
                 {% csrf_token %}
-                <div class="flex gap-10 justify-around items-center wrap my-4">
+                {% comment %} <div class="flex gap-10 justify-around items-center wrap my-4">
                     <div class="flex gap-4 items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
                         <h1>Gender :</h1>
                         <div>{{form.gender}}</div>
@@ -92,8 +92,9 @@
                     </div>
                 </div>
                 <div class="px-16">
-                    <button class="px-6 py-2 bg-[#c5d0c4] rounded-xl w-full text-3xl font-semibold hover:scale-[1.03] text-[#40503f]" style="box-shadow: 0px 0px 6px" type='submit'>Submit</button>
-                </div>
+                </div> {% endcomment %}
+                {{form.as_p}}
+                <button class="px-6 py-2 bg-[#c5d0c4] rounded-xl w-full text-3xl font-semibold hover:scale-[1.03] text-[#40503f]" style="box-shadow: 0px 0px 6px" type='submit'>Submit</button>
             </form>
         </div>
     </div>

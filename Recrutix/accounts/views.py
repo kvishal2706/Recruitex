@@ -1,6 +1,6 @@
-from .forms import CustomUserCreationForm,NewsletterForm,UserSignupForm_2
+from .forms import CustomUserCreationForm,NewsletterForm,UpdateInformationForm,addQualificationsForm,addWorkExperienceForm
 from django.contrib.auth.decorators import login_required
-from .models import CustomUser, SubscribedUsers
+from .models import CustomUser, SubscribedUsers, Qualification,WorkandExperience
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -27,24 +27,61 @@ def SignUpView(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.INFO(request,"Signup Successful. It is requested to add complete imformation")
+            messages.success(request,"Signup Successful. Please Login")
             return redirect('home-page')
             
     return render(request, 'registration/UserSignup.html',{
         'form': form
     })
 
-# def Signup_page2(request):
-#     form = UserSignupForm_2()
+@login_required
+def update_information(request):
+    User = request.user
+    post_data = request.POST or None
+    file_data = request.FILES or None
+    form = UpdateInformationForm(instance = User)
     
-#     if request.method =='POST':
-#         form = UserSignupForm_2(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('home-page')
-#     return render(request,'registration/signUpPage_2.html',{
-#         'form':form
-#         })
+    if request.method=='POST':
+        form = UpdateInformationForm(post_data,file_data, instance = User)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            return redirect('profile-page',slug=request.user.slug)
+    
+    return render(request,'registration/update_information.html',{
+        'form':form
+    })
+
+@login_required
+def add_qualifications(request):
+    User = request.user
+    form = addQualificationsForm()
+    if request.method=='POST':
+        form = addQualificationsForm(request.POST)
+        if form.is_valid():
+            my_model = form.save()
+            qualification = Qualification.objects.get(id=my_model.id)
+            User.qualifications.add(qualification)
+            return redirect('add-qualification')
+    return render(request,'registration/add_qualification.html',{
+        'form':form
+    })
+@login_required
+def add_workExperience(request):
+    User = request.user
+    form = addWorkExperienceForm()
+    if request.method=='POST':
+        form = addWorkExperienceForm(request.POST)
+        if form.is_valid():
+            my_model = form.save()
+            work_experience = WorkandExperience.objects.get(id=my_model.id)
+            User.work_experience.add(work_experience)
+            return redirect('add-workExperience')
+    return render(request,'registration/add_workexperience.html',{
+        'form':form
+    })
+    
 
 def index(request):
     return render(request,'UserView/home.html') 

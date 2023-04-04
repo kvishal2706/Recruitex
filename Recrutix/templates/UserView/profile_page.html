@@ -2,42 +2,50 @@
 {% load static %}
 {% block title %}Profile-page{% endblock title %}
 {% block content %}
-    <div class="bg-[#d6e4d8] pt-6 pb-10 px-[12.5%] flex gap-6 items-start">
+    <div class="bg-[#d6e4d8] pt-6 pb-10 px-[12.5%] flex gap-6">
         <div>
-            <img class="h-36 rounded-full border border-[#859e89]" src="/media/{{user.profile_photo}}" alt="">
+            <img class="h-36 rounded-full border border-[#859e89]" src="{{user.profile_photo.url}}" alt="">
         </div>
-        <div>
-            <div class="flex-col gap-3 text-left justify-start">
-                <h2 class="text-3xl"> {{user.first_name|title }} {{user.last_name|title }}</h2>
-                <p class="text-sm pt-[0.1rem] text-gray-500"> <span class="font-semibold">username:</span> {{user.username}} </p>
-            </div>
-            <div class="flex gap-8 mt-3 items-center flex-wrap">
-                <div>
-                    <p class="text-[#4f6b50] font-semibold text-sm">{{user.major_skill}}</p>
+        <div class="w-[85%] flex justify-between">
+            <div>
+                <div class="flex-col gap-3 text-left justify-start">
+                    <h2 class="text-3xl"> {{user.first_name|title }} {{user.last_name|title }}</h2>
+                    <p class="text-sm pt-[0.1rem] text-gray-500"> <span class="font-semibold">username:</span> {{user.username}} </p>
                 </div>
-                {% if user.address %}
-                    <div class="flex gap-1 items-center">
-                        <img class="h-[1.2rem]" src="{% static 'images/location.png' %}" alt="">
-                        <p class="text-xs text-gray-500 font-medium"> {{user.address}} </p>
+                <div class="flex gap-8 mt-3 items-center flex-wrap">
+                    <div>
+                        <p class="text-[#4f6b50] font-semibold text-sm">{{user.major_skill}}</p>
                     </div>
-                {% endif %}
-                {% if user.salary %}
-                    <div class="flex gap-2 items-center ml-1">
-                        <img class="h-[1.3rem]" src="{% static 'images/money.png' %}" alt="">
-                        <p class="text-xs text-gray-500 font-medium"> {{user.salary}} </p>
+                    {% if user.address %}
+                        <div class="flex gap-1 items-center">
+                            <img class="h-[1.2rem]" src="{% static 'images/location.png' %}" alt="">
+                            <p class="text-xs text-gray-500 font-medium"> {{user.address}} </p>
+                        </div>
+                    {% endif %}
+                    {% if user.salary %}
+                        <div class="flex gap-2 items-center ml-1">
+                            <img class="h-[1.3rem]" src="{% static 'images/money.png' %}" alt="">
+                            <p class="text-xs text-gray-500 font-medium"> {{user.salary}} </p>
+                        </div>
+                    {% endif %}
+                    {% if user.dob %}
+                        <div class="flex gap-2 items-center ml-1">
+                            <img class="h-[1.15rem]" src="{% static 'images/dob.png' %}" alt="">
+                            <p class="text-xs text-gray-500 font-medium"> {{user.dob}} </p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="flex gap-4 flex-wrap mt-3 items-center">
+                    {% for skill in user.skills_tag.all %}
+                        <p class="rounded-full py-[0.3rem] px-4 bg-[#bfd6c3] text-[#4c6d50] text-[0.83rem]" style="box-shadow: 0px 0px 6px"> {{skill}} </p>
+                    {% endfor %}
+                    <div class="ml-2 hover:scale-[1.05] w-fit h-fit">
+                        <a class="px-3 py-2 bg-[#9fb1a1] text-[#3b4e42] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="">Add Skills</a>
                     </div>
-                {% endif %}
-                {% if user.dob %}
-                    <div class="flex gap-2 items-center ml-1">
-                        <img class="h-[1.15rem]" src="{% static 'images/dob.png' %}" alt="">
-                        <p class="text-xs text-gray-500 font-medium"> {{user.dob}} </p>
-                    </div>
-                {% endif %}
+                </div>
             </div>
-            <div class="flex gap-4 flex-wrap mt-3">
-                {% for skill in user.skills_tag.all %}
-                    <p class="rounded-full py-[0.3rem] px-4 bg-[#bfd6c3] text-[#4c6d50] text-[0.83rem]" style="box-shadow: 0px 0px 6px"> {{skill}} </p>
-                {% endfor %}
+            <div class="hover:scale-[1.05] w-fit h-fit">
+                <a class="px-4 py-2 bg-blue-200 text-blue-600 rounded-full" style="box-shadow: 0 0 4px" href="{% url 'update-information'%}">Update Information</a>
             </div>
         </div>
     </div>
@@ -49,10 +57,15 @@
                     <p class="text-[0.8rem] text-[#909090] font-medium leading-8"> {{user.about_me|linebreaksbr}} </p>
                 </div>
             {% endif %}
-            {% if user.qualifications.all %}
-                <div>
-                    <h1 class="text-lg font-semibold font-body mb-5">Qualifications</h1>
-                    <div>
+            <div>
+                <div class="flex justify-between">
+                    <h1 class="text-lg font-semibold font-body">Qualifications</h1>
+                    <div class="mt-1 ml-2 hover:scale-[1.05] w-fit h-fit">
+                        <a class="px-3 py-2 bg-[#f7cece] text-[#f65353] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-qualification' %}">Add Qualifications</a>
+                    </div>
+                </div>
+                {% if user.qualifications.all %}
+                    <div class="mt-5">
                         {% for qualification in user.qualifications.all %}
                             <div class="flex gap-6 items-center">
                                 <div class=" text-center rounded-full bg-[#f7cece] w-7 pt-[5px] mt-2 h-7 text-sm text-[#f65353] font-medium" style="box-shadow:0px 0px 4px">{{qualification.degree_type|make_list|first|title}}</div>
@@ -70,11 +83,17 @@
                             {% endfor %}
                             <div class="h-12 border-l border-white mt-[-48px] ml-3"></div>
                     </div>
-                </div>
-            {% endif %}
-            {% if user.work_experience.all%}
-                <div class=" {% if user.qualifications.all %}mt-[-48px]{% endif %} ">
+                    {% endif %}
+                    
+            </div>
+            <div class=" {% if user.qualifications.all %}mt-[-48px]{% endif %} ">
+                <div class="flex justify-between">
                     <h1 class="text-lg font-semibold font-body my-5">Work and Experience</h1>
+                    <div class="mt-1 pt-4 ml-2 hover:scale-[1.05] w-fit h-fit">
+                        <a class="px-3 py-2 bg-[#d3e4da] text-[#5e7862] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-workExperience' %}">Add Work and Experiences</a>
+                    </div>
+                </div>
+                {% if user.work_experience.all%}
                     <div>
                         {% for work in user.work_experience.all %}
                             <div class="flex gap-6 items-center">
@@ -94,8 +113,9 @@
                             </div>
                             {% endfor %}
                     </div>
-                </div>
-            {% endif %}
+                    {% endif %}
+                    
+            </div>
         </div>
         <div class="w-[27%]">
             <div class="bg-[#d6e4d8] h-fit p-4 rounded-lg">
@@ -177,6 +197,7 @@
                     <a href="{{user.youtube_link}}"><i class="fa-brands fa-2x fa-youtube"></i></a>
                 </div>
             </div>
+            {% if user.skills_tag.all %}
             <div class="flex-col bg-[#d6e4d8] mt-4 p-4 text-left rounded-lg">
                 <h1 class="font-semibold text-[#3a3a3a] text-sm mb-3">Professional Skills</h1>
                 <div class="flex gap-2 flex-wrap">
@@ -185,6 +206,7 @@
                     {% endfor %}
                 </div>
             </div>
+            {% endif %}
             {% if user.cv or user.resume %}
             <div class="flex-col bg-[#d6e4d8] mt-4 p-4 text-left rounded-lg">
                 {% if user.cv %}

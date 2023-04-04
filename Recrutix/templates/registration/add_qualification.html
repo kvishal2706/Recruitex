@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add Qualification{% endblock title %}
+{% block content %}
+<div class="bg-[#c5d0c4] mb-4 py-4 px-[18%]">
+    <div class="bg-white p-6 rounded-xl">
+        <h1>Add new Qualification</h1>
+        <form action="{% url 'add-qualification' %}" method='POST'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type = "submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

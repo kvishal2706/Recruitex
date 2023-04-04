@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.forms import AuthenticationForm
 from django import forms
 from django.forms import ModelForm
-from .models import CustomUser, Feedback
+from .models import CustomUser, Feedback, Qualification, WorkandExperience
 from tinymce.widgets import TinyMCE
 
 class CustomUserCreationForm(UserCreationForm):
@@ -55,10 +55,11 @@ class FeedbackForm(forms.ModelForm):
     
     
     
-class UserSignupForm_2(forms.ModelForm):
+class UpdateInformationForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ('gender','profile_photo','dob','age','salary','address','about_me','languages','interests','facebook_link','twitter_link','instagram_link','youtube_link')
+        fields = '__all__'
+        exclude = ('password','last_login','groups','user_permissions','date_joined','is_staff','is_superuser','is_active','skills_tag','projects','applied_jobs','qualifications','work_experience','awards','slug','is_recruiter',)
         
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -76,3 +77,12 @@ class UserSignupForm_2(forms.ModelForm):
         self.fields['instagram_link'].widget.attrs.update({'placeholder':'','class':'w-[12rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
         self.fields['youtube_link'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
         
+class addQualificationsForm(forms.ModelForm):
+    class Meta:
+        model = Qualification
+        fields = '__all__'
+        
+class addWorkExperienceForm(forms.ModelForm):
+    class Meta:
+        model = WorkandExperience
+        fields = '__all__'        
