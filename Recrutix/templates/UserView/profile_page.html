@@ -37,10 +37,10 @@
                 </div>
                 <div class="flex gap-4 flex-wrap mt-3 items-center">
                     {% for skill in user.skills_tag.all %}
-                        <p class="rounded-full py-[0.3rem] px-4 bg-[#bfd6c3] text-[#4c6d50] text-[0.83rem]" style="box-shadow: 0px 0px 6px"> {{skill}} </p>
+                        <p class="rounded-full py-[0.3rem] px-4 bg-[#bfd6c3] border border-[#4c6d50] text-[#4c6d50] text-[0.83rem]" style="box-shadow: 0px 0px 6px"> {{skill}} </p>
                     {% endfor %}
                     <div class="ml-2 hover:scale-[1.05] w-fit h-fit">
-                        <a class="px-3 py-2 bg-[#9fb1a1] text-[#3b4e42] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-skills' %}">Update Skills</a>
+                        <a class="px-3 py-2 bg-[#9fb1a1] border border-[#bfd6c3] text-[#3b4e42] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-skills' %}">Update Skills</a>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 <div class="flex justify-between">
                     <h1 class="text-lg font-semibold font-body">Qualifications</h1>
                     <div class="mt-1 ml-2 hover:scale-[1.05] w-fit h-fit">
-                        <a class="px-3 py-2 bg-[#f7cece] text-[#f65353] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-qualification' %}">Add Qualifications</a>
+                        <a class="px-3 py-2 bg-[#f7cece] text-[#f65353] border border-[#f65353] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-qualification' %}">Add Qualifications</a>
                     </div>
                 </div>
                 {% if user.qualifications.all %}
@@ -90,7 +90,7 @@
                 <div class="flex justify-between">
                     <h1 class="text-lg font-semibold font-body my-5">Work and Experience</h1>
                     <div class="mt-1 pt-4 ml-2 hover:scale-[1.05] w-fit h-fit">
-                        <a class="px-3 py-2 bg-[#d3e4da] text-[#5e7862] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-workExperience' %}">Add Work and Experiences</a>
+                        <a class="px-3 py-2 bg-[#d3e4da] text-[#5e7862] border border-[#5e7862] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-workExperience' %}">Add Work and Experiences</a>
                     </div>
                 </div>
                 {% if user.work_experience.all%}

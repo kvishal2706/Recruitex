@@ -2,6 +2,13 @@ from django.forms import ModelForm
 from .models import ApplicationForm
 from .models import Jobs
 
+class JobsCreationForm(ModelForm):
+    class Meta:
+        model = Jobs
+        fields = '__all__'
+        exclude = ('date','recruiter','slug','job_applied_users',)
+
+
 class ApplicationForm(ModelForm):
     # first_name = forms.CharField(max_length=30, required=True, help_text='Required.',widget=forms.TextInput(attrs={'placeholder': 'First Name','class':'input'}))
     # last_name = forms.CharField(max_length=30, required=True, help_text='Required.',widget=forms.TextInput(attrs={'placeholder': 'Last Name','class':'input'}))

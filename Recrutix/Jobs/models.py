@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
@@ -56,6 +57,10 @@ class Jobs(models.Model):
     
     def get_absolute_url(self):
         return reverse("job_details", args=[self.slug])
+    
+    def save(self,*args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
     
 class ApplicationForm(models.Model):
     first_name = models.CharField(max_length=50, null=False, blank=False)

@@ -6,7 +6,6 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth import get_user_model
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import user_passes_test
 from django.core.validators import validate_email

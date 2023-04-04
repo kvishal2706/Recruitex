@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 from .models import Jobs,Tag,Jobs_type
 from django.views.generic import ListView,DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-from .forms import ApplicationForm
+from .forms import ApplicationForm,JobsCreationForm
 from.filters import JobFilter
 from django.db.models import Q
 from accounts.models import CustomUser
@@ -65,12 +66,29 @@ def DeleteJob(request, slug):
     return render(request, 'Jobs/jobs_delete.html')
 
 
-class JobsCreateView(LoginRequiredMixin, CreateView): # new
-    model = Jobs
-    template_name = 'Jobs/jobs_new.html'
-    fields = ('title', 'Designation','location','salary','about_job','about_company','workings')
+# class JobsCreateView(LoginRequiredMixin, CreateView): # new
+#     model = Jobs
+#     template_name = 'Jobs/jobs_new.html'
+#     fields = ('title','designation','location','salary','type','')
+#     except = ('date','recruiter','slug','job_applied_users',)
 
-    def form_valid(self, form): # new
-        form.instance.recruiter = self.request.user
-        return super().form_valid(form)
+#     def form_valid(self, form): # new
+#         form.instance.recruiter = self.request.user
+#         return super().form_valid(form)
 
+@user_passes_test(lambda u: u.is_recruiter)
+def JobsCreateView(request):
+    form = JobsCreationForm()
+    if request.method=='POST':
+        form = JobsCreationForm(request.POST)
+        print('11111111')
+        if form.is_valid():
+            print('2222222')
+            my_model = form.save()
+            job = Jobs.objects.get(id=my_model.id)
+            job.recruiter = request.user
+            return redirect('jobs-list')
+        
+    return render(request,'Jobs/jobs_new.html',{
+        'form':form
+    })

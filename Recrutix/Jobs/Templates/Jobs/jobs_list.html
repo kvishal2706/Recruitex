@@ -6,6 +6,12 @@
 <script src="https://kit.fontawesome.com/106669e900.js" crossorigin="anonymous"></script>
 {% endblock links %}
 {% block content %}
+<div class="text-right mt-5 ml-[85%] hover:scale-[1.05] w-fit h-fit">
+   {% if user.is_recruiter %}
+   <a href="{% url 'jobs_new' %}" class="px-4 py-2 bg-red-100 text-red-500 border border-red-500 rounded-full w-fit " style="box-shadow: 0 0 5px">Add Job</a>
+   {% else %}
+   {% endif %}
+</div>
 <div class="flex mx-20 gap-4 mt-8 mb-6">
    <div class="w-1/4 min-w-[250px] border-2 h-fit border-gray-100 p-4 text-left">
       <div class="flex items-center gap-3">

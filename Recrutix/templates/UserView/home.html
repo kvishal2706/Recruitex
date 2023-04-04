@@ -5,10 +5,7 @@
         Welcome to our page
     </h2>
 
-    {% if user.is_authenticated %}
-        <p class="mt-4 text-xl font-extralight">Hi {{ user.username | title }}</p>
-        <a href="{% url 'password_change' %}">Change Password</a>
-        {% else %}
+    {% if not user.is_authenticated %}
         <p class="mt-4 text-lg font-extralight">Please Login to use our website full functionally.</p>
     {% endif %}
 
