@@ -5,6 +5,11 @@ from django.forms import ModelForm
 from .models import CustomUser, Feedback, Qualification, WorkandExperience
 from tinymce.widgets import TinyMCE
 
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True, help_text='Required.',widget=forms.TextInput(attrs={'placeholder': 'First Name','class':'text-base w-11/12  focus:border-2 focus:border-[#18d85b]'}))
     last_name = forms.CharField(max_length=30, required=True, help_text='Required.',widget=forms.TextInput(attrs={'placeholder': 'Last Name','class':'text-base w-11/12 focus:border-2 focus:border-[#18d85b]'}))
@@ -56,6 +61,7 @@ class FeedbackForm(forms.ModelForm):
     
     
 class UpdateInformationForm(forms.ModelForm):
+    dob = forms.DateField(widget=DateInput)
     class Meta:
         model = CustomUser
         fields = '__all__'
@@ -83,6 +89,8 @@ class addQualificationsForm(forms.ModelForm):
         fields = '__all__'
         
 class addWorkExperienceForm(forms.ModelForm):
+    joining_date = forms.DateField(widget = DateInput)
+    leaving_date = forms.DateField(widget = DateInput)
     class Meta:
         model = WorkandExperience
         fields = '__all__'        
