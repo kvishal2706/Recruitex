@@ -3,6 +3,7 @@ from .models import Jobs,Tag,ApplicationForm,Job_Duration,Jobs_type
 
 class JobsAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug":("title",)}
+    list_display = ['title','date','designation','location']
 
 admin.site.register(Jobs,JobsAdmin)
 admin.site.register(Tag)

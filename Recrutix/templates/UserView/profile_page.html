@@ -4,7 +4,7 @@
 {% block content %}
     <div class="bg-[#d6e4d8] pt-6 pb-10 px-[12.5%] flex gap-6">
         <div>
-            <img class="h-36 rounded-full border border-[#859e89]" src="{{user.profile_photo.url}}" alt="">
+            <img class="h-36 rounded-full border border-[#859e89] bg-white" src="{{user.profile_photo.url}}" alt="">
         </div>
         <div class="w-[85%] flex justify-between">
             <div>
@@ -52,10 +52,10 @@
     <div class=" flex gap-16 px-[12.5%] justify-between my-4">
         <div class="w-[70%] text-left">
             {% if user.about_me %}
-                <div class="py-4">
-                    <h1 class="text-lg font-semibold font-body mb-3">About the Candidate</h1>
-                    <p class="text-[0.8rem] text-[#909090] font-medium leading-8"> {{user.about_me|linebreaksbr}} </p>
-                </div>
+            <div class="py-4">
+                <h1 class="text-lg font-semibold font-body mb-3">About the Candidate</h1>
+                <p class="text-[0.8rem] text-[#909090] font-medium leading-8"> {{user.about_me|linebreaksbr}} </p>
+            </div>
             {% endif %}
             <div>
                 <div class="flex justify-between">
@@ -113,8 +113,82 @@
                             </div>
                             {% endfor %}
                     </div>
-                    {% endif %}
-                    
+                {% endif %}
+                {% if jobs.all.count %}
+                    <div>
+                        <div><h1 class="text-lg font-semibold font-body my-5">Posted Jobs</h1></div>
+                    </div>
+                    <div class="">
+                        <div class="flex bg-[#edf4fb] py-2 px-6 items-center rounded-lg">
+                            <h1 class="w-80 font-medium text-lg text-blue-500">Title</h1>
+                            <h1 class="w-40 ml-11 font-medium text-lg text-blue-500">Aplicants</h1>
+                            <h1 class="w-40 ml-16 font-medium text-lg text-blue-500">Created</h1>
+                            <h1 class="w-40 ml-14 font-medium text-lg text-blue-500">Actions</h1>
+                        </div>
+                        {% for job in jobs %}
+                            <div class = "flex py-2 px-6 items-center">
+                                <div class="w-80">
+                                    <a href="{% url 'job_details' job.slug %}" class="text-lg font-medium font-body"> {{job.designation|title}} </a>
+                                    <div class="flex items-center py-1">
+                                        <img class="h-5" src="{% static 'images/location.png' %}" alt="">
+                                        <span class="mx-2 text-sm text-[#909090]">{{job.location}}</span>
+                                     </div>
+                                </div>
+                                <h1 class="w-40 mr-10 font-medium text-sm text-blue-500"> {{job.job_applied_users.all.count}} <span>Applicant(s)</span> </h1>
+                                <h1 class="w-40 mr-10 text-[#909090] text-sm font-medium"> {{job.date}} </h1>
+                                <div class="w-32 mr-5 flex gap-4">
+                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_edit' job.slug%}"><img src="{% static 'images/edit.png' %}" class="h-5" alt=""></a>
+                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_delete' job.slug%}"><img src="{% static 'images/remove.png' %}" class="h-5" alt=""></a>
+                                </div>
+                            </div><hr class="w-full px-10 mt-1">
+                        {% endfor %}
+                     </div>
+                {% endif %}
+                {% if user.applied_jobs.all.count %}
+                <div>
+                    <div><h1 class="text-lg font-semibold font-body my-5">Applied Jobs</h1></div>
+                </div>
+                <div class=" max-w-[75rem] h-fit border pb-6 -pt-2 px-2 flex justify-start mb-6 overflow-x-auto">
+                    {% for jobs in user.applied_jobs.all %}
+                 <a href="{{ jobs.get_absolute_url }}">
+                 <div class="border w-[20rem] h-64 mx-2 mt-7 hover:scale-[1.02]" style="box-shadow: 0px 0px 10px #c3c3c3">
+                    <div class='flex w-full my-4 justify-around items-center'>
+                       <div class=" border w-fit h-fit p-2 ml-3 mt-4"><img class="h-14" src="/media/{{jobs.logo}}" alt=""></div>
+                       <div class="w-44 pt-5 flex-col items-start text-left">
+                          <h2 class="font-bold">{{ jobs.title }}</h2>
+                          <span class="font-normal text-gray-400">{{jobs.date}}</span>
+                       </div>
+                    </div>
+                    <div class="flex-col text-left w-full mx-8">
+                       <h5 class = "font-semibold text-xl">{{jobs.designation}}</h5>
+                       <div class="flex gap-4 mt-4 items-center text-center">
+                          {% if jobs.job_Category %}
+                          <div class="px-3 py-1 bg-blue-100 text-blue-700 font-normal text-xs rounded-md" style="box-shadow: 0px 0.5px 10px #7594d5">
+                             <span>{{jobs.job_Category}}</span>
+                          </div>
+                          {% endif %}
+                          {% if jobs.job_duration_type %}
+                          <div class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-normal rounded-md" style="box-shadow: 0px 0.5px 10px #e69748">
+                             <span>{{jobs.job_duration_type}}</span>
+                          </div>
+                          {% endif %}
+                       </div>
+                       <div class="flex gap-3 mt-5 text-gray-500">
+                          <div class="flex items-center">
+                             <img class="h-5" src="{% static 'images/location.png' %}" alt="">
+                             <span class="mx-2">{{jobs.location}}</span>
+                          </div>
+                          <div class="flex items-center">
+                             <img class="h-5" src="{% static 'images/money.png' %}" alt="">
+                             <span class="mx-2">{{jobs.salary}}</span>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 </a>
+                 {% endfor %}
+                 </div>
+                {% endif %}
             </div>
         </div>
         <div class="w-[27%]">

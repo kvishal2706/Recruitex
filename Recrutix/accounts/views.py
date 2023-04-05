@@ -1,6 +1,7 @@
 from .forms import CustomUserCreationForm,NewsletterForm,UpdateInformationForm,addQualificationsForm,addWorkExperienceForm,SkillsForm
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser, SubscribedUsers, Qualification,WorkandExperience
+from Jobs.models import Jobs
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -62,6 +63,7 @@ def add_qualifications(request):
             my_model = form.save()
             qualification = Qualification.objects.get(id=my_model.id)
             User.qualifications.add(qualification)
+            messages.success(request,"your Qualification added successfully.")
             return redirect('add-qualification')
     return render(request,'registration/add_qualification.html',{
         'form':form
@@ -76,6 +78,7 @@ def add_workExperience(request):
             my_model = form.save()
             work_experience = WorkandExperience.objects.get(id=my_model.id)
             User.work_experience.add(work_experience)
+            messages.success(request,"your Wok experience added successfully.")
             return redirect('add-workExperience')
     return render(request,'registration/add_workexperience.html',{
         'form':form
@@ -113,7 +116,11 @@ def contact_us(request):
 @login_required
 def profile_page(request, slug):
     user = CustomUser.objects.filter(slug=slug)
-    return render(request,'UserView/profile_page.html', {'my': user})
+    uploaded_jobs = Jobs.objects.filter(recruiter = request.user)
+    return render(request,'UserView/profile_page.html', {
+        'my': user,
+        'jobs':uploaded_jobs
+        })
 
 
 

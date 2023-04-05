@@ -35,6 +35,6 @@ class JobFilterForm(ModelForm):
         fields = ['job_Category','type','job_duration_type']
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['job_Category'].widget.attrs.update({'class':'px-2 py-1 w-full border-gray-200 border-2 ml-4'})
-        self.fields['type'].widget.attrs.update({'class':'px-2 py-1 w-full border-gray-200 border-2 ml-4'})
-        self.fields['job_duration_type'].widget.attrs.update({'class':'px-2 py-1 w-full border-gray-200 border-2 ml-4'})
+        self.fields['job_Category'].widget.attrs.update({'class':'px-2 py-1 w-full border-gray-200 border-2 ml-4  cursor-pointer'})
+        self.fields['type'].widget.attrs.update({'class':'px-2 py-1 w-full border-gray-200 border-2 ml-4 cursor-pointer'})
+        self.fields['job_duration_type'].widget.attrs.update({'class':'px-2 py-1 w-full border-gray-200 border-2 ml-4 cursor-pointer'})

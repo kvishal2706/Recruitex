@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from .models import Jobs,Tag,Jobs_type
+from django.contrib import messages
 from django.views.generic import ListView,DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
@@ -57,13 +58,40 @@ def JobsDetailView(request, slug):  # new
     })
     
 
-@login_required
+@user_passes_test(lambda u: u.is_recruiter)
 def UpdateJob(request, slug):
-    return render(request, 'Jobs/jobs_edit.html')
+    pre_job = Jobs.objects.get(slug=slug)
+    if request.user != pre_job.recruiter:
+        messages.error(request,'You are not the owner of this job!')
+        return redirect('jome-page')
+    post_data = request.POST or None
+    file_data = request.FILES or None
+    form = JobsCreationForm(instance=pre_job)
+    if request.method=='POST':
+        form = JobsCreationForm(post_data,request.FILES,instance=pre_job)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"Job has been updated successfully.")
+            return redirect('profile-page', slug=request.user.slug)
+        
+    return render(request,'Jobs/jobs_edit.html',{
+        'form':form,
+        'job':pre_job
+    })
 
 @login_required
 def DeleteJob(request, slug):
-    return render(request, 'Jobs/jobs_delete.html')
+    job = Jobs.objects.get(slug=slug)
+    if request.user != job.recruiter:
+        messages.error(request,'You are not the owner of this job!')
+        return redirect('jome-page')
+    if request.method=='POST':
+        job.delete()
+        messages.error(request,"Job has been deleted successfully.")
+        return redirect('profile-page',slug=request.user.slug)
+    return render(request, 'Jobs/jobs_delete.html',{
+        'job':job
+    })
 
 
 # class JobsCreateView(LoginRequiredMixin, CreateView): # new
@@ -78,17 +106,18 @@ def DeleteJob(request, slug):
 
 @user_passes_test(lambda u: u.is_recruiter)
 def JobsCreateView(request):
-    form_data = request.POST or None
+    post_data = request.POST or None
     file_data = request.FILES or None
     form = JobsCreationForm()
     if request.method=='POST':
-        form = JobsCreationForm(request.POST, request.FILES)
-        print('11111111')
+        form = JobsCreationForm(post_data,file_data)
         if form.is_valid():
-            print('2222222')
-            my_model = form.save()
+            my_model = form.save(commit=False)
             job = Jobs.objects.get(id=my_model.id)
             job.recruiter = request.user
+            job.logo = form.cleaned_data['logo']
+            job.save()
+            messages.success(request,"Job has been added successfully.")
             return redirect('jobs_list')
         
     return render(request,'Jobs/jobs_new.html',{

@@ -8,7 +8,10 @@
         <form action="{% url 'add-qualification' %}" method='POST'>
             {% csrf_token %}
             {{form.as_p}}
-            <button type = "submit">Submit</button>
+            <div>
+                <a href="{% url 'profile-page' user.slug%}">Cancel</a>
+                <button type = "submit">Submit</button>
+            </div>
         </form>
     </div>
 </div>
