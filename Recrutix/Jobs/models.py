@@ -8,6 +8,9 @@ class Tag(models.Model):
     name=models.CharField(max_length=200, unique=True)
     created=models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
@@ -15,12 +18,18 @@ class Jobs_type(models.Model):
     name = models.CharField(max_length=16)
     created = models.DateTimeField(auto_now_add=True)
     
+    class Meta:
+        ordering = ['name']
+    
     def __str__(self):
         return self.name
     
 class Job_Duration(models.Model):
     name = models.CharField(max_length=15)
     created = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['name']
     
     def __str__(self):
         return self.name
