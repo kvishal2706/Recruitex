@@ -78,16 +78,18 @@ def DeleteJob(request, slug):
 
 @user_passes_test(lambda u: u.is_recruiter)
 def JobsCreateView(request):
+    form_data = request.POST or None
+    file_data = request.FILES or None
     form = JobsCreationForm()
     if request.method=='POST':
-        form = JobsCreationForm(request.POST)
+        form = JobsCreationForm(request.POST, request.FILES)
         print('11111111')
         if form.is_valid():
             print('2222222')
             my_model = form.save()
             job = Jobs.objects.get(id=my_model.id)
             job.recruiter = request.user
-            return redirect('jobs-list')
+            return redirect('jobs_list')
         
     return render(request,'Jobs/jobs_new.html',{
         'form':form

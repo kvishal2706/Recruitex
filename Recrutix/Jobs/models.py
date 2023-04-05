@@ -35,10 +35,10 @@ class Job_Duration(models.Model):
         return self.name
     
 class Jobs(models.Model):
-    title=models.CharField(max_length=50,null=False,blank=False)
-    designation=models.CharField(max_length=50,null=False,blank=False)
+    title=models.CharField(max_length=250,null=False,blank=False)
+    designation=models.CharField(max_length=250,null=False,blank=False)
     location=models.CharField(help_text="Enter company's location (city name)",max_length=255,null=False,blank=False)
-    salary=models.CharField(max_length=20,null=False,blank=False)
+    salary=models.CharField(max_length=50,null=False,blank=False)
     type=models.ForeignKey('Jobs_type',default=None ,on_delete=models.CASCADE)
     #qualification
     #preffered qualification
@@ -49,17 +49,18 @@ class Jobs(models.Model):
     about_job=models.TextField(null=False,blank=False)
     about_company=models.TextField(null=False,blank=False)
     workings=models.TextField(null=False,blank=False)
-    date=models.DateField(auto_now_add=True)
     skills_required = models.ManyToManyField("accounts.Skills", default="", blank=True)
     no_of_openings = models.IntegerField(default=10)
-    recruiter=models.ForeignKey(
-        get_user_model(),related_name='recruiter_name',null=True, blank=True,
-        on_delete=models.CASCADE,
-    )
-    slug=models.SlugField(default="",blank=True,null=False,db_index=True)
     embedded_location_url = models.TextField(help_text="Embeded url from maps of company only src",blank=True, null=False)
-    job_applied_users = models.ManyToManyField(get_user_model(), related_name='job_applied_users', blank=True)
+    date=models.DateField(auto_now_add=True)
+    recruiter=models.ForeignKey("accounts.CustomUser",related_name='recruiter_name',null=True, blank=True,on_delete=models.CASCADE)
+    slug=models.SlugField(default="",blank=True,null=False,db_index=True)
+    job_applied_users = models.ManyToManyField("accounts.CustomUser", related_name='job_applied_users', blank=True)
 
+    def save(self,*args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+    
     def __str__(self):
         return self.title
     
@@ -67,9 +68,6 @@ class Jobs(models.Model):
     def get_absolute_url(self):
         return reverse("job_details", args=[self.slug])
     
-    def save(self,*args, **kwargs):
-        self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
     
 class ApplicationForm(models.Model):
     first_name = models.CharField(max_length=50, null=False, blank=False)

@@ -16,6 +16,9 @@
        <div class="mt-7">
            <form action="" method="post">{% csrf_token %}
                {% csrf_token %}
+               {% comment %} <div>
+                {{form.error_messages}}
+            </div> {% endcomment %}
                <div class="login-form mx-24">
                    <div class="username px-2 py-1">
                        <div class="flex-col justify-center items-center">

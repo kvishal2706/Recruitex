@@ -11,8 +11,8 @@
    <a href="{% url 'jobs_new' %}" class="px-4 py-2 bg-red-100 text-red-500 border border-red-500 rounded-full w-fit " style="box-shadow: 0 0 5px">Add Job</a>
    {% else %}
    {% endif %}
-</div>
-<div class="flex mx-20 gap-4 mt-8 mb-6">
+</div><br>
+<div class="flex mx-10 gap-4 mt-8 mb-6">
    <div class="w-1/4 min-w-[250px] border-2 h-fit border-gray-100 p-4 text-left">
       <div class="flex items-center gap-3">
          <i class="fa-solid fa-circle-info"></i>
@@ -46,10 +46,10 @@
       </form>
    </div>
    <div class="flex-col items-start justify-start">
-      <div class=" w-fit h-fit border pb-6 pt-4 px-2 flex-row-reverse justify-around mb-6 flex-wrap">
+      <div class=" w-fit h-fit border pb-6 pt-4 px-2 flex justify-around mb-6 flex-wrap">
          {% for jobs in jobs %}
       <a href="{{ jobs.get_absolute_url }}">
-      <div class="border min-w-[20rem]  h-64 mx-2 mt-7" style="box-shadow: 5px 5px 10px #c5c5c5">
+      <div class="border w-[20rem]  h-64 mx-2 mt-7 hover:scale-[1.01]" style="box-shadow: 5px 5px 10px #c5c5c5">
          <div class='flex w-full my-4 justify-around'>
             <img class="h-14 ml-3 mt-4" src="/media/{{jobs.logo}}" alt="">
             <div class="w-44 pt-5 flex-col items-start text-left">
@@ -59,11 +59,11 @@
          </div>
          <div class="flex-col text-left w-full mx-8">
             <h5 class = "font-semibold text-xl">{{jobs.designation}}</h5>
-            <div class="flex gap-4 mt-4">
-               <div class="px-3 py-1 bg-blue-100 text-blue-700 font-normal rounded-md" style="box-shadow: 0px 0.5px 10px #7594d5">
+            <div class="flex gap-4 mt-4 items-center text-center">
+               <div class="px-3 py-1 bg-blue-100 text-blue-700 font-normal text-xs rounded-md" style="box-shadow: 0px 0.5px 10px #7594d5">
                   <span>{{jobs.job_Category}}</span>
                </div>
-               <div class="px-3 py-1 bg-orange-100 text-orange-700 font-normal rounded-md" style="box-shadow: 0px 0.5px 10px #e69748">
+               <div class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-normal rounded-md" style="box-shadow: 0px 0.5px 10px #e69748">
                   <span>{{jobs.job_duration_type}}</span>
                </div>
             </div>
