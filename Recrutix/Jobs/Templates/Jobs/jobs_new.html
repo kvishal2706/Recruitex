@@ -8,3 +8,68 @@
    <button type="submit">Submit</button>
 </form>
 {% endblock content %}
+{% comment %} <div class="bg-[#c5d0c4] mb-4 py-4 px-[18%]">
+   <div class="bg-white p-6 rounded-xl text-left">
+      <h1 class="font-semibold text-4xl font-body text-[#687466] mb-5">Add new Job</h1>
+      <form action="{% url 'jobs_new' %}" method='POST'>
+         {% csrf_token %}
+         <div class="mb-3 flex items-center justify-start">
+            <p class="w-44 text-lg font-medium">Title: </p>
+            <div> {{form.title}} </div>
+        </div>
+        <div class="mb-3 flex items-center justify-start">
+            <p class="w-44 text-lg font-medium">Designamtion: </p>
+            <div> {{form.designation}} </div>
+        </div>
+        <div class="mb-3 flex items-center justify-start">
+            <p class="w-44 text-lg font-medium">Location: </p>
+            <div> {{form.location}} </div>
+        </div>
+        <div class="mb-3 flex items-center justify-start">
+            <p class="w-44 text-lg font-medium">Salary: </p>
+            <div> {{form.salary}} </div>
+        </div>
+        <div class="mb-3 flex items-center justify-start">
+            <p class="w-44 text-lg font-medium">Type: </p>
+            <div> {{form.type}} </div>
+        </div>
+        <div class="mb-3 flex items-center justify-start">
+         <p class="w-44 text-lg font-medium">logo: </p>
+         <div> {{form.logo}} </div>
+      </div>
+      <div class="mb-3 flex items-center justify-start">
+         <p class="w-44 text-lg font-medium">Job Category: </p>
+         <div> {{form.job_Category}} </div>
+      </div>
+      <div class="mb-3 flex items-center justify-start">
+         <p class="w-44 text-lg font-medium">Job Duration: </p>
+         <div> {{form.job_duration_type}} </div>
+      </div>
+      <div class="mb-3 flex items-center justify-start">
+         <p class="w-44 text-lg font-medium">About Job: </p>
+         <div> {{form.about_job}} </div>
+      </div>
+      <div class="mb-3 flex items-center justify-start">
+         <p class="w-44 text-lg font-medium">About Company: </p>
+         <div> {{form.about_company}} </div>
+      </div>
+      <div class="mb-3 flex items-center justify-start">
+      <p class="w-44 text-lg font-medium">Working: </p>
+      <div> {{form.workings}} </div>
+      </div>
+      <div class="mb-3 flex items-center justify-start">
+      <p class="w-44 text-lg font-medium">Skills Required: </p>
+      <div> {{form.skills_required}} </div>
+      </div>
+      <div class="mb-3 flex items-center justify-start">
+      <p class="w-44 text-lg font-medium">No of Openings: </p>
+      <div> {{form.no_of_openings}} </div>
+      </div>
+      <div class="mb-3 flex items-center justify-start">
+      <p class="w-44 text-lg font-medium">Embedded location URL: </p>
+      <div> {{form.embedded_location_url}} </div>
+      </div>
+         <button type="submit">Submit</button>
+      </form>
+   </div>
+</div> {% endcomment %}
