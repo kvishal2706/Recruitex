@@ -112,7 +112,7 @@ def JobsCreateView(request):
     if request.method=='POST':
         form = JobsCreationForm(post_data,file_data)
         if form.is_valid():
-            my_model = form.save(commit=False)
+            my_model = form.save()
             job = Jobs.objects.get(id=my_model.id)
             job.recruiter = request.user
             job.logo = form.cleaned_data['logo']

@@ -13,7 +13,7 @@ class JobsCreationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['title'].widget.attrs.update({'placeholder':'Company name','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
         self.fields['designation'].widget.attrs.update({'placeholder':'Position name, M.tech','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
-        self.fields['location'].widget.attrs.update({'placeholder':'','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        self.fields['location'].widget.attrs.update({'placeholder':'Ex: India','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
         self.fields['salary'].widget.attrs.update({'placeholder':'Ex: 50k-75k','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
         self.fields['type'].widget.attrs.update({'placeholder':'','class':' px-3 py-1 border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
         self.fields['logo'].widget.attrs.update({'placeholder':'','class':' px-3 py-1 border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
