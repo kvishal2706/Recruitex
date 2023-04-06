@@ -8,6 +8,24 @@ class JobsCreationForm(forms.ModelForm):
         model = Jobs
         fields = '__all__'
         exclude = ('date','recruiter','slug','job_applied_users',)
+        
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs.update({'placeholder':'Company name','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
+        self.fields['designation'].widget.attrs.update({'placeholder':'Position name, M.tech','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
+        self.fields['location'].widget.attrs.update({'placeholder':'','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        self.fields['salary'].widget.attrs.update({'placeholder':'Ex: 50k-75k','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        self.fields['type'].widget.attrs.update({'placeholder':'','class':' px-3 py-1 border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        self.fields['logo'].widget.attrs.update({'placeholder':'','class':' px-3 py-1 border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
+        self.fields['job_Category'].widget.attrs.update({'placeholder':'','class':' px-3 py-1 w-60 border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
+        self.fields['job_duration_type'].widget.attrs.update({'placeholder':'','class':' px-3 py-1 w-60 border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        self.fields['about_job'].widget.attrs.update({'placeholder':'Write a short description about your job','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400 p-2 h-20'})
+        self.fields['about_company'].widget.attrs.update({'placeholder':'Write a short description about your company','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400 p-2 h-20'})
+        self.fields['workings'].widget.attrs.update({'placeholder':'Write a short description about working at company','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400 p-2 h-20'})
+        self.fields['skills_required'].widget.attrs.update({'placeholder':'Ex: B.tech, M.tech','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
+        self.fields['no_of_openings'].widget.attrs.update({'placeholder':'Ex: CSE','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        self.fields['embedded_location_url'].widget.attrs.update({'placeholder':'paste the src of your location from google maps.','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400 p-2 h-20'})
+        
 
 
 class ApplicationForm(ModelForm):

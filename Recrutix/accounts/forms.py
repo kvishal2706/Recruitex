@@ -77,12 +77,19 @@ class UpdateInformationForm(forms.ModelForm):
         
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['first_name'].widget.attrs.update({'class':'w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['last_name'].widget.attrs.update({'class':'w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['email'].widget.attrs.update({'class':'w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['username'].widget.attrs.update({'class':'w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['phone'].widget.attrs.update({'class':'w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
         self.fields['gender'].widget.attrs.update({'class':'w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
         self.fields['profile_photo'].widget.attrs.update({'class':'w-[15rem] px-4 py-2 focus:outline-none border-0'})
         self.fields['dob'].widget.attrs.update({'placeholder':'YYYY-MM-DD','class':'min-w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
-        self.fields['age'].widget.attrs.update({'placeholder':'Eg: 18','class':'min-w-[16rem] ml-8 px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['age'].widget.attrs.update({'placeholder':'Eg: 18','class':'min-w-[12rem] ml-8 px-4 py-2 focus:outline-none border-0 rounded-lg'})
         self.fields['salary'].widget.attrs.update({'placeholder':'','class':'min-w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
-        self.fields['address'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['address'].widget.attrs.update({'placeholder':'','class':'min-w-[12rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['qualification'].widget.attrs.update({'placeholder':'','class':'min-w-[14rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['major_skill'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
         self.fields['about_me'].widget.attrs.update({'placeholder':'Write a short description about you','class':'h-20 w-full border-0 rounded-lg p-2 mt-2'})
         self.fields['languages'].widget.attrs.update({'placeholder':'','class':'w-[12rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
         self.fields['interests'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
@@ -96,9 +103,25 @@ class addQualificationsForm(forms.ModelForm):
         model = Qualification
         fields = '__all__'
         
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['institute_name'].widget.attrs.update({'placeholder':'Name of Institute','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
+        self.fields['degree_type'].widget.attrs.update({'placeholder':'Ex: B.tech, M.tech','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
+        self.fields['field_of_study'].widget.attrs.update({'placeholder':'Ex: CSE','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        self.fields['start_year'].widget.attrs.update({'placeholder':'Ex: 2021','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        self.fields['end_year'].widget.attrs.update({'placeholder':'Ex:2025','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        
 class addWorkExperienceForm(forms.ModelForm):
     joining_date = forms.DateField(widget = DateInput)
     leaving_date = forms.DateField(widget = DateInput)
     class Meta:
         model = WorkandExperience
         fields = '__all__'        
+        
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['job_title'].widget.attrs.update({'placeholder':'Work Position','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
+        self.fields['company_name'].widget.attrs.update({'placeholder':'Ex: Google','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none '})
+        self.fields['joining_date'].widget.attrs.update({'placeholder':'','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        self.fields['leaving_date'].widget.attrs.update({'placeholder':'','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400'})
+        self.fields['experience_description'].widget.attrs.update({'placeholder':'Write a short description about your work experience','class':'border-2 border-[#9ea79d] rounded-xl focus:outline-none text-gray-400 p-2 h-20'})

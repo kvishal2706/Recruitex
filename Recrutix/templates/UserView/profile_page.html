@@ -101,7 +101,7 @@
                                 <div>
                                     <div class="flex gap-2 items-baseline">
                                         <h1 class="text-base font-semibold"> {{work.job_title}} </h1>
-                                        <p class="text-[0.7rem] text-[#79967f]"> {{work.joining_date}}{% if work.leaving_date %}-{{work.end_year}}{% endif %} </p>
+                                        <p class="text-[0.7rem] text-[#79967f]"> {{work.joining_date}}{% if work.leaving_date %} - {{work.leaving_date}}{% endif %} </p>
                                     </div>
                                     <div>
                                         <p class="text-xs font-semibold text-[#79967f]"> {{work.company_name}}</p>
@@ -264,11 +264,11 @@
             </div>
             <div class="flex justify-between bg-[#d6e4d8] mt-4 p-4 items-center rounded-lg">
                 <div class="text-sm font-semibold text-[#3a3a3a] ">Social Profiles: </div>
-                <div class=" flex gap-2 text-[0.7rem] text-[#434343]">
-                    <a href="{{user.facebook_link}}"><i class="fa-brands fa-2x fa-square-facebook"></i></a>
-                    <a href="{{user.twitter_link}}"><i class="fa-brands fa-2x fa-twitter"></i></a>
-                    <a href="{{user.instagram_link}}"><i class="fa-brands fa-2x fa-instagram"></i></a>
-                    <a href="{{user.youtube_link}}"><i class="fa-brands fa-2x fa-youtube"></i></a>
+                <div class=" flex gap-2 text-[0.7rem] text-[#6d766f]">
+                    <a href="{{user.facebook_link}}"><i class="fa-brands fa-2x fa-square-facebook hover:scale-[1.1] hover:text-black"></i></a>
+                    <a href="{{user.twitter_link}}"><i class="fa-brands fa-2x fa-twitter hover:scale-[1.1] hover:text-black"></i></a>
+                    <a href="{{user.instagram_link}}"><i class="fa-brands fa-2x fa-instagram hover:scale-[1.1] hover:text-black"></i></a>
+                    <a href="{{user.youtube_link}}"><i class="fa-brands fa-2x fa-youtube hover:scale-[1.1] hover:text-black"></i></a>
                 </div>
             </div>
             {% if user.skills_tag.all %}

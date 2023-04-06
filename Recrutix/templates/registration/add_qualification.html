@@ -3,14 +3,33 @@
 {% block title %}Add Qualification{% endblock title %}
 {% block content %}
 <div class="bg-[#c5d0c4] mb-4 py-4 px-[18%]">
-    <div class="bg-white p-6 rounded-xl">
-        <h1>Add new Qualification</h1>
+    <div class="bg-white p-6 rounded-xl text-left">
+        <h1 class="font-semibold text-4xl font-body text-[#687466] mb-5">Add new Qualification</h1>
         <form action="{% url 'add-qualification' %}" method='POST'>
             {% csrf_token %}
-            {{form.as_p}}
-            <div>
-                <a href="{% url 'profile-page' user.slug%}">Cancel</a>
-                <button type = "submit">Submit</button>
+            <div class="mb-3 flex items-center justify-start">
+                <p class="w-44 text-lg font-medium">Institute Name: </p>
+                <div> {{form.institute_name}} </div>
+            </div>
+            <div class="mb-3 flex items-center justify-start">
+                <p class="w-44 text-lg font-medium">Degree type: </p>
+                <div> {{form.degree_type}} </div>
+            </div>
+            <div class="mb-3 flex items-center justify-start">
+                <p class="w-44 text-lg font-medium">Fielf of Study: </p>
+                <div> {{form.field_of_study}} </div>
+            </div>
+            <div class="mb-3 flex items-center justify-start">
+                <p class="w-44 text-lg font-medium">Start year: </p>
+                <div> {{form.start_year}} </div>
+            </div>
+            <div class="mb-3 flex items-center justify-start">
+                <p class="w-44 text-lg font-medium">End year: </p>
+                <div> {{form.end_year}} </div>
+            </div>
+            <div class="text-center">
+                <a class="mr-4 px-4 py-2 bg-red-100 text-red-600 border border-red-600 rounded-xl" style="box-shadow: 0 0 5px" href="{% url 'profile-page' user.slug%}">Cancel</a>
+                <button class="px-4 py-[0.33rem] bg-green-100 text-green-600 border border-green-600 rounded-xl" style="box-shadow: 0 0 5px" type = "submit">Submit</button>
             </div>
         </form>
     </div>

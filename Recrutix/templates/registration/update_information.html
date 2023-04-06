@@ -14,31 +14,53 @@
             <h2 class = " font-body font-bold text-5xl mb-8 text-[#546c5d]">Update Information</h2>
             <form action="{% url 'update-information'%}" enctype="multipart/form-data" method='POST'>
                 {% csrf_token %}
-                {% comment %} <div class="flex gap-10 justify-around items-center wrap my-4">
+                <div class="flex gap-10 justify-around items-center wrap my-4">
                     <div class="flex gap-4 items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
-                        <h1>Gender :</h1>
-                        <div>{{form.gender}}</div>
+                        <h1>First name :</h1>
+                        <div>{{form.first_name}}</div>
                     </div>
                     <div class="flex gap-4 items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
-                        <h1>Profile Photo : </h1>
-                        <div>{{form.profile_photo}}</div>
+                        <h1>Last name : </h1>
+                        <div class="flex-col ">{{form.last_name}}</div>
                     </div>
                 </div>
                 <div class="flex gap-10 justify-around items-center wrap my-4">
+                    <div class="flex gap-4 items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
+                        <h1 class="mr-9">Email :</h1>
+                        <div>{{form.email}}</div>
+                    </div>
+                    <div class="flex gap-4 items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
+                        <h1>Username : </h1>
+                        <div class="flex-col ">{{form.username}}</div>
+                    </div>
+                </div>
+                <div class="flex gap-10 justify-around items-center wrap my-4">
+                    <div class="flex gap-4 items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
+                        <h1 class="mr-6">Phone :</h1>
+                        <div>{{form.phone}}</div>
+                    </div>
+                    <div class="flex gap-4 items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
+                        <h1 class="mr-4">Gender :</h1>
+                        <div>{{form.gender}}</div>
+                    </div>
+                </div>
+                <div class="flex gap-10 justify-around items-center wrap my-4">
+                    
+                </div>
+                <div class="flex gap-10 justify-around items-center wrap my-4">
                     <div class="flex gap-4 min-w-[20.4rem] items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
-                        <h1 class="mr-5">DOB :</h1>
+                        <h1 class="mr-8">DOB :</h1>
                         <div>{{form.dob}}</div>
                     </div>
-                    <div class="flex gap-4 min-w-[24rem] items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
+                    <div class="flex gap-4 min-w-[19rem] items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
                         <h1 class="mr-5">Age : </h1>
                         <div>{{form.age}}</div>
                     </div>
                 </div>
-                <hr class="border border-[#b6bdb9] mx-4 my-3 mt-5">
                 <div>
                     <div class="flex gap-10 justify-around items-center wrap my-4">
                         <div class="flex gap-4 min-w-[10rem] items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
-                            <h1 class="mr-2">Salary :</h1>
+                            <h1 class="mr-5">Salary :</h1>
                             <div>{{form.salary}}</div>
                         </div>
                         <div class="flex gap-4 min-w-[20rem] items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
@@ -47,11 +69,26 @@
                         </div>
                     </div>
                 </div>
+                <hr class="border border-[#b6bdb9] mx-4 my-3 mt-5">
                 <div class=" px-8">
+                    <div class="flex gap-4 items-center border-2 mb-3 border-[#c5d0c4] py-2 px-3 rounded-xl">
+                        <h1>Profile Photo : </h1>
+                        <div class="flex-col ">{{form.profile_photo}}</div>
+                    </div>
                     <div class="text-left p-4 rounded-lg bg-[#c5d0c4]">
                         <h1>About You:</h1>
                         <div>
                             {{form.about_me}}
+                        </div>
+                    </div>
+                    <div class="flex gap-10 justify-around items-center wrap my-4">
+                        <div class="flex gap-4 min-w-[20rem] mt-3 items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
+                            <h1 class="">Major Skill : </h1>
+                            <div>{{form.major_skill}}</div>
+                        </div>
+                        <div class="flex gap-4 min-w-[20rem] mt-3 items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
+                            <h1 class="">Qualification : </h1>
+                            <div>{{form.qualification}}</div>
                         </div>
                     </div>
                 </div>
@@ -79,7 +116,8 @@
                             <div>{{form.twitter_link}}</div>
                         </div>
                     </div>
-                </div><div>
+                </div>
+                <div>
                     <div class="flex gap-10 justify-around items-center wrap my-4">
                         <div class="flex gap-4 min-w-[10rem] items-center bg-[#c5d0c4] py-2 px-3 rounded-xl">
                             <h1 class="">Instagram link :</h1>
@@ -91,9 +129,20 @@
                         </div>
                     </div>
                 </div>
+                <div class=" px-8">
+                    <div class="flex gap-4 items-center border-2 mb-3 border-[#c5d0c4] py-2 px-3 rounded-xl">
+                        <h1>CV : </h1>
+                        <div class="flex-col ">{{form.cv}}</div>
+                    </div>
+                    <div class="flex gap-4 items-center border-2 mb-3 border-[#c5d0c4] py-2 px-3 rounded-xl">
+                        <h1>Resume:</h1>
+                        <div>
+                            {{form.resume}}
+                        </div>
+                    </div>
+                </div>
                 <div class="px-16">
-                </div> {% endcomment %}
-                {{form.as_p}}
+                </div>
                 <button class="px-6 py-2 bg-[#c5d0c4] rounded-xl w-full text-3xl font-semibold hover:scale-[1.03] text-[#40503f]" style="box-shadow: 0px 0px 6px" type='submit'>Submit</button>
             </form>
         </div>
