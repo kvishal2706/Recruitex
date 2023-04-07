@@ -26,16 +26,6 @@ SECRET_KEY = 'django-insecure-8o*ag0kct*ze)-ncz3o((m#n)jphk0q(pot@sv%l7_j2fm0f#_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-
-EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'raghavagatadi12@gmail.com'
-EMAIL_HOST_PASSWORD = 'biqffbfjyaotyeyp'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-
 ALLOWED_HOSTS = []
 
 
@@ -178,3 +168,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 SOCIAL_AUTH_GITHUB_KEY = 'c33932ae1096fb47bfc6'
 SOCIAL_AUTH_GITHUB_SECRET = '68dbb21d30ef5989e1fccbfb2315cd2347a1465d'
 
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'raghavagatadi12@gmail.com'
+# EMAIL_HOST_PASSWORD = 'guifntnhhreshywu'
+# EMAIL_USE_TLS = True

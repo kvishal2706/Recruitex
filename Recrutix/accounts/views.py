@@ -7,7 +7,6 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.views.generic import CreateView
 from django.contrib.auth.decorators import user_passes_test
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
@@ -163,7 +162,7 @@ def subscribe(request):
         subscribe_model_instance.email = email
         subscribe_model_instance.save()
         messages.success(request, f"{email} email was successfully subscrubed to our newsletters!")
-
+        
         return redirect(request.META.get("HTTP_REFERER",'/'))
 
 
