@@ -19,6 +19,7 @@
             <a class="rounded-xl px-3 py-2 bg-[#d0decf] text-[#606f59] text-xl font-medium hover:scale-[1.05]" style="box-shadow: 0 0 5px" href="{% url 'jobs_list' %}">Search Jobs Now</a>
         </div>
     </div>
+   <div class="text-left mx-[11%] mb-2"> <h1 class="text-3xl font-semibold text-[#3b493c]">Bolgs</h1></div>
     <div class="mx-[10%] bg-[#f1f1f1] flex gap-8 overflow-x-auto rounded-xl text-left p-6 mb-4">
         {% for blog in blogs %}
         <a href="{% url 'blog' blog.slug%}">
