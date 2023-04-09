@@ -3,6 +3,12 @@
 {% load static %}
 {% block title %}Job-Details{% endblock title %}
 {% block content %}
+{% if object.recruiter == user %}
+<div class="w-full px-20 mr-5 flex gap-4 justify-end my-5">
+   <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_edit' object.slug%}"><img src="{% static 'images/edit.png' %}" class="h-5" alt=""></a>
+   <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_delete' object.slug%}"><img src="{% static 'images/remove.png' %}" class="h-5" alt=""></a>
+</div>
+{% endif %}
 <div class="flex w-full justify-evenly pl-8">
    <div class=" w-7/12 border-2 border-gray-50 py-10 px-8 text-left" >
       <div class="flex-col justify-start items-start ">
@@ -35,36 +41,36 @@
       <hr class = "border border-gray-100 mx-3 mb-14">
       <div class="">
          <h3 class="font-semibold text-3xl" >Minimum Qualifications</h3>
-         <ul class = "list-disc px-10 my-3">
-            <li class="pb-1 font-normal text-gray-700">4+ years of experience in webflow development</li>
-            <li class="pb-1 font-normal text-gray-700">Exceptional visual and UI design skills, with a deep knowledge of best practice</li>
-            <li class="pb-1 font-normal text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-            <li class="pb-1 font-normal text-gray-700">Expert skill level using Figma</li>
-            <li class="pb-1 font-normal text-gray-700">Nam feugiat enim a urna blandit ullamcorper. Nunc purus urna, auctor quis</li>
-            <li class="pb-1 font-normal text-gray-700">Quisque sed est non erat ultricies condimentum sed quis nisi.</li>
-            <li class="pb-1 font-normal text-gray-700">Fluent in English (spoken and written)</li>
+         <ul class = "list-disc px-10 my-3 text-[0.85rem] text-[#909090] font-medium leading-8">
+            <li class="pb-1">4+ years of experience in webflow development</li>
+            <li class="pb-1">Exceptional visual and UI design skills, with a deep knowledge of best practice</li>
+            <li class="pb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+            <li class="pb-1">Expert skill level using Figma</li>
+            <li class="pb-1">Nam feugiat enim a urna blandit ullamcorper. Nunc purus urna, auctor quis</li>
+            <li class="pb-1">Quisque sed est non erat ultricies condimentum sed quis nisi.</li>
+            <li class="pb-1">Fluent in English (spoken and written)</li>
          </ul>
       </div>
       <div>
          <h3 class="font-semibold text-3xl">Preferred Qualifications</h3>
-         <ul class="list-disc px-10 my-3">
-            <li class="pb-1 font-normal text-gray-700">Exceptional visual and UI design skills, with a deep knowledge of best practice</li>
-            <li class="pb-1 font-normal text-gray-700">Quisque sed est non erat ultricies condimentum sed quis nisi.</li>
-            <li class="pb-1 font-normal text-gray-700">Comfortable running workshops and gathering insight from the team</li>
-            <li class="pb-1 font-normal text-gray-700">Quisque sed est non erat ultricies condimentum sed.</li>
+         <ul class="list-disc px-10 my-3 text-[0.85rem] text-[#909090] font-medium leading-8">
+            <li class="pb-1 ">Exceptional visual and UI design skills, with a deep knowledge of best practice</li>
+            <li class="pb-1 ">Quisque sed est non erat ultricies condimentum sed quis nisi.</li>
+            <li class="pb-1 ">Comfortable running workshops and gathering insight from the team</li>
+            <li class="pb-1 ">Quisque sed est non erat ultricies condimentum sed.</li>
          </ul>
       </div>
       <div class="mt-5">
          <h3 class="font-semibold text-3xl mb-3 cursor-pointer">About the Job</h3>
-         <p class="text-base text-medium text-gray-600 leading-7 pl-2">{{object.about_job|linebreaksbr}}</p>
+         <p class="text-[0.85rem] text-[#909090] font-medium leading-8 pl-2">{{object.about_job|linebreaksbr}}</p>
       </div>
       <div class="mt-5">
          <h3 class="font-semibold text-3xl mb-3">About the Company</h3>
-         <p class="text-base text-medium text-gray-600 leading-7 pl-2">{{object.about_company|linebreaksbr}}</p>
+         <p class="text-[0.85rem] text-[#909090] font-medium leading-8 pl-2">{{object.about_company|linebreaksbr}}</p>
       </div>
       <div class="mt-5 mb-7">
          <h3 class="font-semibold text-3xl mb-3">Working at <span class="text-orange-500 font-semibold">{{object.title}}</span> </h3>
-         <p class="text-base text-medium text-gray-600 leading-7 pl-2">{{object.workings|linebreaksbr}}</p>
+         <p class="text-[0.85rem] text-[#909090] font-medium leading-8 pl-2">{{object.workings|linebreaksbr}}</p>
       </div>
       <hr id="apply" class = "border border-gray-100 mx-3 mb-10">
       <div>
@@ -76,7 +82,7 @@
             <p>{{form.email}}</p>
             <p>{{form.about_you}}</p>
             <p>{{form.why_you}}</p>
-            <button class="w-full text-black m-2 py-2 text-xl bg-black text-white" type = "Submit"> Apply Now</button>
+            <button class="w-full m-2 py-2 text-xl bg-black text-white" type = "Submit"> Apply Now</button>
          </form>
       </div>
    </div>

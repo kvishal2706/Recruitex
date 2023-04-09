@@ -2,6 +2,17 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <title>{% block title %}{% endblock title %}</title>
+      <title>Home</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      {% block links %}{% endblock links %} {% tailwind_css %}
+      <link rel="stylesheet" href="{% static 'css/dist/base.css' %}">
+      <script src="https://cdn.tailwindcss.com"></script>
       <style>
          *:focus{
             outline: none;
@@ -29,17 +40,6 @@
           }
           {% block styles %}{% endblock styles %}
       </style>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-      <title>{% block title %}{% endblock title %}</title>
-      <title>Home</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      {% block links %}{% endblock links %} {% tailwind_css %}
-      <link rel="stylesheet" href="{% static 'css/dist/base.css' %}">
-      <script src="https://cdn.tailwindcss.com"></script>
    </head>
    <body class="font-body m-auto max-w-screen-2xl border-2 border-gray-50 transition-all ease-in duration-300">
       <header>
@@ -97,7 +97,7 @@
          <div class="flex justify-between items-center py-8 px-4 gap-20">
             <div class="flex flex-wrap text-base justify-start gap-5 text-gray-700 max-md:flex-col max-md:gap-2 max-md:ml-10 max-lg:text-sm xl:font-semibold max-lg:gap-2">
                <a href={% url 'about_us' %}><p>About us</p></a>
-               <a href=""><p>Features</p></a>
+               <a href="{% url 'terms_conditions' %}"><p>Terms and Conditions</p></a>
                <a href=""><p>User Example</p></a>
                <a href=""><p>Job Recruter's acc</p></a>
                <a href=""><p>Resources</p></a>

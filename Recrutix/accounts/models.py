@@ -3,6 +3,8 @@ from django.utils.text import slugify
 from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.text import slugify
+from markdown import markdown
 
 class Skills(models.Model):
     name= models.CharField(max_length=50)
@@ -109,3 +111,26 @@ class Feedback(models.Model):
     
     def __str__(self):
         return f"{self.name}, {self.email}"
+
+
+
+class Blog(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, blank=True)
+    author = models.CharField(max_length=100)
+    content = models.TextField()
+    content_html = models.TextField(editable=False)
+    src = models.TextField(default="", blank=True,null=True)
+    published_date = models.DateTimeField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        self.content_html = markdown(self.content)
+        super(Blog, self).save(*args, **kwargs)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+        
+    def __str__(self):
+        return self.title

@@ -21,8 +21,10 @@ django-tinymce==3.6.1
 fonttools==4.39.3
 html5lib==1.1
 idna==3.4
+importlib-metadata==6.2.0
 Jinja2==3.1.2
 jinja2-time==0.2.0
+Markdown==3.4.3
 MarkupSafe==2.1.2
 oauthlib==3.2.2
 Pillow==9.4.0
@@ -45,4 +47,5 @@ tinycss2==1.2.1
 urllib3==1.26.15
 weasyprint==58.1
 webencodings==0.5.1
+zipp==3.15.0
 zopfli==0.2.2

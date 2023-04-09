@@ -2,7 +2,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, Skills, Gender_type, SubscribedUsers,Feedback, Project,Qualification,WorkandExperience
+from .models import CustomUser, Skills, Gender_type, SubscribedUsers,Feedback, Project
+from .models import Qualification,WorkandExperience,Blog
 
 
 class SubscribedUsersAdmin(admin.ModelAdmin):
@@ -30,3 +31,4 @@ admin.site.register(Qualification)
 admin.site.register(WorkandExperience)
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(SubscribedUsers,SubscribedUsersAdmin)
+admin.site.register(Blog)

@@ -96,7 +96,7 @@
                 {% if user.work_experience.all%}
                     <div>
                         {% for work in user.work_experience.all %}
-                            <div class="flex gap-6 items-center">
+                            <div class="flex gap-6 items-center ">
                                 <div class=" text-center rounded-full bg-[#d3e4da] w-7 pt-[5px] mt-2 h-7 text-sm text-[#5e7862] font-medium" style="box-shadow:0px 0px 4px">{{work.job_title|make_list|first|title}}</div>
                                 <div>
                                     <div class="flex gap-2 items-baseline">
@@ -108,8 +108,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="h-16 border-l ml-3 mt-2 px-9 text-">
-                                <p class="text-[0.8rem] text-[#909090] font-medium leading-8"> {{work.experience_description}} </p>
+                            <div class="h-16 border-l ml-3 mt-2 mb-1 px-9 text-">
+                                <p class="text-sm text-[#909090] font-medium leading-8"> {{work.experience_description}} </p>
                             </div>
                             {% endfor %}
                     </div>
@@ -137,8 +137,8 @@
                                 <h1 class="w-40 mr-10 font-medium text-sm text-blue-500"> {{job.job_applied_users.all.count}} <span>Applicant(s)</span> </h1>
                                 <h1 class="w-40 mr-10 text-[#909090] text-sm font-medium"> {{job.date}} </h1>
                                 <div class="w-32 mr-5 flex gap-4">
-                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_edit' job.slug%}"><img src="{% static 'images/edit.png' %}" class="h-5" alt=""></a>
-                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_delete' job.slug%}"><img src="{% static 'images/remove.png' %}" class="h-5" alt=""></a>
+                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_edit' job.slug%}"><img src="{% static 'images/edit.png' %}" class="h-5 hover:scale-[1.1]" alt=""></a>
+                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_delete' job.slug%}"><img src="{% static 'images/remove.png' %}" class="h-5 hover:scale-[1.1]" alt=""></a>
                                 </div>
                             </div><hr class="w-full px-10 mt-1">
                         {% endfor %}

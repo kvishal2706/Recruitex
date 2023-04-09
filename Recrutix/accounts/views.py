@@ -1,6 +1,6 @@
 from .forms import CustomUserCreationForm,NewsletterForm,UpdateInformationForm,addQualificationsForm,addWorkExperienceForm,SkillsForm
 from django.contrib.auth.decorators import login_required
-from .models import CustomUser, SubscribedUsers, Qualification,WorkandExperience
+from .models import Blog, CustomUser, SubscribedUsers, Qualification,WorkandExperience
 from Jobs.models import Jobs
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
@@ -32,6 +32,41 @@ def SignUpView(request):
     return render(request, 'registration/UserSignup.html',{
         'form': form
     })
+
+
+def index(request):
+    return render(request,'UserView/base.html') 
+
+def home(request):
+    blogs = Blog.objects.all()
+    return render(request,'UserView/home.html',{
+        'blogs':blogs
+    }) 
+
+def about_us(request):
+    return render(request, 'UserView/about_us.html')
+
+def terms_conditions(request):
+    return render(request, "UserView/termsandconditions.html")
+
+def contact_us(request):
+    form = FeedbackForm()
+    if request.method =='POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thank you for your feedback.")
+            return redirect('home-page')
+    return render(request, 'UserView/contact_us.html', {'form': form})
+
+@login_required
+def profile_page(request, slug):
+    user = CustomUser.objects.filter(slug=slug)
+    uploaded_jobs = Jobs.objects.filter(recruiter = request.user)
+    return render(request,'UserView/profile_page.html', {
+        'my': user,
+        'jobs':uploaded_jobs
+        })
 
 @login_required
 def update_information(request):
@@ -95,32 +130,6 @@ def add_skills(request):
         'form':form
     })
     
-
-def index(request):
-    return render(request,'UserView/home.html') 
-
-def about_us(request):
-    return render(request, 'UserView/about_us.html')
-
-def contact_us(request):
-    form = FeedbackForm()
-    if request.method =='POST':
-        form = FeedbackForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Thank you for your feedback.")
-            return redirect('home-page')
-    return render(request, 'UserView/contact_us.html', {'form': form})
-
-@login_required
-def profile_page(request, slug):
-    user = CustomUser.objects.filter(slug=slug)
-    uploaded_jobs = Jobs.objects.filter(recruiter = request.user)
-    return render(request,'UserView/profile_page.html', {
-        'my': user,
-        'jobs':uploaded_jobs
-        })
-
 
 
 def profiles_list(request):
@@ -221,3 +230,10 @@ def resume_view(request, slug):
     else:
         HttpResponseNotFound("The requested file not found")
     
+
+def blog(request,slug):
+    blog = Blog.objects.get(slug = slug)
+    print(blog)
+    return render(request,'UserView/blog.html',{
+        'blog':blog
+    })

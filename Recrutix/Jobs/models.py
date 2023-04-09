@@ -55,18 +55,19 @@ class Jobs(models.Model):
     embedded_location_url = models.TextField(help_text="Embeded url from maps of company only src",blank=True, null=False)
     date = models.DateField(auto_now_add=True)
     recruiter=models.ForeignKey("accounts.CustomUser",related_name='recruiter_name',null=True, blank=True,on_delete=models.CASCADE)
-    slug=models.SlugField(default="",blank=True,null=False,db_index=True)
+    slug=models.SlugField(default="",blank=True,null=False,db_index=True,unique=True)
     job_applied_users = models.ManyToManyField("accounts.CustomUser", related_name='job_applied_users', blank=True)
 
     def save(self,*args, **kwargs):
-        self.slug = slugify(self.title)
+        Slug = str(self.title) + "-" + str(self.designation)
+        self.slug = slugify(Slug)
         super().save(*args, **kwargs)
     
     def __str__(self):
         return self.title
     
     class Meta:
-        ordering = ['date']
+        ordering = ['-id']
     
     def get_absolute_url(self):
         return reverse("job_details", args=[self.slug])

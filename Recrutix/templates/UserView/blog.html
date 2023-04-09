@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} {{blog.title}} {% endblock title %}
+{% block styles %}
+    .blog h1{
+        font-size: 36px;
+        color: black;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+    .blog h2{
+        font-size: 28px;
+        color: black;
+        font-weight: 300;
+        margin-bottom: 1rem;
+    }
+{% endblock styles %}
+{% block content %}
+<h1 class="font-semibold text-5xl my-3 font-body">{{blog.title|title}}</h1>
+<div class="mx-[10%] text-left text-[#636363]  leading-8 text-lg py-3 blog">
+    {{blog.content_html|safe}}
+</div>
+{% endblock content %}
