@@ -23,7 +23,7 @@
     <div class="mx-[10%] bg-[#f1f1f1] flex gap-8 overflow-x-auto rounded-xl text-left p-6 mb-4">
         {% for blog in blogs %}
         <a href="{% url 'blog' blog.slug%}">
-            <div class="p-3 relative bg-white rounded-xl min-w-[23rem] h-[20rem] hover:scale-[1.05]" style="box-shadow: 1px 1px 10px #a3a3a3">
+            <div class="p-3 relative bg-white rounded-xl min-w-[23rem] h-[20rem] hover:scale-[1.05] duration-500" style="box-shadow: 1px 1px 10px #a3a3a3">
                 <img class="rounded-xl max-h-[12.5rem] object-cover" src="{{blog.src}}" alt="blog post">
                 <div class="absolute bottom-0 mt-4 pb-4">
                     <h1 class="font-semibold text-2xl ">{{blog.title}}</h1>

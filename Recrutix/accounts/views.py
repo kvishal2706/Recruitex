@@ -59,14 +59,6 @@ def contact_us(request):
             return redirect('home-page')
     return render(request, 'UserView/contact_us.html', {'form': form})
 
-@login_required
-def profile_page(request, slug):
-    user = CustomUser.objects.filter(slug=slug)
-    uploaded_jobs = Jobs.objects.filter(recruiter = request.user)
-    return render(request,'UserView/profile_page.html', {
-        'my': user,
-        'jobs':uploaded_jobs
-        })
 
 @login_required
 def update_information(request):
@@ -188,9 +180,27 @@ def profiles_list(request):
 
     if 'q' in request.GET:
         query=request.GET['q']
-        profiles=CustomUser.objects.filter(username__icontains=query)
+        multiple_query = Q(Q(username__icontains=query) | Q(first_name__icontains=query)| Q(last_name__icontains=query) | Q(major_skill__icontains=query))
+        profiles=CustomUser.objects.filter(multiple_query)
     # print(profiles)
     return render(request, 'UserView/profiles.html',{'profiles':profiles})
+
+def search_profile(request,username):
+    user = CustomUser.objects.get(username=username)
+    return render(request,'UserView/profile_from_search.html',{
+        'User':user
+    })
+
+
+@login_required
+def profile_page(request, slug):
+    user = CustomUser.objects.filter(slug=slug)
+    uploaded_jobs = Jobs.objects.filter(recruiter = request.user)
+    return render(request,'UserView/profile_page.html', {
+        'my': user,
+        'jobs':uploaded_jobs
+        })
+
 
 def subscribe(request):
 

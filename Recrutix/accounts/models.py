@@ -95,6 +95,9 @@ class CustomUser(AbstractUser):
     def save(self, *args,**kwargs):
         self.slug = slugify(self.username)
         super().save(*args, **kwargs)
+    class Meta:
+        ordering = ['-is_recruiter','username']
+
 
 
 class SubscribedUsers(models.Model):

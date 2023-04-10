@@ -114,8 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL='home'   #Login Logout redirect
-LOGOUT_REDIRECT_URL='home'   #Login Logout redirect
 
 ################        Email Backend       #############
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -158,9 +156,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'home-page'
 LOGOUT_URL = 'login'
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home-page'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '444897408219-spnhju2gqucupqhl9f156qr5khj03rmq.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
