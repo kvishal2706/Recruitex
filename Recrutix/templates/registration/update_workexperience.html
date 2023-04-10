@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update Work Experience{% endblock title %}
+{% block content %}
+<div class="bg-[#c5d0c4] mb-4 py-4 px-[18%]">
+    <div class="bg-white p-6 rounded-xl text-left">
+        <h1 class="font-semibold text-4xl font-body text-[#687466] mb-5">Update Work Experience</h1>
+        <form action="{% url 'update-workExperience' experience.id%}" method='POST'>
+            {% csrf_token %}
+            <div class="mb-3 flex items-center justify-start">
+                <p class="w-44 text-lg font-medium">Job Title: </p>
+                <div> {{form.job_title}} </div>
+            </div>
+            <div class="mb-3 flex items-center justify-start">
+                <p class="w-44 text-lg font-medium">Company Name: </p>
+                <div> {{form.company_name}} </div>
+            </div>
+            <div class="mb-3 flex items-center justify-start">
+                <p class="w-44 text-lg font-medium">Joining Date: </p>
+                <div> {{form.joining_date}} </div>
+            </div>
+            <div class="mb-3 flex items-center justify-start">
+                <p class="w-44 text-lg font-medium">Leaving Date: </p>
+                <div> {{form.leaving_date}} </div>
+            </div>
+            <div class="mb-3 flex items-center justify-start">
+                <p class="w-44 text-lg font-medium">Experience description: </p>
+                <div> {{form.experience_description}} </div>
+            </div>
+            <div class="text-center">
+                <a class="mr-4 px-4 py-2 bg-red-100 text-red-600 border border-red-600 rounded-xl" style="box-shadow: 0 0 5px" href="{% url 'profile-page' user.slug%}">Cancel</a>
+                <button class="px-4 py-[0.33rem] bg-green-100 text-green-600 border border-green-600 rounded-xl" style="box-shadow: 0 0 5px" type = "submit">Submit</button>
+            </div>
+        </form>
+        <div class="text-center -mt-9 -ml-[19rem] hover:scale-[1.1]"><form action="{% url 'delete-workExperience' experience.id%}" method='POST'>{% csrf_token %}<button class="mr-4 px-4 py-1 bg-red-100 text-red-600 border border-red-600 rounded-xl" style="box-shadow: 0 0 5px" type = "submit">Delete</button></form></div>
+    </div>
+</div>
+{% endblock content %}

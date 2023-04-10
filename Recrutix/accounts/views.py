@@ -102,6 +102,32 @@ def add_qualifications(request):
     return render(request,'registration/add_qualification.html',{
         'form':form
     })
+    
+@login_required
+def update_qualifications(request, pk):
+    User = request.user
+    qualification = Qualification.objects.get(id = pk)
+    form = addQualificationsForm(instance=qualification)
+    if request.method=='POST':
+        form = addQualificationsForm(request.POST,instance=qualification)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"your Qualification has been edited successfully.")
+            return redirect('profile-page',slug=request.user.slug)
+    return render(request,'registration/update_qualification.html',{
+        'form':form,
+        'qualification':qualification
+    })
+
+@login_required
+def delete_qualification(request,pk):
+    qualification = Qualification.objects.get(id = pk)
+    if request.method == 'POST':
+        qualification.delete()
+        messages.error(request,"Qualification has been deleted successfully.")
+        return redirect('profile-page',slug=request.user.slug)
+    
+
 @login_required
 def add_workExperience(request):
     User = request.user
@@ -117,6 +143,31 @@ def add_workExperience(request):
     return render(request,'registration/add_workexperience.html',{
         'form':form
     })
+    
+@login_required
+def update_workExperience(request,pk):
+    User = request.user
+    experience = WorkandExperience.objects.get(id=pk)
+    form = addWorkExperienceForm(instance=experience)
+    if request.method=='POST':
+        form = addWorkExperienceForm(request.POST,instance=experience)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"your Wok experience updated successfully.")
+            return redirect('profile-page',slug=request.user.slug)
+    return render(request,'registration/update_workexperience.html',{
+        'form':form,
+        'experience':experience
+    })
+    
+@login_required
+def delete_workExperience(request,pk):
+    experience = WorkandExperience.objects.get(id = pk)
+    if request.method == 'POST':
+        experience.delete()
+        messages.success(request,"your Wok experience deleted successfully.")
+        return redirect('profile-page',slug=request.user.slug)
+
 
 def add_skills(request):
     User = request.user

@@ -48,6 +48,7 @@ class Qualification(models.Model):
 
     def __str__(self):
         return F"{self.institute_name}, {self.degree_type}"
+    
 
 class WorkandExperience(models.Model):
     id = models.AutoField(primary_key=True)
@@ -60,6 +61,7 @@ class WorkandExperience(models.Model):
     
     def __str__(self):
         return f"{self.job_title}, {self.company_name}"
+    
 
 class CustomUser(AbstractUser):
     username = models.CharField(max_length=100, blank=False, null=False, unique=True)
