@@ -45,9 +45,9 @@
       <header>
          <nav class="flex justify-between w-full h-20 items-center m-auto bg-[#fbfbfb] max-md:bg-gray-100 ">
             <div class="w-56 pl-4 min-w-xs ml-4">
-               <a href="{% url 'home-page' %}" ><img src="{% static 'images/logo.png' %}" alt="Company logo"/></a>
+               <a href="{% url 'home-page' %}" ><img src="{% static 'images/logo.png' %}" style='hbox-shadow:0 0 5px #aaa' class="hover:scale-[1.1] duration-500" alt="Company logo"/></a>
             </div>
-            <div class="max-md:flex-col max-md:hidden justify-between xl:gap-6 md:gap-3 md:text-sm max-md:absolute max-md:bg-white max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 bg-gray-50 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
+            <div class="max-sm:flex-col max-sm:hidden justify-between xl:gap-6 md:gap-3 max-md:absolute max-md:bg-white max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 bg-gray-50 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
                <a class="{% block jobs %} {% endblock jobs %} hover:scale-[1.05] duration-100 hover:text-green-700 hover:font-light hover:text-2xl -mr-4" href="{% url 'jobs_list' %}">Jobs</a><br>
                <a class="{% block profiles %} {% endblock profiles %} hover:scale-[1.05] duration-100 hover:text-green-700 hover:font-light hover:text-2xl" href="{% url 'profiles-list' %}">Profiles</a>
                <a class="{% block messages %} {% endblock messages %} hover:scale-[1.05] duration-100 hover:text-green-700 hover:font-light hover:text-2xl" href=""><p>Messages</p></a>
@@ -69,7 +69,7 @@
                      </div>
                   </div>
             </div>
-            <span class="text-3xl font-bold md:hidden mx-4 cursor-pointer"><ion-icon name="menu" onclick="Menu(this)"></ion-icon></span>
+            <span class="sm:hidden text-4xl pr-2"><ion-icon name="menu" onclick="Menu(this)"></ion-icon></span>
          </nav>
       </header>
       <div class="bg-green-200 px-4 py-2 absolute top-[20px] left-[25%] {% if messages %}visible {% else %}hidden{% endif %}">
