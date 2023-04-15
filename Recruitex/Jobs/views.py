@@ -68,9 +68,10 @@ def UpdateJob(request, slug):
     file_data = request.FILES or None
     form = JobsCreationForm(instance=pre_job)
     if request.method=='POST':
-        form = JobsCreationForm(post_data,request.FILES,instance=pre_job)
+        form = JobsCreationForm(post_data,file_data,instance=pre_job)
         if form.is_valid():
-            form.save()
+            job = form.save(commit=False)
+            job.save()
             messages.success(request,"Job has been updated successfully.")
             return redirect('profile-page', slug=request.user.slug)
         
@@ -94,16 +95,6 @@ def DeleteJob(request, slug):
     })
 
 
-# class JobsCreateView(LoginRequiredMixin, CreateView): # new
-#     model = Jobs
-#     template_name = 'Jobs/jobs_new.html'
-#     fields = ('title','designation','location','salary','type','')
-#     except = ('date','recruiter','slug','job_applied_users',)
-
-#     def form_valid(self, form): # new
-#         form.instance.recruiter = self.request.user
-#         return super().form_valid(form)
-
 @user_passes_test(lambda u: u.is_recruiter)
 def JobsCreateView(request):
     post_data = request.POST or None
@@ -112,14 +103,19 @@ def JobsCreateView(request):
     if request.method=='POST':
         form = JobsCreationForm(post_data,file_data)
         if form.is_valid():
-            my_model = form.save()
-            job = Jobs.objects.get(id=my_model.id)
+            job = form.save(commit=False)
             job.recruiter = request.user
-            job.logo = form.cleaned_data['logo']
             job.save()
             messages.success(request,"Job has been added successfully.")
             return redirect('jobs_list')
         
     return render(request,'Jobs/jobs_new.html',{
         'form':form
+    })
+
+
+def job_applicants(request,slug):
+    job = Jobs.objects.get(slug=slug)
+    return render(request,'Jobs/job_applicants.html',{
+        'job':job
     })

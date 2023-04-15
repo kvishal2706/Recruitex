@@ -86,22 +86,22 @@
                 {% if User.work_experience.all%}
                     <div>
                         {% for work in User.work_experience.all %}
-                            <div class="flex gap-6 items-center ">
-                                <div class=" text-center rounded-full bg-[#d3e4da] w-7 pt-[5px] mt-2 h-7 text-sm text-[#5e7862] font-medium" style="box-shadow:0px 0px 4px">{{work.job_title|make_list|first|title}}</div>
+                        <div class="flex gap-6 items-center ">
+                            <div class=" text-center rounded-full bg-[#d3e4da] w-7 pt-[5px] mt-2 h-7 text-sm text-[#5e7862] font-medium" style="box-shadow:0px 0px 4px">{{work.job_title|make_list|first|title}}</div>
+                            <div>
+                                <div class="flex gap-2 items-baseline">
+                                    <h1 class="text-base font-semibold"> {{work.job_title}} </h1>
+                                    <p class="text-[0.7rem] text-[#79967f]"> {{work.joining_date}}{% if work.leaving_date %} - {{work.leaving_date}}{% endif %} </p>
+                                    <a class="text-[0.7rem] font-thin text-[#3f3f3f]" href="{% url 'update-workExperience' work.id%}">Edit</a>
+                                </div>
                                 <div>
-                                    <div class="flex gap-2 items-baseline">
-                                        <h1 class="text-base font-semibold"> {{work.job_title}} </h1>
-                                        <p class="text-[0.7rem] text-[#79967f]"> {{work.joining_date}}{% if work.leaving_date %} - {{work.leaving_date}}{% endif %} </p>
-
-                                    </div>
-                                    <div>
-                                        <p class="text-xs font-semibold text-[#79967f]"> {{work.company_name}}</p>
-                                    </div>
+                                    <p class="text-xs font-semibold text-[#79967f]"> {{work.company_name}}</p>
                                 </div>
                             </div>
-                            <div class="h-16 border-l ml-3 mt-2 mb-1 px-9 text-">
-                                <p class="text-sm text-[#909090] font-medium leading-8"> {{work.experience_description}} </p>
-                            </div>
+                        </div>
+                        <div class="h-fit border-l ml-3 mt-2 mb-1 px-9">
+                            <p class="text-sm text-[#909090] font-medium leading-8"> {{work.experience_description}} </p>
+                        </div>
                             {% endfor %}
                     </div>
                 {% endif %}
@@ -131,6 +131,31 @@
                                     <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_edit' job.slug%}"><img src="{% static 'images/edit.png' %}" class="h-5 hover:scale-[1.1]" alt=""></a>
                                     <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_delete' job.slug%}"><img src="{% static 'images/remove.png' %}" class="h-5 hover:scale-[1.1]" alt=""></a>
                                 </div>
+                            </div><hr class="w-full px-10 mt-1">
+                        {% endfor %}
+                     </div>
+                {% endif %}
+                {% if jobs.all.count %}
+                    <div>
+                        <div><h1 class="text-lg font-semibold font-body my-5">Posted Jobs</h1></div>
+                    </div>
+                    <div class="">
+                        <div class="flex bg-[#edf4fb] py-2 px-6 justify-between items-center rounded-lg">
+                            <h1 class="w-24 font-medium text-lg text-blue-500">Title</h1>
+                            <h1 class=" ml-11 font-medium text-lg text-blue-500">Aplicants</h1>
+                            <h1 class=" ml-12 mr-8 font-medium text-lg text-blue-500">Created</h1>
+                        </div>
+                        {% for job in jobs %}
+                            <div class = "flex py-2 pl-6 items-center justify-between">
+                                <div class="w-40">
+                                    <a href="{% url 'job_details' job.slug %}" class="text-lg font-medium font-body"> {{job.designation|title}} </a>
+                                    <div class="flex items-center py-1">
+                                        <img class="h-5" src="{% static 'images/location.png' %}" alt="">
+                                        <span class="mx-2 text-sm text-[#909090]">{{job.location}}</span>
+                                     </div>
+                                </div>
+                                <a href="{% url 'job-applicants' job.slug%}" class=" mr-10 font-medium text-sm text-blue-500"> {{job.job_applied_users.all.count}} <span>Applicant(s)</span> </a>
+                                <h1 class=" mr-10 text-[#909090] text-sm font-medium"> {{job.date}} </h1>
                             </div><hr class="w-full px-10 mt-1">
                         {% endfor %}
                      </div>
@@ -256,10 +281,18 @@
             <div class="flex justify-between bg-[#d6e4d8] mt-4 p-4 items-center rounded-lg">
                 <div class="text-sm font-semibold text-[#3a3a3a] ">Social Profiles: </div>
                 <div class=" flex gap-2 text-[0.7rem] text-[#6d766f]">
+                    {% if User.facebook_link %}
                     <a href="{{User.facebook_link}}"><i class="fa-brands fa-2x fa-square-facebook hover:scale-[1.1] hover:text-black"></i></a>
+                    {% endif %}
+                    {% if User.twitter_link %}
                     <a href="{{User.twitter_link}}"><i class="fa-brands fa-2x fa-twitter hover:scale-[1.1] hover:text-black"></i></a>
+                    {% endif %}
+                    {% if User.instagram_link %}
                     <a href="{{User.instagram_link}}"><i class="fa-brands fa-2x fa-instagram hover:scale-[1.1] hover:text-black"></i></a>
-                    <a href="{{User.youtube_link}}"><i class="fa-brands fa-2x fa-youtube hover:scale-[1.1] hover:text-black"></i></a>
+                    {% endif %}
+                    {% if User.linkedin_link %}
+                    <a href="{{user.linkedin_link}}"><i class="fa-brands fa-2x fa-linkedin hover:scale-[1.1] hover:text-black rounded-lg"></i></a>
+                    {% endif %}
                 </div>
             </div>
             {% if User.skills_tag.all %}

@@ -96,7 +96,7 @@ class UpdateInformationForm(forms.ModelForm):
         self.fields['facebook_link'].widget.attrs.update({'placeholder':'','class':'w-[12rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
         self.fields['twitter_link'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
         self.fields['instagram_link'].widget.attrs.update({'placeholder':'','class':'w-[12rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
-        self.fields['youtube_link'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
+        self.fields['linkedin_link'].widget.attrs.update({'placeholder':'','class':'min-w-[16rem] px-4 py-2 focus:outline-none border-0 rounded-lg'})
         
 class addQualificationsForm(forms.ModelForm):
     class Meta:
@@ -113,7 +113,7 @@ class addQualificationsForm(forms.ModelForm):
         
 class addWorkExperienceForm(forms.ModelForm):
     joining_date = forms.DateField(widget = DateInput)
-    leaving_date = forms.DateField(widget = DateInput)
+    leaving_date = forms.DateField(widget = DateInput, required=False)
     class Meta:
         model = WorkandExperience
         fields = '__all__'        

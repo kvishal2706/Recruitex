@@ -1,7 +1,6 @@
 from datetime import date
 from django.db import models
 from django.utils.text import slugify
-from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 

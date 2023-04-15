@@ -20,8 +20,8 @@ class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     model = CustomUser
     list_display = ['username', 'first_name', 'email', 'phone', 'is_staff','profile_photo',]
-    fieldsets = UserAdmin.fieldsets + ((None, {'fields': ('phone','dob','age','gender','profile_photo','major_skill','salary','address','about_me','languages','skills_tag','interests','facebook_link','twitter_link','instagram_link','youtube_link','projects','applied_jobs','cv','resume','qualifications','work_experience','slug','is_recruiter',)}),)
-    add_fieldsets = UserAdmin.add_fieldsets + ((None, {'fields': ('phone','dob','age','gender','profile_photo','major_skill','salary','address','languages','about_me','skills_tag','interests','facebook_link','twitter_link','instagram_link','youtube_link','projects','applied_jobs','cv','resume','qualifications','work_experience','slug','is_recruiter',)}),)
+    fieldsets = UserAdmin.fieldsets + ((None, {'fields': ('phone','dob','age','gender','profile_photo','major_skill','salary','address','about_me','languages','skills_tag','interests','facebook_link','twitter_link','instagram_link','linkedin_link','projects','applied_jobs','cv','resume','qualifications','work_experience','slug','is_recruiter',)}),)
+    add_fieldsets = UserAdmin.add_fieldsets + ((None, {'fields': ('phone','dob','age','gender','profile_photo','major_skill','salary','address','languages','about_me','skills_tag','interests','facebook_link','twitter_link','instagram_link','linkedin_link','projects','applied_jobs','cv','resume','qualifications','work_experience','slug','is_recruiter',)}),)
 
 
 admin.site.register(Skills)

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Job Applicants{% endblock title %}
+{% block content %}
+    <div class="text-left mx-[20%] bg-[#e6f1e9] p-2 px-5 my-4 rounded-lg">
+        <h1 class="text-xl font-extralight">Job Tilte: <span class="font-medium text-[#3c7489]">{{job.designation}}</span></h1>
+        <h1 class="text-xl font-extralight">Number of applicants: <span class="font-medium text-[#3c7489]">{{job.job_applied_users.all.count}}</span></h1>
+        <h1 class="text-xl font-extralight">All applicants for this job are: </h1>
+        <div class="bg-white rounded-lg px-6 pt-4 pb-2 my-2">
+            {% for user in job.job_applied_users.all %}
+            <a href="{% url 'search-profile' user.username%}">
+                <div class="flex justify-between p-3 bg-[#f3faf5] rounded-lg mb-4 text-sm font-medium text-gray-600 hover:scale-[1.015] duration-500" style="box-shadow: 0 0 5px #aaa">
+                    <h1>{{user.username}}</h1>
+                    <h1>{{user.major_skill}}</h1>
+                    <h1>{{user.email}}</h1>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

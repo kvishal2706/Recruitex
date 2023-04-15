@@ -125,6 +125,9 @@ TIME_ZONE = 'Asia/Calcutta' # new
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800
+FILE_UPLOAD_MAX_MEMORY_SIZE = 52428800
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'

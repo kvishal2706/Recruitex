@@ -187,8 +187,10 @@ def profiles_list(request):
 
 def search_profile(request,username):
     user = CustomUser.objects.get(username=username)
+    uploaded_jobs = Jobs.objects.filter(recruiter = user)
     return render(request,'UserView/profile_from_search.html',{
-        'User':user
+        'User':user,
+        'jobs': uploaded_jobs
     })
 
 

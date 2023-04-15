@@ -79,7 +79,7 @@ class CustomUser(AbstractUser):
     facebook_link = models.CharField(default="", max_length=255, null=True, blank=True)
     twitter_link = models.CharField(default="", max_length=255, null=True, blank=True)
     instagram_link = models.CharField(default="", max_length=255, null=True, blank=True)
-    youtube_link = models.CharField(default="", max_length=255, null=True, blank=True)
+    linkedin_link = models.CharField(default="", max_length=255, null=True, blank=True)
     major_skill = models.CharField(max_length=30,help_text="Eg: Frontend Developer and designer",  null=True, blank=True, default="")
     skills_tag = models.ManyToManyField("Skills")
     projects=models.ManyToManyField('Project',default=None, blank=True)
@@ -95,6 +95,7 @@ class CustomUser(AbstractUser):
     def save(self, *args,**kwargs):
         self.slug = slugify(self.username)
         super().save(*args, **kwargs)
+        
     class Meta:
         ordering = ['-is_recruiter','username']
 

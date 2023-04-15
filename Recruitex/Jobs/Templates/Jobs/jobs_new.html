@@ -5,7 +5,7 @@
 <div class="bg-[#c5d0c4] mb-4 py-4 px-[18%]">
    <div class="bg-white p-6 rounded-xl text-left">
       <h1 class="font-semibold text-4xl font-body text-[#687466] mb-5">Add new Job</h1>
-      <form action="{% url 'jobs_new' %}" method='POST'>
+      <form action="{% url 'jobs_new' %}" method='POST' enctype="multipart/form-data">
          {% csrf_token %}
          <div class="mb-3 flex items-center justify-start">
             <p class="w-44 text-lg font-medium">Title: </p>
@@ -63,7 +63,7 @@
       <p class="w-44 text-lg font-medium">Embedded location URL: </p>
       <div> {{form.embedded_location_url}} </div>
       </div>
-         <button type="submit">Submit</button>
+      <div class="text-center hover:scale-[1.1] duration-500 "><button type="submit" class="px-4 py-2 bg-[#4e5e54] text-white rounded-xl font-medium text-xl" style="box-shadow: 0 0 5px #000">Submit</button></div>
       </form>
    </div>
 </div>
