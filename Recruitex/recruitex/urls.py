@@ -10,6 +10,7 @@ urlpatterns = [
     path('',TemplateView.as_view(template_name="UserView/home.html"),name='home'),
     path('',include('accounts.urls')),
     path('jobs/',include('Jobs.urls')),
+    path('chat/',include('chat.urls')),
     path('accounts/',include('django.contrib.auth.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
     path('social-auth/', include('social_django.urls', namespace = 'social'))

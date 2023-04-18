@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.text import slugify
 from markdown import markdown
+from datetime import datetime
 
 class Skills(models.Model):
     name= models.CharField(max_length=50)
@@ -140,3 +141,5 @@ class Blog(models.Model):
         
     def __str__(self):
         return self.title
+    
+

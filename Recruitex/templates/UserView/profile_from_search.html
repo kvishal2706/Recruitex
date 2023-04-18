@@ -12,6 +12,7 @@
                     <h2 class="text-3xl"> {{User.first_name|title }} {{User.last_name|title }}</h2>
                     <p class="text-sm pt-[0.1rem] text-gray-500"> <span class="font-semibold">username:</span> {{User.username}} </p>
                 </div>
+                <a href="{% url 'checkroom' User.slug%}">message</a>
                 <div class="flex gap-8 mt-3 items-center flex-wrap">
                     <div>
                         <p class="text-[#4f6b50] font-semibold text-sm">{{User.major_skill}}</p>

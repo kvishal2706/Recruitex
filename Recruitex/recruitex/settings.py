@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'Jobs',
+    'chat',
     'tailwind',
     'theme',
     'django_browser_reload',
