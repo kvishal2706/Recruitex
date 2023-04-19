@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'Jobs',
     'chat',
+    'resume_builder',
     'tailwind',
     'theme',
     'django_browser_reload',
