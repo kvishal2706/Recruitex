@@ -8,7 +8,7 @@
         <div class="bg-white rounded-lg px-6 pt-4 pb-2 my-2">
             {% for user in job.job_applied_users.all %}
             <a href="{% url 'search-profile' user.username%}">
-                <div class="flex justify-between p-3 bg-[#f3faf5] rounded-lg mb-4 text-sm font-medium text-gray-600 hover:scale-[1.015] duration-500" style="box-shadow: 0 0 5px #aaa">
+                <div class="flex justify-between p-3 bg-[#f3faf5] rounded-lg mb-4 text-sm font-medium text-gray-600 hover:scale-[1.015] duration-300" style="box-shadow: 0 0 5px #aaa">
                     <h1>{{user.username}}</h1>
                     <h1>{{user.major_skill}}</h1>
                     <h1>{{user.email}}</h1>

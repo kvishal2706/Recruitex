@@ -38,9 +38,16 @@ def index(request):
     return render(request,'UserView/base.html') 
 
 def home(request):
+    jobs=None
+    try:
+        user = request.user
+        jobs = Jobs.objects.filter(skills_required__in = user.skills_tag.all())
+    except:
+        jobs=None
     blogs = Blog.objects.all()
     return render(request,'UserView/home.html',{
-        'blogs':blogs
+        'blogs':blogs,
+        'jobs':jobs
     }) 
 
 def about_us(request):

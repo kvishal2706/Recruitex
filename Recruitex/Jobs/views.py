@@ -37,7 +37,7 @@ def JobsListView(request):
 @login_required
 def JobsDetailView(request, slug):  # new
     model = get_object_or_404(Jobs, slug=slug)
-    print(model.skills_required)
+    sim_jobs = Jobs.objects.filter(~Q(slug=slug),skills_required__in = model.skills_required.all())
     form = ApplicationForm()
     if request.method =='POST':
         form = ApplicationForm(request.POST)
@@ -47,14 +47,14 @@ def JobsDetailView(request, slug):  # new
             model.job_applied_users.add(request.user)
             ferm.job = model
             request.user.applied_jobs.add(model)
-            print(ferm.job)
             ferm.save()
             return redirect('jobs_list')
         
     # template_name = 'Jobs/jobs_detail.html'
     return render(request, 'Jobs/jobs_detail.html', {
         'form': form,
-        'object':model
+        'object':model,
+        'jobs':sim_jobs
     })
     
 

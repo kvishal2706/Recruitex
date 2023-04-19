@@ -15,7 +15,7 @@
        {% for profile in profiles %}
             {% if not profile.is_superuser %}
                <a href="{% url 'search-profile' profile.username%}">
-                  <div class="text-left w-full p-3 flex justify-between items-center bg-[#f5f5f5] border border-[#687d6f] rounded-2xl mb-3 hover:scale-[1.03] duration-500" style="box-shadow: 0 0 6px #aaaaaa">
+                  <div class="text-left w-full p-3 flex justify-between items-center bg-[#f5f5f5] border border-[#687d6f] rounded-2xl mb-3 hover:scale-[1.03] duration-300" style="box-shadow: 0 0 6px #aaaaaa">
                      <div class="flex justify-start items-center gap-3">
                         <div>
                            <img class="h-16 border border-[#687d6f] rounded-full" src="/media/{{profile.profile_photo}}" alt="profile_photo">

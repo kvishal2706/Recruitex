@@ -41,11 +41,11 @@
           {% block styles %}{% endblock styles %}
       </style>
    </head>
-   <body class="font-body m-auto max-w-screen-2xl border-2 border-gray-50 transition-all ease-in duration-500">
+   <body class="font-body m-auto max-w-screen-2xl border-2 border-gray-50 transition-all ease-in duration-300">
       <header>
          <nav class="flex justify-between w-full h-20 items-center m-auto bg-[#fbfbfb] max-md:bg-gray-100 ">
             <div class="w-56 pl-4 min-w-xs ml-4">
-               <a href="{% url 'home-page' %}" ><img src="{% static 'images/logo.png' %}" style='hbox-shadow:0 0 5px #aaa' class="hover:scale-[1.1] duration-500" alt="Company logo"/></a>
+               <a href="{% url 'home-page' %}" ><img src="{% static 'images/logo.png' %}" style='hbox-shadow:0 0 5px #aaa' class="hover:scale-[1.1] duration-300" alt="Company logo"/></a>
             </div>
             <div class="max-sm:flex-col max-sm:hidden justify-between xl:gap-6 md:gap-3 max-md:absolute max-md:bg-white max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 bg-gray-50 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
                <a class="{% block jobs %} {% endblock jobs %} hover:scale-[1.05] duration-100 hover:text-green-700 hover:font-light hover:text-2xl -mr-4" href="{% url 'jobs_list' %}">Jobs</a><br>

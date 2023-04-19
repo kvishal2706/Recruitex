@@ -2,12 +2,12 @@
 {% load static %}
 {% block content %}
     {% if not user.is_authenticated %}
-    <h2 class="font-serif font-medium text-4xl my-6">
+    <h2 class="font-body font-semibold text-5xl mt-4 mb-1">
         Welcome to our page
     </h2>
-    <p class="mt-4 text-lg font-extralight">Please Login to use our website full functionally.</p>
+    <p class="mb-4 text-xl font-light">Please Login to use our website full functionally.</p>
     {% endif %}
-    <img class="m-0 p-0 h-[40rem] w-full" src="{% static 'images/home-img.png' %}" alt="">
+    <img class="h-[40rem] w-full" src="{% static 'images/home-img.png' %}" alt="">
     <div class="text-left mx-[10%] p-4 my-6 rounded-xl bg-[#f1f1f1]">
         <h1 class="text-5xl text-[#667762] font-body font-semibold">Find Your Dream Job</h1>
         <p class="leading-8 pr-20 mt-4 font-medium text-[#777777]">Welcome to our job recruitment platform, where you can easily search for and apply to the job of your dreams. 
@@ -19,11 +19,58 @@
             <a class="rounded-xl px-3 py-2 bg-[#d0decf] text-[#606f59] text-xl font-medium hover:scale-[1.05]" style="box-shadow: 0 0 5px" href="{% url 'jobs_list' %}">Search Jobs Now</a>
         </div>
     </div>
-   <div class="text-left mx-[11%] mb-2"> <h1 class="text-3xl font-semibold text-[#3b493c]">Blogs</h1></div>
+    {% if jobs %}
+    <div class="text-left mx-[11%] mb-2"> <h1 class="text-3xl font-semibold text-[#3b493c]">Jobs which Match your Skills</h1></div>
+    <div class="mx-[10%] bg-[#f1f1f1] flex gap-8 overflow-x-auto rounded-xl text-left p-3 pb-0 mb-4">
+        <div class="min-w-full max-w-[75rem] rounded-xl bg-white h-fit border pb-6 -pt-2 px-2 flex justify-start mb-6 overflow-x-auto">
+            {% for job in jobs %}
+         <a href="{{ job.get_absolute_url }}">
+         <div class="border w-[20rem] h-64 mx-2 mt-7 hover:scale-[1.04] duration-300 rounded-xl" style="box-shadow: 0px 0px 10px #c3c3c3">
+            <div class='flex w-full my-4 justify-around items-center'>
+               <div class=" border w-fit h-fit p-2 ml-3 mt-4"><img class="h-14" src="/media/{{job.logo}}" alt=""></div>
+               <div class="w-44 pt-5 flex-col items-start text-left">
+                  <h2 class="font-bold">{{ job.title }}</h2>
+                  <span class="font-normal text-gray-400">{{job.date}}</span>
+               </div>
+            </div>
+            <div class="flex-col text-left w-full mx-8">
+               <h5 class = "font-semibold text-xl">{{job.designation}}</h5>
+               <div class="flex gap-4 mt-4 items-center text-center">
+                  {% if job.job_Category %}
+                  <div class="px-3 py-1 bg-blue-100 text-blue-700 font-normal text-xs rounded-md" style="box-shadow: 0px 0.5px 10px #7594d5">
+                     <span>{{job.job_Category}}</span>
+                  </div>
+                  {% endif %}
+                  {% if job.job_duration_type %}
+                  <div class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-normal rounded-md" style="box-shadow: 0px 0.5px 10px #e69748">
+                     <span>{{job.job_duration_type}}</span>
+                  </div>
+                  {% endif %}
+               </div>
+               <div class="flex gap-3 mt-5 text-gray-500">
+                  <div class="flex items-center">
+                     <img class="h-5" src="{% static 'images/location.png' %}" alt="">
+                     <span class="mx-2">{{job.location}}</span>
+                  </div>
+                  <div class="flex items-center">
+                     <img class="h-5" src="{% static 'images/money.png' %}" alt="">
+                     <span class="mx-2">{{job.salary}}</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+         </a>
+         {% endfor %}
+         </div>
+    </div>
+    {% endif %}
+    <div class="text-left mx-[11%] mb-2"> <h1 class="text-3xl font-semibold text-[#3b493c]">
+        Blogs</h1>
+    </div>
     <div class="mx-[10%] bg-[#f1f1f1] flex gap-8 overflow-x-auto rounded-xl text-left p-6 mb-4">
         {% for blog in blogs %}
         <a href="{% url 'blog' blog.slug%}">
-            <div class="p-3 relative bg-white rounded-xl min-w-[23rem] h-[20rem] hover:scale-[1.05] duration-500" style="box-shadow: 1px 1px 10px #a3a3a3">
+            <div class="p-3 relative bg-white rounded-xl min-w-[23rem] h-[20rem] hover:scale-[1.05] duration-300" style="box-shadow: 1px 1px 10px #a3a3a3">
                 <img class="rounded-xl max-h-[12.5rem] object-cover" src="{{blog.src}}" alt="blog post">
                 <div class="absolute bottom-0 mt-4 pb-4">
                     <h1 class="font-semibold text-2xl ">{{blog.title}}</h1>
@@ -34,4 +81,5 @@
         </a>
         {% endfor %}
     </div>
+
 {% endblock content %}

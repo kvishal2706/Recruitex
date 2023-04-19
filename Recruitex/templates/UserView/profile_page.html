@@ -39,12 +39,12 @@
                     {% for skill in user.skills_tag.all %}
                         <p class="rounded-full py-[0.3rem] px-4 bg-[#bfd6c3] border border-[#4c6d50] text-[#4c6d50] text-[0.83rem]" style="box-shadow: 0px 0px 6px"> {{skill}} </p>
                     {% endfor %}
-                    <div class="ml-2 hover:scale-[1.05] duration-500 w-fit h-fit">
+                    <div class="ml-2 hover:scale-[1.05] duration-300 w-fit h-fit">
                         <a class="px-3 py-2 bg-[#9fb1a1] border border-[#bfd6c3] text-[#3b4e42] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-skills' %}">Update Skills</a>
                     </div>
                 </div>
             </div>
-            <div class="hover:scale-[1.05] duration-500 w-fit h-fit">
+            <div class="hover:scale-[1.05] duration-300 w-fit h-fit">
                 <a class="px-4 py-2 bg-blue-200 text-blue-600 rounded-full" style="box-shadow: 0 0 4px" href="{% url 'update-information'%}">Update Information</a>
             </div>
         </div>
@@ -60,7 +60,7 @@
             <div>
                 <div class="flex justify-between">
                     <h1 class="text-lg font-semibold font-body">Qualifications</h1>
-                    <div class="mt-1 ml-2 hover:scale-[1.05] duration-500 w-fit h-fit">
+                    <div class="mt-1 ml-2 hover:scale-[1.05] duration-300 w-fit h-fit">
                         <a class="px-3 py-2 bg-[#f7cece] text-[#f65353] border border-[#f65353] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-qualification' %}">Add Qualifications</a>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
             <div class=" {% if user.qualifications.all %}mt-[-48px]{% endif %} ">
                 <div class="flex justify-between">
                     <h1 class="text-lg font-semibold font-body my-5">Work and Experience</h1>
-                    <div class="mt-1 pt-4 ml-2 hover:scale-[1.05] duration-500 w-fit h-fit">
+                    <div class="mt-1 pt-4 ml-2 hover:scale-[1.05] duration-300 w-fit h-fit">
                         <a class="px-3 py-2 bg-[#d3e4da] text-[#5e7862] border border-[#5e7862] rounded-full text-xs" style="box-shadow: 0px 0px 5px" href="{% url 'add-workExperience' %}">Add Work and Experiences</a>
                     </div>
                 </div>
@@ -139,8 +139,8 @@
                                 <a href="{% url 'job-applicants' job.slug%}" class="w-40 mr-10 font-medium text-sm text-blue-500"> {{job.job_applied_users.all.count}} <span>Applicant(s)</span> </a>
                                 <h1 class="w-40 mr-10 text-[#909090] text-sm font-medium"> {{job.date}} </h1>
                                 <div class="w-32 mr-5 flex gap-4">
-                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_edit' job.slug%}"><img src="{% static 'images/edit.png' %}" class="h-5 hover:scale-[1.1] duration-500" alt=""></a>
-                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_delete' job.slug%}"><img src="{% static 'images/remove.png' %}" class="h-5 hover:scale-[1.1] duration-500" alt=""></a>
+                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_edit' job.slug%}"><img src="{% static 'images/edit.png' %}" class="h-5 hover:scale-[1.1] duration-300" alt=""></a>
+                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_delete' job.slug%}"><img src="{% static 'images/remove.png' %}" class="h-5 hover:scale-[1.1] duration-300" alt=""></a>
                                 </div>
                             </div><hr class="w-full px-10 mt-1">
                         {% endfor %}
@@ -153,7 +153,7 @@
                 <div class=" max-w-[75rem] h-fit border pb-6 -pt-2 px-2 flex justify-start mb-6 overflow-x-auto">
                     {% for jobs in user.applied_jobs.all %}
                  <a href="{{ jobs.get_absolute_url }}">
-                 <div class="border w-[20rem] h-64 mx-2 mt-7 hover:scale-[1.02] duration-500" style="box-shadow: 0px 0px 10px #c3c3c3">
+                 <div class="border w-[20rem] h-64 mx-2 mt-7 hover:scale-[1.02] duration-300" style="box-shadow: 0px 0px 10px #c3c3c3">
                     <div class='flex w-full my-4 justify-around items-center'>
                        <div class=" border w-fit h-fit p-2 ml-3 mt-4"><img class="h-14" src="/media/{{jobs.logo}}" alt=""></div>
                        <div class="w-44 pt-5 flex-col items-start text-left">

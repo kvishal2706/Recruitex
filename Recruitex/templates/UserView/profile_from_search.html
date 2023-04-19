@@ -12,7 +12,6 @@
                     <h2 class="text-3xl"> {{User.first_name|title }} {{User.last_name|title }}</h2>
                     <p class="text-sm pt-[0.1rem] text-gray-500"> <span class="font-semibold">username:</span> {{User.username}} </p>
                 </div>
-                <a href="{% url 'checkroom' User.slug%}">message</a>
                 <div class="flex gap-8 mt-3 items-center flex-wrap">
                     <div>
                         <p class="text-[#4f6b50] font-semibold text-sm">{{User.major_skill}}</p>
@@ -42,7 +41,8 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="hover:scale-[1.05] w-fit h-fit">
+            <div class="hover:scale-[1.05] duration-300 w-fit h-fit">
+                <a class="px-4 py-2 bg-blue-200 text-blue-600 rounded-full" style="box-shadow: 0 0 4px" href="{% url 'checkroom' User.slug%}">Message</a>
             </div>
         </div>
     </div>
@@ -105,36 +105,6 @@
                         </div>
                             {% endfor %}
                     </div>
-                {% endif %}
-                {% if jobs.all.count %}
-                    <div>
-                        <div><h1 class="text-lg font-semibold font-body my-5">Posted Jobs</h1></div>
-                    </div>
-                    <div class="">
-                        <div class="flex bg-[#edf4fb] py-2 px-6 items-center rounded-lg">
-                            <h1 class="w-80 font-medium text-lg text-blue-500">Title</h1>
-                            <h1 class="w-40 ml-11 font-medium text-lg text-blue-500">Aplicants</h1>
-                            <h1 class="w-40 ml-16 font-medium text-lg text-blue-500">Created</h1>
-                            <h1 class="w-40 ml-14 font-medium text-lg text-blue-500">Actions</h1>
-                        </div>
-                        {% for job in jobs %}
-                            <div class = "flex py-2 px-6 items-center">
-                                <div class="w-80">
-                                    <a href="{% url 'job_details' job.slug %}" class="text-lg font-medium font-body"> {{job.designation|title}} </a>
-                                    <div class="flex items-center py-1">
-                                        <img class="h-5" src="{% static 'images/location.png' %}" alt="">
-                                        <span class="mx-2 text-sm text-[#909090]">{{job.location}}</span>
-                                     </div>
-                                </div>
-                                <h1 class="w-40 mr-10 font-medium text-sm text-blue-500"> {{job.job_applied_users.all.count}} <span>Applicant(s)</span> </h1>
-                                <h1 class="w-40 mr-10 text-[#909090] text-sm font-medium"> {{job.date}} </h1>
-                                <div class="w-32 mr-5 flex gap-4">
-                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_edit' job.slug%}"><img src="{% static 'images/edit.png' %}" class="h-5 hover:scale-[1.1]" alt=""></a>
-                                    <a class="bg-[#cad8f3] p-[6px] rounded-full" style="box-shadow:0 0 5px #1246EF" href="{% url 'job_delete' job.slug%}"><img src="{% static 'images/remove.png' %}" class="h-5 hover:scale-[1.1]" alt=""></a>
-                                </div>
-                            </div><hr class="w-full px-10 mt-1">
-                        {% endfor %}
-                     </div>
                 {% endif %}
                 {% if jobs.all.count %}
                     <div>

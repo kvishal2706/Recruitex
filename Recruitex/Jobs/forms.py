@@ -44,8 +44,8 @@ class ApplicationForm(ModelForm):
         self.fields['first_name'].widget.attrs.update({'placeholder':'First name','class': 'border border-gray-300 w-full text-black m-2 px-4 py-2'})
         self.fields['last_name'].widget.attrs.update({'placeholder':'Last Name','class': 'border border-gray-300 w-full m-2 m-2 px-4 py-2'})
         self.fields['email'].widget.attrs.update({'placeholder': 'Email','class':'border border-gray-300 w-full m-2 m-2 px-4 py-2'})
-        self.fields['about_you'].widget.attrs.update({'placeholder': 'Tell us a little about you.','class':'border border-gray-300 w-full m-2 m-2 px-4 py-2'})
-        self.fields['why_you'].widget.attrs.update({'placeholder': 'What makes you right for us?','class':'border border-gray-300 w-full m-2 m-2 px-4 py-2'})
+        self.fields['about_you'].widget.attrs.update({'placeholder': 'Tell us a little about you.','class':'border border-gray-300 w-full m-2 m-2 px-4 py-2 h-40'})
+        self.fields['why_you'].widget.attrs.update({'placeholder': 'What makes you right for us?','class':'border border-gray-300 w-full m-2 m-2 px-4 py-2 h-40'})
         
 class JobFilterForm(ModelForm):
     class Meta:
