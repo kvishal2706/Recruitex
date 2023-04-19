@@ -40,7 +40,7 @@ def JobsDetailView(request, slug):  # new
     sim_jobs = Jobs.objects.filter(~Q(slug=slug),skills_required__in = model.skills_required.all())
     form = ApplicationForm()
     if request.method =='POST':
-        form = ApplicationForm(request.POST)
+        form = ApplicationForm(request.POST, request.FILES)
 
         if form.is_valid():
             ferm = form.save(commit=False)

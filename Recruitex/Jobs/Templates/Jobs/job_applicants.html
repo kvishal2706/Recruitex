@@ -12,6 +12,12 @@
                     <h1>{{user.username}}</h1>
                     <h1>{{user.major_skill}}</h1>
                     <h1>{{user.email}}</h1>
+                    {% comment %} {% if user.resume %}
+                    <a href="{% url 'resume-view' user.slug %}" target="_new" class="flex justify-between p-4 mt-2 rounded-lg items-center bg-[#bbd3b6]">
+                        <h1 class="font-semibold text-[#3a3a3a] text-sm">Resume</h1>
+                        <img class="h-6" src="{% static 'images/pdf-green.png' %}" alt="">
+                    </a>
+                    {% endif %} {% endcomment %}
                 </div>
             </a>
             {% endfor %}

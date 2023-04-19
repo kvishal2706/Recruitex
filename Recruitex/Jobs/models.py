@@ -79,5 +79,6 @@ class ApplicationForm(models.Model):
     about_you = models.TextField(null=True,blank=True)
     why_you = models.TextField(name=False,blank=False)
     job = models.ForeignKey("Jobs", on_delete=models.DO_NOTHING, default="")
+    resume = models.FileField(upload_to="accounts/resume/", max_length=255, default="")
     def __str__(self):
         return f"{self.first_name}, {self.email}"
