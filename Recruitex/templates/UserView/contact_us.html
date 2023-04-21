@@ -35,27 +35,28 @@
         <div class="w-56 pl-4 ml-4 min-w-xs">
            <a href="{% url 'home-page' %}" ><img src="{% static 'images/logo.png' %}" alt="Company logo"/></a>
         </div>
-        <div class="max-md:flex-col max-md:hidden justify-between xl:gap-6 md:gap-3 md:text-sm max-md:absolute max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4 md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
-         <a class="{% block jobs %} {% endblock jobs %} hover:scale-[1.05] hover:text-green-700 hover:font-light hover:text-2xl -mr-4" href="{% url 'jobs_list' %}">Jobs</a><br>
-               <a class="{% block profiles %} {% endblock profiles %} hover:scale-[1.05] hover:text-green-700 hover:font-light hover:text-2xl" href="{% url 'profiles-list' %}">Profiles</a>
-               <a class="{% block messages %} {% endblock messages %} hover:scale-[1.05] hover:text-green-700 hover:font-light hover:text-2xl" href=""><p>Messages</p></a>
-               {% if not user.is_authenticated %}
-               <a class="{% block signup %} {% endblock signup %} hover:scale-[1.05] hover:text-green-700 hover:font-light hover:text-2xl" href="{% url 'signup' %}" >SignUp</a>
-               <a class="{% block login %} {% endblock login %} hover:scale-[1.05] hover:text-green-700 hover:font-light hover:text-2xl" href="{% url 'login' %}" >Login</a>
-           {% endif %}
-              <div class="w-16 pr-4 relative dropdown">
-                 <img src="{% static 'images/profile-logo.png' %}" alt="profile logo"/>
-                 <div class="dropdown-content text-sm max-sm:px-8 max-sm:pl-20 w-fit">
-                  {% if user.is_authenticated %}
-                     <a href="{% url 'profile-page' user.slug %}">Myprofile</a><hr class="my-1">
-                  {% endif %}
-                  <a href="">Help</a><hr class="my-1">
-                  <a href="">settings and Privacy</a><hr class="mb-1">
-                  {% if user.is_authenticated %}
-                    <a href="{% url 'logout' %}">Logout</a>{% endif %}
-                 </div>
-              </div>
-        </div>
+        <div class="max-sm:flex-col max-sm:hidden justify-between xl:gap-6 md:gap-3 max-md:absolute  max-md:border max-md:left-0 max-md:text-lg xl:text-lg items-center md:flex w-full pl-20 max-md:font-semibold max-md:pt-4  md:w-auto md:p-0 md:mt-0 md:mr-0" id="items">
+         <a class="{% block jobs %} {% endblock jobs %} hover:scale-[1.03] hover:font-medium duration-300 hover:text-green-700 hover:text-2xl -mr-4" href="{% url 'jobs_list' %}">Jobs</a><br>
+         <a class="{% block profiles %} {% endblock profiles %} hover:scale-[1.03] hover:font-medium duration-300 hover:text-green-700 hover:text-2xl" href="{% url 'profiles-list' %}">Profiles</a>
+         <a class="{% block messages %} {% endblock messages %} hover:scale-[1.03] hover:font-medium duration-300 hover:text-green-700 hover:text-2xl" href=""><p>Messages</p></a>
+         {% if not user.is_authenticated %}
+         <a class="{% block signup %} {% endblock signup %} hover:scale-[1.03] hover:font-medium duration-300 hover:text-green-700 hover:text-2xl" href="{% url 'signup' %}" >SignUp</a>
+         <a class="{% block login %} {% endblock login %} hover:scale-[1.03] hover:font-medium duration-300 hover:text-green-700 hover:text-2xl" href="{% url 'login' %}" >Login</a>
+         {% endif %}
+         <div class=" pr-4 relative dropdown">
+            <img class='h-[60px] w-[60px] rounded-full border border-black p-[0.15rem]' src="/media/{{user.profile_photo}}" alt="profile logo"/>
+            <div class="dropdown-content text-sm max-sm:px-8 max-sm:pl-20 w-fit">
+               {% if user.is_authenticated %}
+               <a class='hover:font-semibold hover:text-[1rem] duration-300' href="{% url 'profile-page' user.slug %}"><div>Myprofile</div></a><hr class="my-1">
+               {% endif %}
+               <a class='hover:font-semibold hover:text-[1rem] duration-300' href=""><div>Help</div></a><hr class="my-1">
+               <a class='hover:font-semibold hover:text-[1rem] duration-300' href=""><div>settings and Privacy</div></a><hr class="mb-1">
+               {% if user.is_authenticated %}
+               <a class='hover:font-semibold hover:text-[1rem] duration-300' href="{% url 'password_change' %}"><div>Change Password</div></a><hr class="my-1">
+               <a class='hover:font-semibold hover:text-[1rem] duration-300' href="{% url 'logout' %}"><div>Logout</div></a>{% endif %}
+            </div>
+         </div>
+      </div>
         <span class="text-3xl font-bold md:hidden mx-4 cursor-pointer"><ion-icon name="menu" onclick="Menu(this)"></ion-icon></span>
      </nav>
      <div>
