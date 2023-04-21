@@ -11,6 +11,7 @@ urlpatterns = [
     path('',include('accounts.urls')),
     path('jobs/',include('Jobs.urls')),
     path('chat/',include('chat.urls')),
+    path('resume/',include('resume_builder.urls')),
     path('accounts/',include('django.contrib.auth.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
     path('social-auth/', include('social_django.urls', namespace = 'social'))
