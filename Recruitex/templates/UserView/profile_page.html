@@ -191,6 +191,22 @@
                  {% endfor %}
                  </div>
                 {% endif %}
+                <div class="text-left mx-[11%] mb-2"> <h1 class="text-3xl font-semibold text-[#3b493c]">
+                    Projects</h1>
+                </div>
+                <div class="bg-[#f1f1f1] flex gap-8 overflow-x-auto rounded-xl text-left p-6 mb-4">
+                    {% for proj in user.projects.all %}
+                    <a href="{{proj.source_link}}">
+                        <div class="p-3 relative bg-white rounded-xl min-w-[23rem] h-[20rem] hover:scale-[1.05] duration-300" style="box-shadow: 1px 1px 10px #a3a3a3">
+                            <img class="rounded-xl h-[12.5rem] object-cover" src="/media/{{proj.project_images}}" alt="blog post">
+                            <div class="absolute bottom-0 mt-4 pb-4">
+                                <h1 class="font-semibold text-2xl ">{{proj.title}}</h1>
+                                <p class="text-sm font-medium text-[#777777] mt-2">{{proj.project_description}}</p>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
         <div class="w-[27%]">
